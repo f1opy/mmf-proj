@@ -1,0 +1,218 @@
+\documentclass[a4paper, 12pt]{extreport}
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=1.5cm]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian, ukrainian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,amsthm}
+
+\usepackage[pdftex, unicode, colorlinks=true, linkcolor=black]{hyperref}
+
+%\usepackage{relsize} %%позволяет пользоваться функцией \mathlarger{}
+\usepackage{xcolor}
+\usepackage[pdf]{xy}
+
+\usepackage{wrapfig}
+
+%\usepackage{titlesec}
+%\titleformat{\chapter}[display]
+%    {\normalfont\large\bfseries}{\chaptertitlename\ \thechapter}{10pt}{\Large}
+%\titlespacing*{\chapter}
+%    {0pt}{25pt}{20pt}
+
+\renewcommand{\labelenumii}{\theenumii)} %% заменяем счёчтик 2 уровня вида (a), (b), (c) и т.д. на русский алфавит а), б), в), и т.д. 
+
+
+\begin{document}
+
+\tableofcontents
+\setcounter{page}{2}
+
+\chapter{ЗАСТОСУВАННЯ ПРОЦЕДУРИ ФУР’Є
+БЕЗПОСЕРЕДНЬОГО ВІДОКРЕМЛЕННЯ ЗМІННИХ}
+
+\section{Відокремлення змінних, задача Штурма-Ліувілля і власні моди коливань струни для різних межових умов}
+
+\subsection*{Задача №1.1}
+
+\textit{\textbf{Знайти власні моди коливань струни завдовжки $l$ із закріпленими кінцями (знайти функції вигляду $u(x,t) = X(x) \cdot T(t)$, визначені і достатньо гладкі в області $0 \leq x \leq l, -\infty \leq t \leq \infty$, не рівні тотожно нулю, які задовольняють одновимірне хвильове рівняння $u_{tt} = v^2 u_{xx}$ на проміжку $0 \leq x \leq l$ і межові умови $u(0,t) = 0, u(l,t) = 0$ на його кінцях).} Результат перевірити аналітично й графічно (див. текст до модульної контрольної роботи №1, с. 25) та проаналізувати його фізичний смисл. Знайти початкові умови (початкове відхилення і початкову швидкість) для кожної з мод.}
+
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+Постановка задачі:
+\begin{equation}
+    \left\{ \begin{aligned} %%
+        \;&u = u(x,t), \\  &u_{tt} = v^2 u_{xx}, \\ &0 \leq x \leq l, t \in \Re, \\  &u(0,t) = 0, \\ &u(l,t) = 0. 
+    \end{aligned} \right.
+\end{equation}
+Шукаємо нетривіальні розв'язки рівняння у виді:
+\begin{equation} \label{subst}
+    u(x,t) = X(x) \cdot T(t) \neq 0 
+\end{equation}
+
+Тепер можливе відокремлення змінних в задачі. Почнемо з межових умов:
+\begin{equation*}
+    \begin{aligned}
+        \;u(0,t) = X(0) \cdot T(t) = 0 \Rightarrow \left\{ \begin{aligned}
+            T(t) \neq 0, \forall t, \\  X(0) = 0; 
+        \end{aligned} \right.\\
+        u(l,t) = X(l) \cdot T(t) = 0 \Rightarrow \left\{ \begin{aligned}
+            T(t) \neq 0, \forall t, \\  X(l) = 0; 
+        \end{aligned} \right.\\
+    \end{aligned}
+\end{equation*}
+Далі підставимо (\ref{subst}) в рівняння та виконаємо ряд перетворень:
+\begin{equation*}
+    \frac{\partial^2}{\partial t^2}\left[X(x) \cdot T(t)\right] = v^2 \frac{\partial^2}{\partial x^2}\left[X(x) \cdot T(t)\right],
+    \;\to\; 
+    X \cdot T^{\prime\prime} = v^2 X^{\prime\prime} \cdot T 
+    \;\to\; 
+    \frac{T^{\prime\prime}}{v^2T} = \frac{X^{\prime\prime}}{X} = - \lambda,
+\end{equation*}
+де $\lambda$ -- стала відокремлення.\\
+Виписуємо результат відокремлення змінних:
+\begin{equation} \label{sepvar}
+    \left\{ \begin{aligned}
+        \;&X = X(x), \\  &X^{\prime\prime} = -\lambda X, \\ &0 \leq x \leq l, \\  &X(0) = 0, \\ &X(l) = 0. 
+    \end{aligned} \right.
+    \qquad\qquad
+    \begin{aligned}
+        T^{\prime\prime} + \lambda v^2 T = 0
+        \lambda -- \text{невідома}
+    \end{aligned}
+\end{equation}
+
+Для $X = X(x)$ отримуємо задачу Штурма-Ліувілля. Розв'яжемо її:
+\begin{enumerate}
+    \item[] \begin{enumerate}
+        \item Розглянемо випадок $\lambda = 0$:
+        \begin{equation*}
+            X^{\prime\prime} = -\lambda X
+            \;\to\;
+            X^{\prime\prime} = 0
+            \;\to\;
+            X(x) = C_1 + C_2 x
+        \end{equation*}
+        Знаходимо константи з межових умов:
+        \begin{equation*}
+            \left\{ \begin{aligned}
+                &X(0) = C_1 = 0, \\ 
+                &X(l) = C_1 + C_2 l = 0;
+            \end{aligned} \right.
+            \;\to\;
+            \left\{ \begin{aligned}
+                C_1 = 0, \\ 
+                C_2 = 0;
+            \end{aligned} \right.
+            \;\to\;
+            X(x) = 0 - \text{розв'язок тривівльний}
+        \end{equation*}
+    
+        \item Розглянемо випадок $\lambda < 0$. Розв'язок рівняння шукаємо у виді $X(x) = e^{\alpha x}$, підставимо це в рівняння: 
+        \begin{equation*}
+            \begin{aligned}
+                X^{\prime\prime} = -\lambda X
+                \;&\to\;
+                \alpha^2 \textcolor{red}{\begin{xy}*{\textcolor{black}{e^{\alpha x}}};p+LD;+RU**h@{}+/\jot/**h@{-}\end{xy}} = +|\lambda| \textcolor{red}{\begin{xy}*{\textcolor{black}{e^{\alpha x}}};p+LD;+RU**h@{}+/\jot/**h@{-}\end{xy}}
+                \;\to\;
+                \alpha = \pm \sqrt{|\lambda|}
+                \;\to\\
+                &\to\;
+                X(x) = \widetilde{C}_1 e^{\sqrt{|\lambda|}x} + \widetilde{C}_2 e^{-\sqrt{|\lambda|}x} \equiv C_1 sh(\sqrt{|\lambda|}x) + C_2 ch({\sqrt{|\lambda|}x})
+            \end{aligned}
+        \end{equation*}
+        Знаходимо константи з межових умов:
+        \begin{equation*}
+            \begin{aligned}
+                \left\{ \begin{aligned}
+                    &X(0) = C_2 = 0, \\ 
+                    &X(l) = C_1 sh(\sqrt{|\lambda|}l) + C_2 ch({\sqrt{|\lambda|}l}) = 0;
+                \end{aligned} \right.
+                \;&\to\\
+                \to\;
+                \left\{ \begin{aligned}
+                    &C_2 = 0, \\ 
+                    &C_1 sh(\sqrt{|\lambda|}l) = 0, \\
+                    &sh(\sqrt{|\lambda|}l) \neq 0;
+                \end{aligned} \right.
+                \;\to\;
+                \left\{ \begin{aligned}
+                    C_1 = 0, \\ 
+                    C_2 = 0;
+                \end{aligned} \right.
+                \;&\to\;
+                \text{розв'язок тривівльний}
+            \end{aligned}
+        \end{equation*}
+    
+        \item Розглянемо випадок $\lambda > 0$. Розв'язок рівняння шукаємо у виді $X(x) = e^{\alpha x}$, підставимо це в рівняння: 
+        \begin{equation*}
+            \begin{aligned}
+                X^{\prime\prime} = -\lambda X
+                \;&\to\;
+                \alpha^2 \textcolor{red}{\begin{xy}*{\textcolor{black}{e^{\alpha x}}};p+LD;+RU**h@{}+/\jot/**h@{-}\end{xy}} = -\lambda \textcolor{red}{\begin{xy}*{\textcolor{black}{e^{\alpha x}}};p+LD;+RU**h@{}+/\jot/**h@{-}\end{xy}}
+                \;\to\;
+                \alpha = \pm i\sqrt{\lambda}
+                \;\to\\
+                &\to\;
+                X(x) = \widetilde{C}_1 e^{i\sqrt{\lambda}x} + \widetilde{C}_2 e^{-\sqrt{\lambda}x} \equiv C_1 \sin(\sqrt{\lambda}x) + C_2 \cos({i\sqrt{\lambda}x})
+            \end{aligned}
+        \end{equation*}
+        Знаходимо константи з межових умов:
+        \begin{equation*}
+            \begin{aligned}
+                \left\{ \begin{aligned}
+                    &X(0) = C_2 = 0, \\ 
+                    &X(l) = C_1 \sin(\sqrt{\lambda}l) + \textcolor{red}{\begin{xy}*{\textcolor{black}{C_2}};p+LU;+RD**h@{}+//**h@{-}*h@{>}*h!LD{\scriptstyle 0}\end{xy}} \cos({\sqrt{\lambda}l}) = 0;
+                \end{aligned} \right.
+                \;\to\;
+                \left\{ \begin{aligned}
+                    &C_1 \neq 0, \\ 
+                    &\sin(\sqrt{\lambda}l) = 0;
+                \end{aligned} \right.
+            \end{aligned}
+        \end{equation*}
+        Маємо нетривіальний розв'язок. Визначимо з характерисичного рівняння при яких значеннях $\lambda$ він можливий:
+        \begin{equation*}
+            \sin(\sqrt{\lambda}l) = 0
+            \;\to\;
+            \sqrt{\lambda}l = \pi n, \, n \in \mathbb{Z}
+            \;\to\;
+            \lambda_n = \frac{\pi^2 n^2}{l^2}, \, n \in \mathbb{N}.
+        \end{equation*}
+        Отже, ми визначили всі власні значення та відповідні їм власні функції.
+        \begin{equation}
+            \left\{ \begin{aligned}
+                \;&\lambda_n = \frac{\pi^2 n^2}{l^2},\\ 
+                &X_n(x) = C_n \sin\left(\frac{\pi n x}{l}\right),
+            \end{aligned} \right.
+            \quad \text{де } n \in \mathbb{N}.
+        \end{equation}
+    \end{enumerate}
+\end{enumerate} 
+
+Повертаємося до рівняння для $T(t)$ - (\ref{sepvar}). Підставляємо знайдені значення та знаходимо $T_n(t)$:
+\begin{equation*}
+    \left. \begin{aligned}
+        \lambda_n = \frac{\pi^2 n^2}{l^2},&\;\\ 
+        T^{\prime\prime} + \lambda v^2T = 0,&
+    \end{aligned} \right\}
+    \;\Rightarrow\;
+    T_n(t) = A\cos(\omega_n t) + B\sin(\omega_n t),
+\end{equation*}
+де $\omega_n^2 = \lambda_n v^2, \, n \in \mathbb{N}.$
+Власними модами коливань струни будуть всі розв'язки вигляду:
+\begin{equation*}
+    u_n(x,t) = X_n(x) \cdot T_n(t)
+\end{equation*}
+Виконаємо перепозначення і запишемо остаточний розв'язок.
+\begin{equation}
+    \left\{ \begin{aligned}
+        \;&u_n(x,t) = \left(A_n\cos(\omega_n t) + B_n\sin(\omega_n t)\right) \sin(k_n x), \\
+        &k_n = \frac{\pi n}{l} - \text{ хвильові вектори}, \\
+        &\omega_n = vk_n = \frac{v \pi n}{l} - \text{ власні частоти}, \\
+        &n = 1, 2,\ldots
+    \end{aligned}\right.
+\end{equation}
+
+\end{document}
