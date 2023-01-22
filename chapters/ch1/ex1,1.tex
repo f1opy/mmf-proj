@@ -14,6 +14,7 @@
 \usepackage{wrapfig}
 \usepackage{tikz} 
 \usetikzlibrary{math}
+\usetikzlibrary{arrows.meta}
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
@@ -43,18 +44,20 @@
     \large{\textbf{Розв'язок}}
 \end{center}
 
-\noindent Постановка задачі:
-\begin{equation}
+\noindent Формальна постановка задачі:
+\begin{equation} \label{probcond}
     \left\{ \begin{aligned} %%
         \;&u = u(x,t), \\  &u_{tt} = v^2 u_{xx}, \\ &0 \leq x \leq l, t \in \mathbb{R}, \\  &u(0,t) = 0, \\ &u(l,t) = 0. 
     \end{aligned} \right.
 \end{equation}
-Шукаємо нетривіальні розв'язки рівняння у виді:
+Шукаємо нетривіальні (тобто не рівні тотожно нулю) розв'язки рівняння у вигляді:
 \begin{equation} \label{subst}
     u(x,t) = X(x) \cdot T(t) \neq 0 
 \end{equation}
 
-Тепер можливе відокремлення змінних в задачі. Почнемо з межових умов:
+Хвильове рівняння з двома межовими умовами на кінцях проміжку по координаті х описує малі поперечні коливання струни із закріпленими кінцями, її довільний вільний рух. Струна має попередній натяг, і у положенні рівноваги  всі її точки знаходяться на осі $x$, а при коливаннях відхиляться у напрямку осі $y$; $u(x,t)$ - це відповідне зміщення точки струни з координатою х в напрямку у відносно її рівноважного положення у даний момент часу t. Власні моди струни - це особливі рухи струни, які описуються розв'язками у вигляді добутків (\ref{subst}). 
+
+Підставляємо розв'язок у вигляді добутку (\ref{sepvar})  у рівняння і умови (\ref{probcond}) Почнемо з межових умов:
 \begin{equation*}
     \begin{aligned}
         \;u(0,t) = X(0) \cdot T(t) = 0
@@ -69,36 +72,39 @@
         \end{aligned} \right.\\
     \end{aligned}
 \end{equation*}
-Далі підставимо (\ref{subst}) в рівняння та виконаємо ряд перетворень:
+Умови на кінцях струни виконуються при всіх $t$, тому $T(t)$ не може бути рівним нулю.\\
+Далі підставимо (\ref{subst}) у рівняння:
 \begin{equation*}
     \frac{\partial^2}{\partial t^2}\left[X(x)T(t)\right] = v^2 \frac{\partial^2}{\partial x^2}\left[X(x)T(t)\right]
-    \;\to\; 
+    \;\Rightarrow\; 
     X T^{\prime\prime} = v^2 X^{\prime\prime} T 
-    \;\to\; 
-    \frac{T^{\prime\prime}}{v^2T} = \frac{X^{\prime\prime}}{X} = - \lambda,
 \end{equation*}
-де $\lambda$ -- стала відокремлення.\\
+
+Із рівняння ми прийшли до рівності двох функцій від різних змінних. Це і є ситуація відокремлення змінних: функція від $x$ має дорівнювати функції від t при всіх $x$ і $t$. Це можливо тільки у випадку, якщо обидві ці функції є сталими. Тому маємо
+\begin{equation} \label{managedvar}
+    \frac{T^{\prime\prime}}{v^2T} = \frac{X^{\prime\prime}}{X} = - \lambda,
+\end{equation}
+де $\lambda$ -- стала відокремлення. ЇЇ можливі значення необхідно буде знайти.
+
 Виписуємо результат відокремлення змінних:
 \begin{equation} \label{sepvar}
     \left\{ \begin{aligned}
         \;&X = X(x), \\  &X^{\prime\prime} = -\lambda X, \\ &0 \leq x \leq l, \\  &X(0) = 0, \\ &X(l) = 0. 
     \end{aligned} \right.
     \qquad\qquad
-    \begin{aligned}
-        T^{\prime\prime} + \lambda v^2 T = 0\\
-        \lambda \text{ -- невідома}
-    \end{aligned}
+    T^{\prime\prime} + \lambda v^2 T = 0
 \end{equation}
 
-Для $X = X(x)$ отримуємо задачу Штурма-Ліувілля. Розв'яжемо її:
+Задача для $X = X(x)$ є так званою Штурма-Ліувілля. Необхідно знайти нетривіальні розв'язки цієї задачі і значення параметра   $\lambda$, при яких вони існують; їх називають, відповідно, власними функціями і власними значеннями задачі. \textit{З умов задачі можна показати (див. лекції), що власні значення є дійсними.}\\
+Розв'яжемо її:
 \begin{enumerate}
     \item[] \begin{enumerate}
         \item Розглянемо випадок $\lambda = 0$:
         \begin{equation*}
             X^{\prime\prime} = -\lambda X
-            \;\to\;
+            \;\Rightarrow\;
             X^{\prime\prime} = 0
-            \;\to\;
+            \;\Rightarrow\;
             X(x) = C_1 + C_2 x
         \end{equation*}
         Знаходимо константи з межових умов:
@@ -124,10 +130,10 @@
                 &X^{\prime\prime} = -\lambda X
                 \quad\to\quad
                 \alpha^2 \textcolor{red}{\begin{xy}*{\textcolor{black}{e^{\alpha x}}};p+LU;+RD**h@{}+/\jot/**h@{-}\end{xy}} = +|\lambda| \textcolor{red}{\begin{xy}*{\textcolor{black}{e^{\alpha x}}};p+LU;+RD**h@{}+/\jot/**h@{-}\end{xy}}
-                \quad\to\quad
+                \quad\Rightarrow\quad
                 \alpha = \pm \sqrt{|\lambda|}
-                \;\Rightarrow\\
-                \Rightarrow\;
+                \;\to\\
+                \to\;
                 &X(x) = \widetilde{C}_1 e^{\sqrt{|\lambda|}x} + \widetilde{C}_2 e^{-\sqrt{|\lambda|}x} \equiv C_1 sh(\sqrt{|\lambda|}x) + C_2 ch({\sqrt{|\lambda|}x})
             \end{aligned}
         \end{equation*}
@@ -138,14 +144,14 @@
                     &X(0) = C_2 = 0, \\ 
                     &X(l) = C_1 sh(\sqrt{|\lambda|}l) + C_2 ch({\sqrt{|\lambda|}l}) = 0;
                 \end{aligned} \right.
-                \;\to\\
-                \to\;
+                \;\Rightarrow\\
+                \Rightarrow\;
                 &\left\{ \begin{aligned}
                     &C_2 = 0, \\ 
                     &C_1 sh(\sqrt{|\lambda|}l) = 0, \\
                     &sh(\sqrt{|\lambda|}l) \neq 0;
                 \end{aligned} \right.
-                \;\to\;
+                \;\Rightarrow\;
                 \left\{ \begin{aligned}
                     C_1 = 0, \\ 
                     C_2 = 0;
@@ -161,10 +167,10 @@
                 &X^{\prime\prime} = -\lambda X
                 \quad\to\quad
                 \alpha^2 \textcolor{red}{\begin{xy}*{\textcolor{black}{e^{\alpha x}}};p+LD;+RU**h@{}+/\jot/**h@{-}\end{xy}} = -\lambda \textcolor{red}{\begin{xy}*{\textcolor{black}{e^{\alpha x}}};p+LD;+RU**h@{}+/\jot/**h@{-}\end{xy}}
-                \quad\to\quad
+                \quad\Rightarrow\quad
                 \alpha = \pm i\sqrt{\lambda}
-                \;\Rightarrow\\
-                \Rightarrow\;
+                \;\to\\
+                \to\;
                 &X(x) = \widetilde{C}_1 e^{i\sqrt{\lambda}x} + \widetilde{C}_2 e^{-\sqrt{\lambda}x} \equiv C_1 \sin(\sqrt{\lambda}x) + C_2 \cos({\sqrt{\lambda}x})
             \end{aligned}
         \end{equation*}
@@ -175,7 +181,7 @@
                     &X(0) = C_2 = 0, \\ 
                     &X(l) = C_1 \sin(\sqrt{\lambda}l) + \textcolor{red}{\begin{xy}*{\textcolor{black}{C_2}};p+LU;+RD**h@{}+//**h@{-}*h@{>}*h!LD{\scriptstyle 0}\end{xy}} \cos({\sqrt{\lambda}l}) = 0;
                 \end{aligned} \right.
-                \;\to\;
+                \;\Rightarrow\;
                 \left\{ \begin{aligned}
                     &C_1 \neq 0, \\ 
                     &\sin(\sqrt{\lambda}l) = 0;
@@ -217,15 +223,15 @@
 \end{equation*}
 Виконаємо перепозначення і запишемо остаточний розв'язок:
 \begin{equation}
-    \left\{ \begin{aligned}
+    \left\{ \begin{aligned} \label{fullsol}
         \;&u_n(x,t) = \left(A_n\cos(\omega_n t) + B_n\sin(\omega_n t)\right) \sin(k_n x), \\
         &k_n = \frac{\pi n}{l} - \text{ хвильові вектори}, \\
         &\omega_n = vk_n = \frac{v \pi n}{l} - \text{ власні частоти}, \\
         &n = 1, 2,\ldots
     \end{aligned}\right.
 \end{equation}
-\newpage
 
+    \newpage
 \begin{center}
     \large{\textbf{Перевірка розв'язку задачі Штурма-Ліувілля}}
 \end{center}
@@ -256,35 +262,121 @@
             \end{aligned}
         \end{equation*}
     \end{enumerate}
-    \item Графічна перевірка:
+    \item Графічна перевірка.\\
+    Побудуємо графіки кількох перших власних функцій. Масштаб по вертикалі може бути довільним і різним для різних функцій, оскільки значення він не має.
     \begin{center}
         \begin{tikzpicture}
             \begin{axis}
                 [width = 0.85\textwidth, height = 0.4\textwidth,
                  axis x line = center, axis y line = center,
                  ylabel = $X(x)$, xlabel = $x$,
-                 xmin = 0.7, xmax = 6.7, ymin = -3.3, ymax = 5.3,
+                 xmin = -0.3, xmax = 5.7, ymin = -3.3, ymax = 5.3,
                  axis line style = thin, xtick = {0}, ytick = {0}]   
                 
                 \tikzmath{\A1 = 5; \l = 5; \k = pi/\l;}
                 
-                \addplot [black, domain = 1:(\l+1), samples = 1000] {\A1 * sin(deg(\k*(x-1)))}
-                node[anchor=north, pos=0] {0} 
-                node[pos=0.75, fill=white] {$X_0(x)$} 
-                node[anchor=north, pos=1] {$l$};
+                \addplot [black, domain=0:\l, samples = 1000] {\A1 * sin(deg(\k*x))}
+                node[anchor=130, pos=0] {0} 
+                node[pos=0.75, fill=white] {$X_1(x)$} 
+                node[anchor=130, pos=1] {$l$};
                 
-                \addplot [black, domain = 1:(\l+1), samples = 1000] {\A1/2.5 * sin(deg(2*\k*(x-1)))}
-                node[pos=0.83, fill=white] {$X_1(x)$};
+                \addplot [black, domain=0:\l, samples = 1000] {\A1/2.5 * sin(deg(2*\k*x))}
+                node[pos=0.83, fill=white] {$X_2(x)$};
                 
-                \addplot [black, domain = 1:(\l+1), samples = 1000] {\A1/3.7 * sin(deg(3*\k*(x-1)))}
-                node[pos=0.74, fill=white] {$X_2(x)$};
+                \addplot [black, domain=0:\l, samples = 1000] {\A1/3.7 * sin(deg(3*\k*x))}
+                node[pos=0.76, fill=white] {$X_3(x)$};
                 
             \end{axis}
         \end{tikzpicture}
     \end{center}
 \end{enumerate}
+Функція, що відповідає найменшому власному значенню (у даному випадку це $X_1(x) = \sin\left(\frac{\pi x}{l}\right)$), відповідає так званій основній моді резонатора. \textit{Для стаціонарних станів у квантовій механіці це основний стан системи, стан з найменшою можливою енергією.}\\
+Графіки власних функцій відображають їх основні властивості, які і треба перевірити. З рисунку видно, що в точках $x = 0$ та $x = l$ всі графіки проходять через нуль, отже крайова умова (\ref{sepvar}) на обох кінцях виконується. \textit{Графічна перевірка підсилює надійність аналітичної, де також іноді припускаються помилок, приймаючи бажане за дійсне.}
 
+Наведені вище методи допомагають позбавитись більшості помилок, проте є надзвичайно підступна тип помилки, яку згадані методи піймати не взмозі. В процесі розв'язування задачі Штурма-Ліувіля з більш складними межовими умовами можлива така ситуація, коли отримається декілька типів розв'язків (будуть нетривіальними розв'зки не тільки для додатних $\lambda$), тоді можливо не визначити всі значення спектрального параметру та відповідні хвильові функції. Звісно, в такому випадку ві знайдете власні функції та власні значення, але \textbf{не всі}, а отже задача розв'язана неправильно.\\
+Помітити таку помилку допомагає так звана \textbf{осциляційна теорема}. З рисунку, наведеного в графічному методі, видно, що всі власні функції на проміжку $o \leq x \leq l$ осцилюють, і пр ицьому всі вони мають \textbf{різне} число нулів. Число нулів (або 'вузлів') всередені проміжку, на якому ророзв’язується задача, є своєрідною унікальною міткою власної функції. Цей факт не є випадковим і безпосередньо пов’язаний з ортогональністю власних функцій. Всі власні значення даної задачі прості, тобто між власними функціями і власними значеннями існує взаємно однозначна відповідність. Треба розташувати власні значення в порядку зростання. Тоді за осциляційною теоремою найменшому власному значенню відповідає функція, яка не має нулів у внутрішніх точках проміжку $[0, l]$. Тобто основна мода завжди є безвузловою. Далі, наступному за величиною власному значенню відповідає власна функція, що має один нуль, наступному - два нулі, і так далі. Для кожної наступної моди число вузлів збільшується на одиницю. Іншими словами, число нулів власної функції збігається з порядковим номером відповідного власного значення, якщо нумерувати їх у порядку зростання, починаючи з нуля.
 
+\begin{center}
+    \large{\textbf{Аналіз результату}}
+\end{center}
+З’ясуємо фізичний смисл одержаних розв’язків. Для наочності будемо говорити про поперечні коливання струни. Розв’язки (\ref{fullsol}) є частинними розв’язками однорідного хвильового рівняння з однорідними межовими умовами (\ref{probcond}); отже зовнішні сили на систему не діють, тому з фізичної точки зору ці розв’язки відповідають вільним коливанням (рухам) струни. Окрім того, вони відповідають коливанням (рухам) спеціального вигляду, оскільки відповідні розв’язки мають вигляд добутків $X_n(x) \cdot T_n(t)$. З фізичної точки зору такі рухи і є власними модами поля в резонаторі для випадку вільних коливань. Про власні моди можна говорити й у випадку вимушених коливань.\\
+Всі розв’язки $u_n(x, t)$ -- дійсні. Візьмемо один із них. Зафіксуємо певний довільний момент часу $t = t_1$, це буде миттєве фото $n$–ї моди струни. Просторовий розподіл зміщень описується формулою \[u_n(x, t_1) = X_n(x) \cdot T_n(t_1).\] Видно, що в будь-який момент форма просторового розподілу зміщень (тобто форма струни) залишається однаковою і описується відповідною власною функцією $X_n(x)$; змінюється лише спільна амплітуда цього просторового розподілу і його знак за рахунок множника $T_n(t)$. Отже, $X_n(x)$ задає просторовий «профіль» моди, це її унікальне просторове «обличчя», - найперша визначальна характеристика певної моди, за якою її можна пізнати.\\
+Тепер прослідкуємо за рухом певної точки струни $x = x_1$: \[u_n(x_1, t) = X_n(x_1) \cdot T_n(t).\] Видно, що всі точки струни здійснюють один і той же рух, одне і те ж гармонічне коливання з частотою $\omega_n$, але для різних мод частоти коливань різні. З точністю до числового множника і знаку коливання будь-якої точки струни задається однією функцією $T_n(t)$, але амплітуда цих часових коливань в різних точках різна, вона визначається величиною $\left|X_n(x)\right|$. У точках, де ()nXx має нулі, амплітуда коливань дорівнює нулю, це \textbf{вузли} моди. Якщо ж $X_n(x)$ змінює знак, то це відповідає зміні фази коливань на $\pi$: частини струни, розділені вузлами, коливаються в протифазі.
 
+Рух струни - це єдиний часово-просторовий процес. Для мод $n= 2$ і $n= 3$ він зображений на рисунку нижче. Вузли залишаються нерухомими в процесі руху струни, якщо він відповідає певній моді. У точках, де $X_n(x)$ максимальне (за модулем), максимальна і амплітуда коливань, це пучності. У нашому випадку моди занумеровані так, що число вузлів всередині струни (без урахування вузла на правому кінці струни) дорівнює номеру моди.
+\begin{center}
+    \begin{tikzpicture}
+        \begin{axis}
+            [width = 0.85\textwidth, height = 0.4\textwidth,
+             axis x line = center, axis y line = center,
+             ylabel = $X(x)$, xlabel = $x$,
+             xmin = -0.3, xmax = 5.7, ymin = -5.3, ymax = 5.3,
+             axis line style = thin, xtick = {0}, ytick = {0}]   
+            
+            \tikzmath{\A = 4; \l = 5; \k = pi/\l;}
+            
+            \addplot [black, domain=0:\l, samples = 1000] {\A * sin(deg(2*\k*x))}
+            node[anchor=50, pos=0] {0} 
+            node[anchor=west, pos=0.26, fill=white] {$u_2(x, t)$} 
+            node[anchor=130, pos=1] {$l$};
+
+            \addplot [red, domain=0:\l, samples = 1000] {-\A * sin(deg(2*\k*x))}
+            node[anchor=north, pos=0.19] {$\textcolor{black}{\omega_2}$};
+            
+            \tikzmath{\p1 = \l/8; \p2 = \l/4; \p3 = 3*\l/8;
+            \y1 = \A * sin(deg(2*\k*\p1)); \y2 = \A * sin(deg(2*\k*\p2)); \y3 = \A * sin(deg(2*\k*\p3));}
+
+            \draw [arrows = {-Stealth[scale=1.5]}] (\p1,-\y1) -- (\p1,\y1);
+            \draw [arrows = {-Stealth[scale=1.5]}] (\p2,-\y2) -- (\p2,\y2);
+            \draw [arrows = {-Stealth[scale=1.5]}] (\p3,-\y3) -- (\p3,\y3);
+
+            \tikzmath{\p4 = 5*\l/8; \p5 = 3*\l/4; \p6 = 7*\l/8;
+            \y4 = \A * sin(deg(2*\k*\p4)); \y5 = \A * sin(deg(2*\k*\p5)); \y6 = \A * sin(deg(2*\k*\p6));}
+
+            \draw [arrows = {-Stealth[scale=1.5]}] (\p4,-\y4) -- (\p4,\y4);
+            \draw [arrows = {-Stealth[scale=1.5]}] (\p5,-\y5) -- (\p5,\y5);
+            \draw [arrows = {-Stealth[scale=1.5]}] (\p6,-\y6) -- (\p6,\y6);
+            
+        \end{axis}
+    \end{tikzpicture}
+    
+    \vspace{1cm}
+
+    \begin{tikzpicture}
+        \begin{axis}
+            [width = 0.85\textwidth, height = 0.4\textwidth,
+             axis x line = center, axis y line = center,
+             ylabel = $X(x)$, xlabel = $x$,
+             xmin = -0.3, xmax = 5.7, ymin = -5.3, ymax = 5.3,
+             axis line style = thin, xtick = {0}, ytick = {0}]   
+            
+            \tikzmath{\A = 4; \l = 5; \k = pi/\l;}
+            
+            \addplot [black, domain=0:\l, samples = 1000] {\A * sin(deg(3*\k*x))}
+            node[anchor=50, pos=0] {0} 
+            node[anchor=south, pos=0.19, fill=white] {$u_3(x, t)$} 
+            node[anchor=130, pos=1] {$l$};
+
+            \addplot [red, domain=0:\l, samples = 1000] {-\A * sin(deg(3*\k*x))}
+            node[anchor=west, pos=0.23] {$\textcolor{black}{\omega_3}$};
+            
+            \tikzmath{\p1 = \l/9; \p2 = 2*\l/9; \p3 = 4*\l/9;
+            \y1 = \A * sin(deg(3*\k*\p1)); \y2 = \A * sin(deg(3*\k*\p2)); \y3 = \A * sin(deg(3*\k*\p3));}
+
+            \draw [arrows = {-Stealth[scale=1.5]}] (\p1,-\y1) -- (\p1,\y1);
+            \draw [arrows = {-Stealth[scale=1.5]}] (\p2,-\y2) -- (\p2,\y2);
+            \draw [arrows = {-Stealth[scale=1.5]}] (\p3,-\y3) -- (\p3,\y3);
+
+            \tikzmath{\p4 = 5*\l/9; \p5 = 7*\l/9; \p6 = 8*\l/9;
+            \y4 = \A * sin(deg(3*\k*\p4)); \y5 = \A * sin(deg(3*\k*\p5)); \y6 = \A * sin(deg(3*\k*\p6));}
+
+            \draw [arrows = {-Stealth[scale=1.5]}] (\p4,-\y4) -- (\p4,\y4);
+            \draw [arrows = {-Stealth[scale=1.5]}] (\p5,-\y5) -- (\p5,\y5);
+            \draw [arrows = {-Stealth[scale=1.5]}] (\p6,-\y6) -- (\p6,\y6);
+            
+        \end{axis}
+    \end{tikzpicture}
+\end{center}
+Вузли і пучності не переміщуються вздовж струни, і взагалі, в цілому рух у часі і просторовий розподіл зміщень залишаються ніби незалежними. Струна коливається, а просторовий розподіл «стоїть». Подібні рухи прийнято називати \textbf{стоячими хвилями}.
 
 \end{document}
