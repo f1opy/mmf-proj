@@ -1,0 +1,71 @@
+\begin{tikzpicture}
+    \begin{axis}
+        [width = 0.85\textwidth, height = 0.4\textwidth,
+         axis x line = center, axis y line = center,
+         ylabel = $X(x)$, xlabel = $x$,
+         xmin = -0.3, xmax = 5.7, ymin = -5.3, ymax = 5.3,
+         axis line style = thin, xtick = {0}, ytick = {0}]   
+        
+        \tikzmath{\A = 4; \l = 5; \k = pi/\l;}
+        
+        \addplot [black, domain=0:\l, samples = 1000] {\A * sin(deg(2*\k*x))}
+        node[anchor=50, pos=0] {0} 
+        node[anchor=west, pos=0.26, fill=white] {$u_2(x, t)$} 
+        node[anchor=130, pos=1] {$l$};
+
+        \addplot [red, domain=0:\l, samples = 1000] {-\A * sin(deg(2*\k*x))}
+        node[anchor=north, pos=0.19] {$\textcolor{black}{\omega_2}$};
+        
+        \tikzmath{\p1 = \l/8; \p2 = \l/4; \p3 = 3*\l/8;
+        \y1 = \A * sin(deg(2*\k*\p1)); \y2 = \A * sin(deg(2*\k*\p2)); \y3 = \A * sin(deg(2*\k*\p3));}
+
+        \draw [arrows = {-Stealth[scale=1.5]}] (\p1,-\y1) -- (\p1,\y1);
+        \draw [arrows = {-Stealth[scale=1.5]}] (\p2,-\y2) -- (\p2,\y2);
+        \draw [arrows = {-Stealth[scale=1.5]}] (\p3,-\y3) -- (\p3,\y3);
+
+        \tikzmath{\p4 = 5*\l/8; \p5 = 3*\l/4; \p6 = 7*\l/8;
+        \y4 = \A * sin(deg(2*\k*\p4)); \y5 = \A * sin(deg(2*\k*\p5)); \y6 = \A * sin(deg(2*\k*\p6));}
+
+        \draw [arrows = {-Stealth[scale=1.5]}] (\p4,-\y4) -- (\p4,\y4);
+        \draw [arrows = {-Stealth[scale=1.5]}] (\p5,-\y5) -- (\p5,\y5);
+        \draw [arrows = {-Stealth[scale=1.5]}] (\p6,-\y6) -- (\p6,\y6);
+        
+    \end{axis}
+\end{tikzpicture}
+
+\vspace{1cm}
+
+\begin{tikzpicture}
+    \begin{axis}
+        [width = 0.85\textwidth, height = 0.4\textwidth,
+         axis x line = center, axis y line = center,
+         ylabel = $X(x)$, xlabel = $x$,
+         xmin = -0.3, xmax = 5.7, ymin = -5.3, ymax = 5.3,
+         axis line style = thin, xtick = {0}, ytick = {0}]   
+        
+        \tikzmath{\A = 4; \l = 5; \k = pi/\l;}
+        
+        \addplot [black, domain=0:\l, samples = 1000] {\A * sin(deg(3*\k*x))}
+        node[anchor=50, pos=0] {0} 
+        node[anchor=south, pos=0.19, fill=white] {$u_3(x, t)$} 
+        node[anchor=130, pos=1] {$l$};
+
+        \addplot [red, domain=0:\l, samples = 1000] {-\A * sin(deg(3*\k*x))}
+        node[anchor=west, pos=0.23] {$\textcolor{black}{\omega_3}$};
+        
+        \tikzmath{\p1 = \l/9; \p2 = 2*\l/9; \p3 = 4*\l/9;
+        \y1 = \A * sin(deg(3*\k*\p1)); \y2 = \A * sin(deg(3*\k*\p2)); \y3 = \A * sin(deg(3*\k*\p3));}
+
+        \draw [arrows = {-Stealth[scale=1.5]}] (\p1,-\y1) -- (\p1,\y1);
+        \draw [arrows = {-Stealth[scale=1.5]}] (\p2,-\y2) -- (\p2,\y2);
+        \draw [arrows = {-Stealth[scale=1.5]}] (\p3,-\y3) -- (\p3,\y3);
+
+        \tikzmath{\p4 = 5*\l/9; \p5 = 7*\l/9; \p6 = 8*\l/9;
+        \y4 = \A * sin(deg(3*\k*\p4)); \y5 = \A * sin(deg(3*\k*\p5)); \y6 = \A * sin(deg(3*\k*\p6));}
+
+        \draw [arrows = {-Stealth[scale=1.5]}] (\p4,-\y4) -- (\p4,\y4);
+        \draw [arrows = {-Stealth[scale=1.5]}] (\p5,-\y5) -- (\p5,\y5);
+        \draw [arrows = {-Stealth[scale=1.5]}] (\p6,-\y6) -- (\p6,\y6);
+        
+    \end{axis}
+\end{tikzpicture}
