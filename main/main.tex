@@ -1,0 +1,56 @@
+\documentclass[a4paper, 14pt]{extreport}
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=1.5cm]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian, ukrainian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,amsthm}
+
+\usepackage{enumitem}
+
+\usepackage[pdftex, unicode, colorlinks=true, linkcolor=black]{hyperref}
+
+%\usepackage{relsize} %%позволяет пользоваться функцией \mathlarger{}
+\usepackage{xcolor}
+\usepackage[pdf]{xy}
+
+\usepackage{wrapfig}
+\usepackage{tikz} 
+\usetikzlibrary{math}
+\usetikzlibrary{arrows.meta}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\normalfont\Large\bfseries}{\chaptertitlename\ \thechapter}{10pt}{\large\bfseries}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{12pt}{\large\bfseries}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{12pt}{\large\bfseries}
+
+\renewcommand{\labelenumii}{\theenumii)} %% заменяем счёчтик 2 уровня вида (a), (b), (c) и т.д. на русский алфавит а), б), в), и т.д. 
+
+
+\begin{document}
+
+%\tableofcontents
+\setcounter{page}{2}
+
+\chapter{ЗАСТОСУВАННЯ ПРОЦЕДУРИ ФУР’Є БЕЗПОСЕРЕДНЬОГО ВІДОКРЕМЛЕННЯ ЗМІННИХ}
+
+%\section{Відокремлення змінних, задача Штурма-Ліувілля і власні моди коливань струни для різних межових умов}
+
+%\input{../chapters/ch1/ex1,1}
+
+\section{Власні моди інших систем. Вільні коливання для заданих початкових умов.}
+
+\input{../chapters/ch1/ex2,1}
+
+\input{../chapters/ch1/ex2,3}
+
+
+%\chapter{МЕТОД ЧАСТИННИХ РОЗВ’ЯЗКІВ ТА МЕТОД РОЗКЛАДАННЯ ЗА ВЛАСНИМИ ФУНКЦІЯМИ.}
+
+%\chapter{??}
+
+%\chapter{РІВНЯННЯ ЛАПЛАСА І ПУАССОНА.}
+
+\end{document}
