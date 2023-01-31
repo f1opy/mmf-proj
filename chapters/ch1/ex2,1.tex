@@ -1,6 +1,204 @@
+\documentclass[a4paper, 14pt]{extreport}
+
+\usepackage{StyleMMF}
+
+\begin{document}
+
 \subsection{Стержень з вільними та пружно закріпленими кінцями; системи, описувані іншими рівняннями.}
 
 \subsubsection{Задача №1}
 
 \textit{Знайти власні моди повздовжніх рухів тонкого стержня $0 \leq x \leq l$ із вільними кінцями  (задача для хвильового рівняння з межовими умовами $u_x(0,t) = 0, u_x(l,t) = 0$).\\
 Результат перевірити аналітично й графічно (див. заняття №6, зразок модульної контрольної роботи №1) та проаналізувати його фізичний смисл. Чим відрізняється від інших основна (нульова) мода? Якому рухові стержня вона відповідає?}
+
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+\noindent Формальна постановка задачі:
+\begin{equation} \label{probcond2}
+    \left\{ \begin{aligned} %%
+            \;&u = u(x,t), \\
+            &u_{tt} = v^2 u_{xx}, \\
+            &0 \leq x \leq l, t \in \mathbb{R} \\
+            &u_x(0,t) = 0, \\
+            &u_x(l,t) = 0. 
+    \end{aligned} \right.
+\end{equation}
+Необхідно знайти розв'язки (\ref{probcond2}) вигляду:
+\begin{equation} \label{subst2}
+    u(x,t) = X(x) \cdot T(t) \neq 0 
+\end{equation}
+
+Від задачі №1 попереднього заняття задача відрізняється тільки межовою умовою, тому підставляємо розв'язок у вигляді добутку (\ref{subst2}) тільки у межові умови (\ref{probcond2}):
+\begin{equation*}
+    \begin{aligned}
+        \;u_x(0,t) = X'(0) \cdot T(t) = 0
+        \;\Rightarrow\;
+        \left\{ \begin{aligned}
+            &T(t) \neq 0, \forall t, \\  &X'(0) = 0; 
+        \end{aligned} \right.\\
+        u_x(l,t) = X'(l) \cdot T(t) = 0
+        \;\Rightarrow\;
+        \left\{ \begin{aligned}
+            &T(t) \neq 0, \forall t, \\  &X'(l) = 0; 
+        \end{aligned} \right.\\
+    \end{aligned}
+\end{equation*}
+Тут ми врахували, що умови на кінцях струни виконуються при всіх $t$, тому $T(t)$ не може бути рівним нулю.\\
+
+Виписуємо результат відокремлення змінних:
+\begin{equation} \label{sepvar2}
+    \left\{ \begin{aligned}
+        \;&X = X(x), \\
+          &X^{\prime\prime} = -\lambda X, \\
+          &0 \leq x \leq l, \\
+          &X'(0) = 0, \\ 
+          &X'(l) = 0. 
+    \end{aligned} \right.
+    \qquad\qquad
+    T^{\prime\prime} + \lambda v^2 T = 0
+\end{equation}
+
+\begin{enumerate}
+    \item[] Розв'язуємо задачу Штурма-Ліувілля (\ref{sepvar2}). Знову скористаємося результатами попередньої задачі та одразу запишемо якого типу отримуємо розв'язки для різних $\lambda$.
+    \begin{enumerate}[wide, labelindent=0pt]
+        
+        \item Випадок $\lambda < 0$. 
+        \begin{equation*}
+            X(x) = C_1 sh(\sqrt{|\lambda|}x) + C_2 ch({\sqrt{|\lambda|}x})
+        \end{equation*}
+        Знаходимо константи з межових умов:
+        \begin{equation*}
+            \begin{aligned}
+                &X'(0) = C_1\sqrt{|\lambda|}
+                \;\Rightarrow\;
+                X(x) = C_2 &ch(\sqrt{|\lambda|}x)\\
+                &\left\{ \begin{aligned}
+                    &X'(l) = C_2\sqrt{|\lambda|} sh(\sqrt{|\lambda|}l) = 0, \\
+                    &sh(\sqrt{|\lambda|}l) \neq 0;
+                \end{aligned} \right.&\\
+                &\left\{ \begin{aligned}
+                    C_1 = 0, \\ 
+                    C_2 = 0;
+                \end{aligned} \right. \qquad\qquad\qquad\qquad&
+            \end{aligned}
+            \;\Rightarrow\;
+            \begin{aligned}
+                \text{розв'язок тривівльний,}\\
+                \text{немає від'ємних}\\
+                \text{власних значень.}
+            \end{aligned}
+        \end{equation*}
+
+        \item Випадок $\lambda = 0$:
+        \begin{equation*}
+            X(x) = C_1 + C_2 x
+        \end{equation*}
+        Знаходимо константи з межових умов:
+        \begin{equation*}
+            \begin{aligned}
+                &\left\{ \begin{aligned}
+                    &X'(0) = C_2 = 0, \\ 
+                    &X'(l) = C_2 = 0;
+                \end{aligned} \right.
+                \\   
+                &\left\{ \begin{aligned}
+                    C_1 \in \mathbb{R}, \\ 
+                    C_2 = 0;
+                \end{aligned} \right.
+            \end{aligned}
+            \quad\Rightarrow\;
+            \begin{aligned}
+                X(x) = 0 \text{ -- розв'язок нетривівльний,}\\
+                \lambda = 0 \text{ є власним значенням.}
+            \end{aligned}
+        \end{equation*}
+
+        \item Випадок $\lambda > 0$
+        \begin{equation*}
+            X(x) = C_1 \sin(\sqrt{\lambda}x) + C_2 \cos({\sqrt{\lambda}x})
+        \end{equation*}
+        Знаходимо константи з межових умов:
+        \begin{equation*}
+            \begin{aligned}
+                \left\{ \begin{aligned}
+                    &X'(0) = C_1\sqrt{\lambda} = 0, \\ 
+                    &X'(l) = \sqrt{\lambda}\left(\textcolor{red}{\begin{xy}*{\textcolor{black}{C_1}};p+LU;+RD**h@{}+//**h@{-}*h@{>}*h!LD{\scriptstyle 0}\end{xy}} \cos({\sqrt{\lambda}l}) - C_2 \sin(\sqrt{\lambda}l)\right) = 0;
+                \end{aligned} \right.
+                \;\Rightarrow\;
+                \left\{ \begin{aligned}
+                    &C_2 \neq 0, \\ 
+                    &\sin(\sqrt{\lambda}l) = 0;
+                \end{aligned} \right.
+            \end{aligned}
+        \end{equation*}
+        Отже, нетривіальні розв'язки існують при значеннях параметра $\lambda$, які задовольняють характеристичне рівняння :
+        \begin{equation*}
+            \sin(\sqrt{\lambda}l) = 0
+            \;\Rightarrow\;
+            \sqrt{\lambda_n}l = \pi n, \, n \in \mathbb{Z}
+            \;\Rightarrow\;
+            \lambda_n = \frac{\pi^2 n^2}{l^2}.
+        \end{equation*}
+    \end{enumerate}
+\end{enumerate} 
+Випишемо тепер розв'язки для всіх $n$ і визначимо, які з них необхідно залишити:
+    \begin{equation*}
+        \left\{ \begin{aligned}
+            &X_0(x) = C_0,\\
+            &\lambda_0 = 0;
+        \end{aligned} \right.
+        \qquad
+        \left\{ \begin{aligned}
+            &X_n(x) = C_n \sin\left(\frac{\pi n x}{l}\right),\\
+            &\lambda_n = \frac{\pi^2 n^2}{l^2}, n \in \mathbb{N}.
+        \end{aligned} \right.
+    \end{equation*}
+
+    \textbf{\Large Необхідно відредагувати наступний текст}
+Видно, що $n = 0$ відповідає тривіальному розв'язку. Видно також, що всі інші розв'язки визначені з точністю до довільного множника.\\
+Тому власні функції, які співпадають з точністю до множника, вважають однаковими. У загальному випадку різними вважають лише лінійно незалежні власні функції, а розвя'зати задачу Штурма-Ліувілля означає знайти всі різні власні функції і відповідні власні значення. Отже, різним власним функціям відповідають лише натуральні $n$, а коефіцієнти $C_n$ можна покласти рівними одиниці.\\
+    Власними значеннями і власними функціями є
+    \begin{equation} %\label{ShLsol}
+        \left\{ \begin{aligned}
+            \;&\lambda_n = \frac{\pi^2 n^2}{l^2},\\ 
+            &X_n(x) = \sin\left(\frac{\pi n x}{l}\right),
+        \end{aligned} \right.
+        \quad \text{де } n \in \mathbb{N}.
+    \end{equation}
+
+Повертаємося до рівняння для $T(t)$ (\ref{sepvar2}). Підставляємо знайдені власні значення та знаходимо $T_n(t)$:
+\begin{equation*}
+    \left. \begin{aligned}
+        \lambda_n = \frac{\pi^2 n^2}{l^2},&\;\\ 
+        T^{\prime\prime} + \lambda v^2T = 0,&
+    \end{aligned} \right\}
+    \;\Rightarrow\;
+    T_n(t) = A\cos(\omega_n t) + B\sin(\omega_n t),
+\end{equation*}
+де $\omega_n^2 = \lambda_n v^2, \, n \in \mathbb{N}.$\\
+\begin{equation*}
+    \left. \begin{aligned}
+        \lambda_0 = 0,&\;\\ 
+        T^{\prime\prime} = 0,&
+    \end{aligned} \right\}
+    \;\Rightarrow\;
+    T_0(t) = A_0 + B_0 t,
+\end{equation*}
+Власними модами коливань струни будуть всі розв'язки вигляду:
+\begin{equation*}
+    u_n(x,t) = X_n(x) \cdot T_n(t)
+\end{equation*}
+Виконаємо перепозначення і запишемо остаточний розв'язок:
+\begin{equation}
+    \left\{ \begin{aligned} \label{sol2}
+        \;&u_0(x,t) = A_0 + B_0 t, \\
+        &u_n(x,t) = \left[A_n\cos(\omega_n t) + B_n\sin(\omega_n t)\right] \sin(k_n x), \\
+        &k_n = \frac{\pi n}{l} - \text{ хвильові вектори}, \\
+        &\omega_n = vk_n = \frac{v \pi n}{l} - \text{ власні частоти}, \\
+        &n = 1, 2,\ldots
+    \end{aligned}\right.
+\end{equation}
+
+\end{document}

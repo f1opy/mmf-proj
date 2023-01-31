@@ -1,0 +1,30 @@
+\ProvidesPackage{StyleMMF}
+
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=1.5cm]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian, ukrainian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,amsthm}
+
+\usepackage{enumitem}
+
+\usepackage[pdftex, unicode, colorlinks=true, linkcolor=black]{hyperref}
+
+%\usepackage{relsize} %%позволяет пользоваться функцией \mathlarger{}
+\usepackage{xcolor}
+\usepackage[pdf]{xy}
+
+\usepackage{wrapfig}
+\usepackage{tikz} 
+\usetikzlibrary{math}
+\usetikzlibrary{arrows.meta}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\normalfont\Large\bfseries}{\chaptertitlename\ \thechapter}{10pt}{\large\bfseries}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{12pt}{\large\bfseries}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{12pt}{\large\bfseries}
+
+\renewcommand{\labelenumii}{\theenumii)} %% заменяем счёчтик 2 уровня вида (a), (b), (c) и т.д. на русский алфавит а), б), в), и т.д. 
