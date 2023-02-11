@@ -2,11 +2,15 @@
 
 \usepackage{StyleMMF}
 
+\usetikzlibrary{fillbetween}
+
 \begin{document}
 
-\section{Рівняння теплопровідності з однорідними межовими умовами}
+\setcounter{chapter}{3}
 
-\subsubsection{Задача №1}
+\chapter{Рівняння теплопровідності з однорідними межовими умовами}
+
+\section[Задача №4.1]{4.1}
 
 \textit{Одну і ту ж функцію, наприклад $f(x) = \alpha x$, можна представити на проміжку $0 \leq x \leq l$ узагальненим рядом Фур’є по кожній із систем власних функцій чотирьох задач Штурма-Ліувілля, одержаних у задачах 1.1, 1.2, 1.3, 2.1. Користуючись явним виглядом власних функцій і не обчислюючи коєфіцієнтів рядів, дайте відповіді на такі запитання.
 \begin{enumerate}
@@ -15,6 +19,77 @@
     \item Як пов’язаний характер збіжності вказаних рядів з крайовими умовами, які задовольняє функція $f(x)$ у точках $x = 0, l$ ? Чи дорівнює сума ряду Фур’є функції $f(x)$ на відкритому проміжку $0 < x < l$? на закритому проміжку
     $0 \leq x \leq l$
 \end{enumerate}}
+
+\begin{center}
+    \large \textbf{Розв'язок}
+\end{center}
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{axis}
+            [width = \textwidth, height = 0.7\textwidth,
+             axis x line = center, axis y line = center,
+             ylabel = $X(x)$, xlabel = $x$,
+             xmin = -19, xmax = 19, ymin = -3, ymax = 3,
+             axis line style = thin, xtick = {0}, ytick = {0}]   
+            
+            \tikzmath{\l = 5; \alp = 2/5; \k = pi/\l;}
+            
+            \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(0,-3)(0,3)}
+            node[anchor=130, pos=0.5] {\footnotesize\textcolor{black}{0}};
+
+            \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(\l,-3)(\l,3)}
+            node[anchor=130, pos=0.5] {\footnotesize$\textcolor{black}{l}$};
+            \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(2*\l,-3)(2*\l,3)}
+            node[anchor=130, pos=0.5] {\footnotesize$\textcolor{black}{2l}$};
+            \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(3*\l,-3)(3*\l,3)}
+            node[anchor=130, pos=0.5] {\footnotesize$\textcolor{black}{3l}$};
+            
+            \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(-\l,-3)(-\l,3)}
+            node[anchor=100, pos=0.5] {\footnotesize$\textcolor{black}{-l}$};
+            \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(-2*\l,-3)(-2*\l,3)}
+            node[anchor=100, pos=0.5] {\footnotesize$\textcolor{black}{-2l}$};
+            \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(-3*\l,-3)(-3*\l,3)}
+            node[anchor=100, pos=0.5] {\footnotesize$\textcolor{black}{-3l}$};
+            
+            \addplot [black, domain=0:\l, samples = 1000] {sin(deg(\k*x))};
+
+
+            \addplot [red, thick, domain=0:0.99*\l, samples=150] {\alp*x};
+            \node (mark) [draw, red, fill=red, circle, minimum size = 2pt, inner sep=0.5pt] at (axis cs: 0, 0) {};
+            \node (mark) [draw, red, circle, minimum size = 2pt, inner sep=0.5pt] at (axis cs: \l, \alp*\l) {};
+            \node (mark) [draw, red, fill=red, circle, minimum size = 2pt, inner sep=0.5pt] at (axis cs: \l, 0) {};
+
+            \addplot [red, dashed, thick, domain=-0.99*\l:0, samples=150] {\alp*x};
+            \node (mark) [draw, red, circle, minimum size = 2pt, inner sep=0.5pt] at (axis cs: -\l, -\alp*\l) {};
+            \node (mark) [draw, red, fill=red, circle, minimum size = 2pt, inner sep=0.5pt] at (axis cs: -\l, 0) {};
+
+            
+            \addplot [black, thick, dashed, domain=1.01*\l:3*0.998*\l, samples=150] {\alp*(x - 2*\l)};
+            \node (mark) [draw, black, circle, minimum size = 2pt, inner sep=0.5pt] at (axis cs: \l, -\alp*\l) {};
+            %\node (mark) [draw, black, fill=black, circle, minimum size = 2pt, inner sep=0.5pt] at (axis cs: 2*\l, 0) {};
+            \node (mark) [draw, black, circle, minimum size = 2pt, inner sep=0.5pt] at (axis cs: 3*\l, \alp*\l) {};
+            
+            \addplot [black, thick, dashed, domain=-3*0.998*\l:-0.99*\l, samples=150] {\alp*(x + 2*\l)};
+            \node (mark) [draw, black, circle, minimum size = 2pt, inner sep=0.5pt] at (axis cs: -3*\l, -\alp*\l) {};
+            %\node (mark) [draw, black, fill=black, circle, minimum size = 2pt, inner sep=0.5pt] at (axis cs: -2*\l, 0) {};
+            \node (mark) [draw, black, circle, minimum size = 2pt, inner sep=0.5pt] at (axis cs: -\l, \alp*\l) {};
+            
+
+            %node[anchor=130, pos=0] {0} 
+            %node[pos=0.75, fill=white] {$X_1(x)$} 
+            %node[anchor=130, pos=1] {$l$};
+            
+            %\addplot [black, domain=0:\l, samples = 1000] {\A1/2.5 * sin(deg(2*\k*x))}
+            %node[pos=0.83, fill=white] {$X_2(x)$};
+            
+            %\addplot [black, domain=0:\l, samples = 1000] {\A1/3.7 * sin(deg(3*\k*x))}
+            %node[pos=0.76, fill=white] {$X_3(x)$};
+            
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Розклад по системі власних функцій із задачі 1.1}
+\end{figure}
+
 
 
 \end{document}

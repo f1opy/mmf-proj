@@ -4,11 +4,15 @@
 
 \begin{document}
 
-\subsection{Вільні коливання поля в резонаторі для заданих початкових умов. Ряд Фур'є по системі ортогональних функцій.}
+\setcounter{chapter}{1}
 
-\subsubsection{Задача №3}
+\chapter{Власні моди інших систем. Вільні коливання для заданих початкових умов.}
 
-\textit{Знайти коливання струни завдовжки $0 \leq x \leq l$ із закріпленими кінцями, якщо початкове відхил є $\varphi(x) = hx/l$, а початкова швидкість $\psi(x) = \nu_0$. Обчислити інтеграл ортогональності власних функцій і знайти квадрат норми. Чи є рух струни періодичним (тобто повторюється початковий стан струни через деякий проміжок часу?) Чи буде рух періодичним, якщо він описується рівнянням $u_{tt} = v^2 u_{xx} - \omega_0^2 u$}
+\textbf{\large Вільні коливання поля в резонаторі для заданих початкових умов. Ряд Фур'є по системі ортогональних функцій.}
+
+\section[Задача №2.3]{2.3}
+
+\textit{Знайти коливання струни завдовжки $0 \leq x \leq l$ із закріпленими кінцями, якщо початкове відхил є $\varphi(x) = hx/l$, а початкова швидкість $\psi(x) = \nu_0$. Обчислити інтеграл ортогональності власних функцій і знайти квадрат норми. Чи є рух струни періодичним (тобто чи буде повторюватись початковий стан струни через деякий проміжок часу?) Чи буде рух періодичним, якщо він описується рівнянням $u_{tt} = v^2 u_{xx} - \omega_0^2 u$}?
 
 \begin{center}
     \textbf{Розв'язок}
@@ -32,75 +36,104 @@
     \end{aligned} \right.
 \end{equation}
 
-Задача з заданими початковими умовами має єдиний розв'язок. Скористаємося результатами задачі 1 попередньго заняття (\ref{sol1}).
-\begin{equation*}
+Це задача із заданими початковими умовами, яка має єдиний розв'язок. Щоб розв’язати її, необiдно роздiлити змiннi, знайти власнi функцiї i власнi значення задачi Штурма-Лiувiлля i знайти власнi моди. Це було зроблено у  задачі №1.1 попередньго заняття (\ref{sol1}). Результатом є нескiнченний набiр власних мод: 
+\begin{equation}
     \left\{ \begin{aligned} \label{fullsol}
         \;&u_n(x,t) = \left[A_n\cos(\omega_n t) + B_n\sin(\omega_n t)\right] \sin(k_n x), \\
         &k_n = \frac{\pi n}{l}, \, n = 1, 2,\ldots\\
         &\omega_n = vk_n = \frac{v \pi n}{l} - \text{ власні частоти}.
     \end{aligned}\right.
-\end{equation*}
+\end{equation}
 
-Запишемо загальний розв'язок задачі:
+Легко переконатися, що жодна окрема власна мода не може задовольнити початковi умови задачi (чому?). Щоб задовольнити початковi умови, необхiдно записати так званий загальний або формальний розв’язок задачi, який є суперпозицiєю всiх мод:
 \begin{equation} \label{gensol}
     u(x,t) = \sum^{\infty}_{n=1} u_n(x,t) = \sum^{\infty}_{n=1} \left[A_n\cos(\omega_n t) + B_n\sin(\omega_n t)\right] \sin(k_n x)
 \end{equation}
-Коефіцієнти $A_n$ та $B_n$ визначаємо із початкових умов. Підставляємо (\ref{gensol}) в початкові умови (\ref{probcond3}):
-\begin{equation} \label{sol-init-cond}
+Поява знака суми у цьому виразi означає, що його права частина бiльше не залежить вiд $n$. Коли коефiцiєнти $A_n$ i $B_n$ будуть знайденi, вiн стане розв’язком (єдиним!) вихiдної задачi. Коефiцiєнти загального розв’язку знаходимо iз початкових умов. Підставляємо (\ref{gensol}) у початкові умови (\ref{probcond3}):
+\begin{equation} \label{sol-init-pos}
+    u(x,0) = \varphi(x) \;\Rightarrow\; \sum^{\infty}_{n=1} A_n\sin(k_n x) = \varphi(x)
+\end{equation}
+
+\begin{equation} \label{sol-init-vel}
     \begin{aligned}
-        &u(x,0) = \varphi(x)
-        \;\Rightarrow\;
-        \sum^{\infty}_{n=1} A_n\sin(k_n x) = \varphi(x)\\
-        &\begin{aligned}
-            u_t(x,0) = \psi(x)
-            \;&\Rightarrow\\
-            \Rightarrow \left(\sum^{\infty}_{n=1}\right.&\left.\left. \left[-A_n\omega_n\sin(\omega_n t) + B_n\omega_n\cos(\omega_n t)\right] \sin(k_n x)\right)\right|_{t=0} =\\
-            &= \sum^{\infty}_{n=1} B_n\omega_n\sin(k_n x) = \psi(x)
-        \end{aligned}
+        u_t(x,0) &= \psi(x)
+        \;\Rightarrow\\
+        \Rightarrow& \left.\left(\sum^{\infty}_{n=1}\left[-A_n\omega_n\sin(\omega_n t) + B_n\omega_n\cos(\omega_n t)\right] \sin(k_n x)\right)\right|_{t=0} =\\
+        &= \sum^{\infty}_{n=1} B_n\omega_n\sin(k_n x) = \psi(x)
     \end{aligned}
 \end{equation}
-Отже, ми отримали дві умови для визначення $A_n$, $B_n$.\\
-Далі скористаємося ортогональністю власних функцій задачі Штурма-Ліувілля.
+Отже, ми одержали дві умови, для визначення $A_n$ і $B_n$, вiдповiдно. Далi необхiдно скористатися ортогональнiстю власних функцiй задачi Штурма-Лiувiлля (див. Конспект лекцiй, §4). У загальному виглядi iнтеграл ортогональностi власних функцiй має вигляд:
 \begin{equation} \label{orth}
     \int_0^l X_n(x) \cdot X_m(x) \,\mathrm{d}x = ||X_n||^2\delta_{n,m},
 \end{equation}
-де $||X_n||$ -- норма власної функції.
+де $||X_n||$ -- норма власної функції. Переконаємося, що власнi функцiї дiйсно ортогональнi, i обчислимо квадрат норми.
 
-Доможуємо отримані вирази в (\ref{sol-init-cond}) на $m$-ту власну функції $\sin(k_m x)$ та інтегруємо від $0$ до $l$. 
-\begin{equation*}
-    \begin{aligned}
+\begin{enumerate}[wide, labelindent=0pt]
+    \item Розглянемо випадок $n=m$:
+    \begin{equation*}
+        \begin{aligned}
+            \int_0^l X_n(x)^2 \,\mathrm{d}x = \int_0^l \sin^2(k_n x) \,\mathrm{d}x =&\\
+            =\frac{1}{2k_n} \int_0^l (1 - \cos(k_n x)) \,\mathrm{d}(k_n x) =&\ \frac{1}{2}\left.\left(x - \frac{\sin(k_n x)}{k_n}\right)\right|_0^l = \frac{l}{2}
+        \end{aligned}
+    \end{equation*}
+    \item Випадок $n \neq m$:
+    \begin{equation*}
+        \begin{aligned}
+            \int_0^l X_n(x) \cdot X_m(x) \,\mathrm{d}x = \int_0^l \sin(k_n x)\sin(k_m x) \,\mathrm{d}x =\\
+            = \frac{1}{2} \int_0^l (\cos(k_n - k_m)x - \cos(k_n + k_m)x) \,\mathrm{d}x =\\
+            = \frac{1}{2}\left.\left(\frac{\sin(k_n - k_m)x}{k_n - k_m} - \frac{\sin(k_n + k_m)x}{k_n + k_m}\right)\right|_0^l = 0
+        \end{aligned}
+    \end{equation*}
+\end{enumerate}
+
+Щоб одержати правильні вирази для коефіцієнтів загального розв'язку, застосовуємо формальну процедуру, описану у §4 Конспекту лекцій. Доможуємо кожну з одержаних рівностей (\ref{sol-init-pos}) та (\ref{sol-init-vel}) на $m$-ту власну функції $\sin(k_m x)$ та інтегруємо від $0$ до $l$. 
+\begin{subequations} \label{fourier-coefs}
+    \begin{gather}
         \begin{aligned}
             &\int\limits_0^l \varphi(x) \sin(k_m x) \,\mathrm{d}x = \sum^{\infty}_{n=1} A_n \int\limits_0^l \sin(k_n x) \sin(k_m x) \,\mathrm{d}x =\\
             &= \sum^{\infty}_{n=1} A_n \cdot \frac{l}{2} \delta_{n,m} = \frac{A_m l}{2}
             \;\Rightarrow\;
-            A_n = \frac{2}{l} \int\limits_0^l \varphi(x) \sin(k_n x) \,\mathrm{d}x =\\
-            &= \frac{2}{l} \int\limits_0^l \frac{hx}{l} \sin(k_n x) \,\mathrm{d}x = \frac{2h}{l^2} \left(\left.-\frac{1}{k_n} x \cos(k_n x)\right|_0^l + \int\limits_0^l \frac{\cos(k_n x)}{k_n} \,\mathrm{d}t\right) =\\
-            &= \left| k_n l = \frac{\pi n}{l} l = \pi n \Rightarrow \sin(k_n l) = 0,\, \cos(k_n l) = (-1)^n \right| =\\
-            &= \frac{2h}{l^2} \left(-\frac{l}{k_n}(-1)^n + \left.\frac{\sin(k_n x)}{k_n^2}\right|_0^l \right) = \frac{2h}{l} \frac{(-1)^{n+1}}{k_n} \equiv A_n
+            A_n = \frac{2}{l} \int\limits_0^l \varphi(x) \sin(k_n x) \,\mathrm{d}x 
         \end{aligned}\\
         \begin{aligned}
-            \int\limits_0^l \psi(x) \sin(k_m x) \,\mathrm{d}x &= \sum^{\infty}_{n=1} B_n\omega_n \cdot \frac{l}{2} \delta_{n,m} = \frac{B_m \omega_m l}{2}
-            \;\Rightarrow\\
-            \Rightarrow\;
-            B_n =&\ \frac{2}{\omega_n l} \int\limits_0^l \psi(x) \sin(k_n x) \,\mathrm{d}x = \frac{2\nu_0}{\omega_n l} \int\limits_0^l \sin(k_n x) \,\mathrm{d}x =\\
-            =&\ \left.\frac{2\nu_0}{k_n\omega_n l} \cos(k_n x)\right|_l^0 = \frac{2\nu_0}{l} \frac{1 - (-1)^n}{k_n\omega_n} \equiv B_n
+            &\int\limits_0^l \psi(x) \sin(k_m x) \,\mathrm{d}x = \sum^{\infty}_{n=1} B_n\omega_n \int\limits_0^l \sin(k_n x) \sin(k_m x) \,\mathrm{d}x =\\
+            &= \sum^{\infty}_{n=1} B_n\omega_n \cdot \frac{l}{2} \delta_{n,m} = \frac{B_m \omega_m l}{2}
+            \;\Rightarrow\;
+            B_n = \frac{2}{\omega_n l} \int\limits_0^l \psi(x) \sin(k_n x) \,\mathrm{d}x
         \end{aligned}
+    \end{gather}
+\end{subequations} 
+Обчислюємо отримані інтеграли (\ref{fourier-coefs}).
+\begin{equation*}
+    \begin{aligned}
+        &A_n = \frac{2}{l} \int\limits_0^l \varphi(x) \sin(k_n x) \,\mathrm{d}x = \frac{2}{l} \int\limits_0^l \frac{hx}{l} \sin(k_n x) \,\mathrm{d}x =\\
+        &= \frac{2h}{l^2} \left(\left.-\frac{1}{k_n} x \cos(k_n x)\right|_0^l + \int\limits_0^l \frac{\cos(k_n x)}{k_n} \,\mathrm{d}t\right) =\\
+        &= \left| k_n l = \frac{\pi n}{l} l = \pi n \Rightarrow \sin(k_n l) = 0,\, \cos(k_n l) = (-1)^n \right| =\\
+        &= \frac{2h}{l^2} \left(-\frac{l}{k_n}(-1)^n + \left.\frac{\sin(k_n x)}{k_n^2}\right|_0^l \right) = \frac{2h}{l} \frac{(-1)^{n+1}}{k_n}
     \end{aligned}
-\end{equation*} 
-Підставляємо визначені константи в (\ref{gensol})
+\end{equation*}
+\begin{equation*}
+    \begin{aligned}
+        B_n =&\ \frac{2}{\omega_n l} \int\limits_0^l \psi(x) \sin(k_n x) \,\mathrm{d}x = \frac{2\nu_0}{\omega_n l} \int\limits_0^l \sin(k_n x) \,\mathrm{d}x =\\
+        =&\ \left.\frac{2\nu_0}{k_n\omega_n l} \cos(k_n x)\right|_l^0 = \frac{2\nu_0}{l} \frac{1 - (-1)^n}{k_n\omega_n}
+    \end{aligned}
+\end{equation*}
+Підставляємо визначені константи в (\ref{gensol}) і одержуємо відповідь:
 \begin{equation} \label{sol3}
     u(x,t) = \frac{2}{l}\sum^{\infty}_{n=1} \left[\nu_0 (1 - (-1)^n)\frac{\sin(\omega_n t)}{\omega_n} - h(-1)^n\cos(\omega_n t)\right] \frac{\sin(k_n x)}{k_n}
 \end{equation}
 
-Перевіримо періодичність розв'язку. Період коливання визначається за відомою формулою \[T_n = \frac{2\pi}{\omega_n},\] де $n$ - номер власної моди. Підставимо в (\ref{sol3}) $t = t + T_n$
+Процедура, за якою ми визначали константи $A_n$ та $B_n$, фактично зводиться до розкладання даних початкових умов в узагальнений ряд Фур'є по системі власних функцій задачі Штурма-Ліувілля. У даному випадку цей ряд є частинним випадком тригонометричного ряду Фур'є. 
+
+З'ясуємо, чи є розв'язок періодичною функцією часу. Розв'язок є суперпозицією всіх мод, кожна з них має іншу частоту коливань $\omega_n$. У розглянутій задачі  частоти всіх мод кратні частоті основної моди $\omega_1$. Тому період (найменший) коливань основної моди \[T = \frac{2l}{v},\] є спільним періодом для всіх мод. Отже, рух струни буде періодичним з періодом коливань основної моди. 
+
+Нехай тепер замість хвильового рух системи описується рівнянням \[u_{tt} = v^2 u_{xx} - \omega_0^2 u\] з тими ж межовими умовами. Легко бачити, що після розділення змінних вигляд задачі Штурма-Ліувілля не зміниться, а зміниться лише рівняння для часової частини розв'язку $T(t)$:
 \begin{equation*}
-    \begin{aligned}
-        u(x,t+T_n) & = \frac{2}{l}\sum^{\infty}_{n=1} \left[\nu_0 (1 - (-1)^n)\frac{\sin(\omega_n t + \omega_n \cdot \frac{2\pi}{\omega_n})}{\omega_n} -\right.\\
-        &\qquad\qquad\qquad\qquad\quad\left.- h(-1)^n\cos(\omega_n t + \omega_n \cdot \frac{2\pi}{\omega_n})\right] \frac{\sin(k_n x)}{k_n} =\\
-        = \frac{2}{l}\sum^{\infty}_{n=1} & \left[\nu_0 (1 - (-1)^n)\frac{\sin(\omega_n t + 2\pi)}{\omega_n} - h(-1)^n\cos(\omega_n t + 2\pi)\right] \frac{\sin(k_n x)}{k_n} =\\ 
-        = \frac{2}{l}\sum^{\infty}_{n=1} & \left[\nu_0 (1 - (-1)^n)\frac{\sin(\omega_n t)}{\omega_n} - h(-1)^n\cos(\omega_n t)\right] \frac{\sin(k_n x)}{k_n} = u(x,t)
-    \end{aligned}
-\end{equation*} 
-Тобто коливання струни буде періодичним.
+    T'' + (\lambda_n*v^2 + \omega_0^2) T = 0
+    \;\Rightarrow\; 
+    T'' + \widetilde{\omega}_n^2 T = 0,
+\end{equation*}
+де $\widetilde{\omega}_n = \sqrt{\omega_n^2 + \omega_0^2}$, а $\omega_n$ - частоти коливань розв'язаної вище задачі. Тобто частоти коливань зміняться і вже не будуть цілими кратними частоти основної моди. Тобто рух такої системи не буде періодимчним.\\
+Якщо рівняння міститиме доданок пропорційний $u_t$, то буде спостерігатися затухання чи підсилення коливань (залежно від знаку коефіцієнта при $u_t$).
 
 \end{document}
