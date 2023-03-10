@@ -1,0 +1,52 @@
+\begin{tikzpicture}
+    \begin{axis}
+        [width = \textwidth, height = 0.7\textwidth,
+         axis x line = center, axis y line = center,
+         ylabel = $X(x)$, xlabel = $x$,
+         xmin = -19, xmax = 19, ymin = -3, ymax = 3,
+         axis line style = thin, xtick = {0}, ytick = {0}]   
+        
+        \tikzmath{\l = 5; \alp = 2/5;}
+        
+        \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(0,-3)(0,3)}
+        node[anchor=130, pos=0.5] {\footnotesize\textcolor{black}{0}};
+
+        % вертикальні пунктирні лінії для x > 0
+        \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(\l,-3)(\l,3)}
+        node[anchor=130, pos=0.5] {\footnotesize$\textcolor{black}{l}$};
+        \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(2*\l,-3)(2*\l,3)}
+        node[anchor=130, pos=0.5] {\footnotesize$\textcolor{black}{2l}$};
+        \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(3*\l,-3)(3*\l,3)}
+        node[anchor=130, pos=0.5] {\footnotesize$\textcolor{black}{3l}$};
+        
+        % вертикальні пунктирні лінії для x < 0
+        \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(-\l,-3)(-\l,3)}
+        node[anchor=100, pos=0.5] {\footnotesize$\textcolor{black}{-l}$};
+        \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(-2*\l,-3)(-2*\l,3)}
+        node[anchor=100, pos=0.5] {\footnotesize$\textcolor{black}{-2l}$};
+        \addplot[gray, dashed, samples=50, domain=-20:20, name path=three] coordinates {(-3*\l,-3)(-3*\l,3)}
+        node[anchor=100, pos=0.5] {\footnotesize$\textcolor{black}{-3l}$};
+        
+        % функція, яку розкладаємо
+        \addplot [red, thick, domain=0:0.99*\l, samples=150] {\alp*x};
+        
+        % парне продовження відносно нуля
+        \addplot [red, dashed, thick, domain=-0.99*\l:0, samples=150] {-\alp*x};
+        
+        % парне продовження відносно точки x = l 
+        \addplot [black, thick, dashed, domain=\l:2*\l, samples=150] {-\alp*(x - 2*\l)};
+        \addplot [black, thick, dashed, domain=2*\l:3*\l, samples=150] {\alp*(x - 2*\l)};
+        
+        \node (mark) [draw, black, fill=black, circle, minimum size = 2pt, inner sep=0.5pt] at (axis cs: 3*\l, 0) {};
+        
+        % парне продовження відносно точки x = -l 
+        \addplot [black, thick, dashed, domain=-2*\l:-1*\l, samples=150] {\alp*(x + 2*\l)};
+        \addplot [black, thick, dashed, domain=-3*\l:-2*\l, samples=150] {-\alp*(x + 2*\l)};
+        
+        \tikzmath{\k = pi/\l; \A = 4*\alp*\l/pi^2;}
+
+        \addplot [black, domain=-19:19, samples = 1000] {\alp*\l/2};
+        \addplot [black, domain=-19:19, samples = 1500] {\A*cos(deg(\k*x))};
+        
+    \end{axis}
+\end{tikzpicture}

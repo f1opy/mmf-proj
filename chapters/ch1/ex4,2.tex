@@ -1,13 +1,146 @@
-%\documentclass[a4paper, 14pt]{extreport}
+\documentclass[a4paper, 14pt]{extreport}
 
-%\usepackage{StyleMMF}
+\usepackage{StyleMMF}
 
-%\begin{document}
+\begin{document}
 
-%\chapter{Рівняння теплопровідності з однорідними межовими умовами}
+\setcounter{chapter}{3}
+
+\chapter{Рівняння теплопровідності з однорідними межовими умовами}
 
 \section[Задача №4.2]{4.2}
 
 \textit{У початковий момент часу ліва половина стержня з теплоізольованою бічною поверхнею має температуру $T_1$ , а права -- температуру $T_2$ . Знайти розподіл температури при $t> 0$, якщо кінці стержня підтримуються при температурі $T_0$. Указівка: подумайте, що означає «температура дорівнює нулю», що це за нуль? Покладіть у кінцевому результаті $T_0 = 0$ і розгляньте частинні випадки: $T_1 = T_2$ та $T_1 = -T_2$. Які члени ряду при цьому обертаються в нуль? Чому? Нарисуйте графіки та порівняйте часову залежність температури для     різних мод. Нарисуйте (якісно) графіки розподілу     температури вдовж стержня у різні характерні послідовні моменти часу. Що таке «малий» і «великий» проміжок часу для цієї задачі? Як характерні часи залежать від розмірів системи?}
 
-%\end{document}
+\begin{center}
+    \textbf{Розв'язок}
+\end{center}
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \centering
+    Graph under comment
+    %\input{../graphs/4,2init-cond.tex}  % main compilation
+    %\input{../../graphs/4,2init-cond.tex}  % this compilation
+\end{wrapfigure}
+
+
+Формальна постановка задачі:
+\begin{equation} \label{probcond7}
+    \left\{ \begin{aligned}
+        &\;u = u(x,t), \\
+        &\;u_{t} = D u_{xx}, \\
+        &\;0 \leq x \leq l, t \geq 0, \\
+        &\;u(0,t) = u(l,t) = T_0,\\
+        &u(x,0) = \varphi(x) = T_1 - (T_1 - T_2)\Theta(x - l/2).
+    \end{aligned} \right.
+\end{equation}
+\vspace{1cm}
+
+Тут використана тета-функція Хевісайта (або функція сходинки). Вона задається таким чином:
+\begin{equation*}
+    \Theta(x - x_0) = 
+    \begin{cases}
+        \;0, \text{ при } x < x_0\\
+        \;1, \text{ при } x > x_0
+    \end{cases}    
+\end{equation*}
+Зробимо заміну, яка приведе до однорідних крайових умовами\[u(x,t) = \widetilde{u}(x,t) + T_0 \] і тепер можемо скористатися розділенням змінних.
+\begin{equation}
+    \widetilde{u}(x,t) = \widetilde{X}(x)\cdot\widetilde{T}(t) 
+\end{equation}
+Рівняння для нової функції не змінить свого виду, тому процедура відокремлення змінних виконується аналогічно до проведених раніше. Результат відокремлення змінних:
+\begin{equation} 
+    \left\{ \begin{aligned}
+        \;&\widetilde{X} = \widetilde{X}(x), \\  &\widetilde{X}'' = -\lambda \widetilde{X}, \\ &0 \leq x \leq l, \\  &\widetilde{X}(0) = 0, \\ &\widetilde{X}(l) = 0. 
+    \end{aligned} \right.
+    \qquad\qquad
+    \widetilde{T}' + \lambda D \widetilde{T} = 0
+\end{equation}
+Розв'язок цієї задачі Штурма-Ліувілля отриманий в задачі 1.1. %посилання пізніше
+\begin{equation} 
+    \left\{ \begin{aligned}
+        \;&\lambda_n = \frac{\pi^2 n^2}{l^2},\\ 
+        &\widetilde{X}_n(x) = \sin\left(\frac{\pi n x}{l}\right),
+    \end{aligned} \right.
+    \quad \text{де } n \in \mathbb{N}.
+\end{equation}
+
+У часовому рівнянні змінні розділяються, тому його легко проінтегруємо:
+\begin{equation}
+    \begin{aligned}
+        \frac{\widetilde{T}'}{\widetilde{T}} = -\lambda_n D = -\tau_n^{-1}
+        \;&\Rightarrow\;
+        \int \frac{\mathrm{d} \widetilde{T}}{\widetilde{T}} = - \int \frac{\mathrm{d} t}{\tau_n}
+        \;\Rightarrow\\
+        \Rightarrow\;
+        \ln{\widetilde{T}_n} = \ln{C_n} - t/\tau_n
+        \;&\Rightarrow\;
+        \widetilde{T}_n = C_n e^{-t/\tau_n}, \text{ де } n \in \mathbb{N}
+    \end{aligned}
+\end{equation}
+
+Отже, отримаємо остаточний розв'язок
+\begin{equation}
+    \begin{aligned}
+        \;&u_n(x,n) = T_0 + \widetilde{X}_n \cdot \widetilde{T}_n = T_0 + C_n e^{-t/\tau_n} \sin(k_n x),\\
+        &k_n = \frac{\pi n}{l} - \text{ хвильові вектори}, \\
+        &\tau_n = \frac{1}{D k_n^2} = \frac{l^2}{D \pi^2 n^2} - \text{ характерний час зміни температури}, \\
+        &n = 1, 2,\ldots
+    \end{aligned}
+\end{equation}
+
+Запишемо загальний розв'язок задачі
+\begin{equation}
+    u(x,n) = T_0 + \sum_{n=1}^{\infty}C_n e^{-t/\tau_n} \sin(k_n x)
+\end{equation}
+
+Із початкової умови (\ref{probcond7}) визначимо коефіцієнти $C_n$:
+\begin{equation}
+    u(x,0) = T_0 + \sum_{n=1}^{\infty}C_n \sin(k_n x) =  T_1 - (T_1 - T_2)\Theta(x - l/2)
+\end{equation}
+
+Розкладемо за синусами модифіковану початкову умову $u(x,0) - T_0$ 
+\begin{equation*}
+    \begin{gathered}
+        T_1 - T_0 - (T_1 - T_2)\Theta(x - l/2) = - \sum_{n=1}^{\infty}C_n \sin(k_n x)\\
+        C_n = -\frac{2}{l}\left[\int\limits_0^{l/2} (T_1 - T_0)\sin(k_n x) \;\mathrm{d}x + \int\limits_{l/2}^l (T_2 - T_0)\sin(k_n x) \;\mathrm{d}x\right] =\\
+        = \frac{2}{lk_n}\left[(T_1 - T_0)\cos(k_n x)\biggr\rvert_0^{l/2} + (T_2 - T_0)\cos(k_n x)\biggr\rvert_0^{l/2}\right] =\\
+        = \frac{2}{lk_n}\left[(T_1 - T_0)(1 - \cos(k_n l/2)) + (T_2 - T_0)(\cos(k_n l/2) - (-1)^n)\right] =\\
+        = \frac{2}{lk_n}\left[T_1(1 - \cos(k_n l/2)) + T_2(\cos(k_n l/2) - (-1)^n) + T_0 ((-1)^n - 1)\right]
+    \end{gathered}
+\end{equation*}
+Випишемо декілька перших множників $C_n$ для визначення поведінки їх множини
+\begin{equation*}
+    \begin{aligned}
+        &n=1: \left[T_1 + T_2 - 2T_0 \right] &\Rightarrow&\ C_{4m+1} = \frac{2}{k_{4m+1}l}\left[T_1 + T_2 - 2T_0 \right]\\
+        &n=2: \left[T_1 - T_2 \right] &\Rightarrow&\ C_{4m+2} = \frac{2}{k_{4m+2}l}\left[T_1 - T_2 \right]\\
+        &n=3: \left[T_1 + T_2 - 2T_0 \right] &\Rightarrow&\ C_{4m+3} = \frac{2}{k_{4m+3}l}\left[T_1 + T_2 - 2T_0 \right]\\
+        &n=4: 0 &\Rightarrow&\ C_{4m} = 0
+    \end{aligned}    
+\end{equation*}
+Покладемо тут $T_0 = 0$ та $T_1 = T_2$ з чого видно, що коефіцієнти з парними індексами зануляються. Для випадку $T_1 = -T_2$ навпаки -- з непарними.
+
+Отже, розв'язком буде
+\begin{equation}
+    \begin{aligned}
+        u(x,n) = T_0 + \frac{2}{l}\sum_{n=1}^{\infty}\big[&T_1(1 - \cos(k_n l/2)) +\\
+        + T_2(\cos(k_n l/2) - (-1)^n) + &T_0 ((-1)^n - 1)\big] e^{-t/\tau_n} \frac{\sin(k_n x)}{k_n}
+    \end{aligned}
+\end{equation}
+
+\begin{center}
+    \textbf{Графіки розв'язків}
+\end{center}
+
+Поведінку знайдених груп доданків можна побачити на наступному графіку. Тут наведено по одному з кожної групи. %% графік не хоче підтягуватись вгоду сторінки, бо на новій сторінці немає тексту, а на стару він не вміщається 
+\begin{figure}[h]
+    \centering
+    %\large \textbf{Graph under comment}%
+    %\input{../graphs/4,2sols} %%for compiling main 
+    \input{../../graphs/4,2sols} %%for compiling this file
+\caption{Перші чотири розв'язки}
+\end{figure}
+
+Проміжок часу називається малим, коли $t \ll \tau$, а великим -- $t > \tau$
+
+\end{document}

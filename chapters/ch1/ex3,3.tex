@@ -1,13 +1,104 @@
-%\documentclass[a4paper, 14pt]{extreport}
+\documentclass[a4paper, 14pt]{extreport}
 
-%\usepackage{StyleMMF}
+\usepackage{StyleMMF}
 
-%\begin{document}
+\begin{document}
 
-%\chapter{Другий спосіб знаходження коефіцієнтів. Коливання стержня з вільними кінцями, неповнота базису.}
+\setcounter{chapter}{2}
+
+\chapter{Другий спосіб знаходження коефіцієнтів. Коливання стержня з вільними кінцями, неповнота базису.}
 
 \section[Задача №3.3]{3.3}
 
 \textit{Знайти коливання пружного стержня довжиною $l$ з вільними кінцями, якщо початкове відхилення дорівнює нулю, а початкова швидкість $\psi(x) = \nu_0$. Якщо всі знайдені вами коефіцієнти Фур'є (коефіцієнти загального\\ розв’язку) дорівнюють нулю, поясніть, що це означає, і знайдіть, де була допущена помилка.}
 
-%\end{document}
+\begin{center}
+    \textbf{Розв'язок}
+\end{center}
+Формальна постановка задачі:
+\begin{equation} \label{probcond5}
+    \left\{ \begin{aligned} %%
+        &\;u = u(x,t), \\
+        &\;u_{tt} = v^2 u_{xx}, \\
+        &\;0 \leq x \leq l, t \geq 0, \\
+        &\;u_x(0,t) = u_x(0,t) = 0,\\
+        &\;u(x,0) = \varphi(x) = 0, \\ 
+        &\;u_t(x,0) = \psi(x) = \nu_0.
+    \end{aligned} \right.
+\end{equation}
+
+Це задача із заданими початковими умовами (а саме - початковим розподілом зміщення та швидкостей), яка має єдиний розв'язок.
+
+Для початку скористаємося розв'язком задачі 2.1:
+
+\begin{equation}
+    \left\{ \begin{aligned} \label{fullsol2}
+        \;&u_0(x,t) = A_0 + B_0 t, \\
+        &u_n(x,t) = \left[A_n\cos(\omega_n t) + B_n\sin(\omega_n t)\right] \cos(k_n x), \\
+        &k_n = \frac{\pi n}{l} - \text{ хвильові вектори}, \\
+        &\omega_n = vk_n = \frac{v \pi n}{l} - \text{ власні частоти}, \\
+        &n = 1, 2,\ldots
+    \end{aligned}\right.
+\end{equation}
+І запишемо загальний розв'язок:
+\begin{equation} \label{gensol2}
+    u(x,t) = A_0 + B_0 t + \sum^{\infty}_{n=1} \left[A_n\cos(\omega_n t) + B_n\sin(\omega_n t)\right] \cos(k_n x)
+\end{equation}
+Та похідна по часу:
+\begin{equation} \label{dersol2}
+    \begin{aligned}
+        u_t(x,t) = B_0 + \sum^{\infty}_{n=1}\left[-A_n\omega_n\sin(\omega_n t) + B_n\omega_n\cos(\omega_n t)\right] \cos(k_n x)  
+    \end{aligned}
+\end{equation}
+
+Підставляємо (\ref{gensol2}) у початкові умови (\ref{probcond5}):
+
+\begin{equation} \label{sol-init-pos}
+    u(x,0) = \varphi(x) \;\Rightarrow\; A_0 + \sum^{\infty}_{n=1} A_n\cos k_nx = 0
+\end{equation}
+
+
+Підставляємо (\ref{dersol2}) у початкові умови (\ref{probcond5}):
+
+\begin{equation} \label{sol-init-pos}
+    u_t(x,0) = \psi(x) \;\Rightarrow\; B_0 + \sum^{\infty}_{n=1} B_n \omega_n \cos k_nx = \nu_0     
+\end{equation}
+
+Прирівняємо коефіцієнти при лінійно незалежних функціях. В результаті отримаємо  \[B_0 = \nu_0;\; A_n, B_n = 0, \text{ при } n \in \mathbb{N}\]
+
+Підставляємо знайдені коефіцієнти і отримуємо розв'язок із одного доданку.
+
+\begin{equation}
+    u (x,t) = \nu_0 t 
+\end{equation}
+
+Перевіряємо відповідь
+
+\begin{itemize}
+    \item Власні функції перевірені в задачі 2.1
+    \item Постановка задачі містить неоднорідний член у початковій швидкості, який пропорційний $\sim v_0$. Перевірити наявність цих множників у загальному розв'язку.
+    \item Перевіряємо початкові умови - виконуються?
+
+\end{itemize}
+
+%Альтернативний шлях -- знайти за означенням коефіцієнти розкладу у ряд Фур'є.
+
+%\begin{equation}
+%    A_n = \frac{2}{l} \int_{0}^{l} \varphi (x)  \sin \left( (\frac{1}{2} + n) \frac{\pi x}{l} \right) dx    
+%\end{equation}
+
+%Одержали інтеграл ортогональності 
+
+%\begin{equation}
+%    \int^{l}_0 \sin \left( \frac{3 \pi x}{2 l} \right) \sin \left( (\frac{1}{2} + n) \frac{\pi x}{l} \right) dx = \int^{l}_0 \chi_1 (x) \chi_n (x) dx = \delta_{1n}
+%\end{equation}
+
+%Якщо ви не побачите що інтеграл є інтегралом ортогональності, і будете його обчилювати, то втратите час і можете помилитися і одержати неправильну відповідь (що часто і буває).
+
+%Результат $A_1 = h, A_0 = A_2 = A_3 = ... = 0$ та для швидкостей $B_0 = \frac{v_0}{\omega_0}, B_1 = B_2 = B_3 = ... = 0$
+
+%Отримали теж саме, але складнішим шляхом!
+
+\end{document}
+
+\widehat{} 
