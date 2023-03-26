@@ -1,10 +1,12 @@
-\documentclass[a4paper, 14pt]{extreport}
+%\documentclass[a4paper, 14pt]{extreport}
 
-\usepackage{StyleMMF}
+%\usepackage{StyleMMF}
 
-\begin{document}
+%\begin{document}
 
-\chapter{Задачі з неоднорідним рівнянням або неоднорідними межовими умовами}
+%\setcounter{chapter}{5}
+
+%\chapter{Задачі з неоднорідним рівнянням або неоднорідними межовими умовами}
 
 \textbf{\large Джерела з гармонічною залежністю від часу.}
 
@@ -12,4 +14,176 @@
 
 \textit{Знайти коливання струни $0 \leq x \leq l$, лівий кінець якої закріплений, а правий вільний, при $t > 0$ під дією розподіленої сили $f(x,t) = f(x)\cos\omega t$. При $t < 0$ струна перебувала в положенні рівноваги. Розглянути окремий випадок $f(x) = f_0$. Виділити складову розв’язку, яка відповідає усталеним вимушеним коливанням і проаналізувати картину резонансу. Перевірити, чи переходить одержаний розв’язок у розв’язок задачі 5.1 за відповідних умов.}
 
-\end{document}
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+\noindent Спершу розберемося з розмірностями. Під розподіленою силою слід розуміти величину $\vec{f}=\frac{\Delta \vec{F}}{\Delta m} = \frac{d\vec{F}}{dV} \nu$, де $\nu =\frac 1\rho$ - питомий об'єм.
+\\
+\\
+\noindent Формальна постановка задачі:
+\begin{equation} \label{sweat}
+    \left\{ \begin{aligned} %%
+            \;&u = u(x,t), \\
+            &0 \leq x \leq l, t \geq 0, \\
+            &u_{tt}=v^2u_{xx}+f(x,t), \\
+            &f(x,t)=f(x)\cos\omega t\\
+            &\text{окремий випадок: }\;\; f(x)= f_0,\\
+            &u(x,0)=0,\\
+            &u_t(x,0)=0,\\
+            &u(0,t) =0, \\
+            &u_x(l,t) =0 . 
+    \end{aligned} \right.
+\end{equation}
+\\
+
+Виділимо складову розв'язку $\tilde{u}$, яка відповідає вимушеним коливанням. Шукатимемо її у формі $\tilde{u}(x,t) = \widetilde{X}(x) \cos\omega t$. Після підстановки отримуємо наступну задачу (нам не принципово, щоб вона задовільняла ще й початкові умови):
+\begin{equation} \label{probcond8}
+    \left\{ \begin{aligned} %%
+        &v^2\widetilde{X}'' + \omega^2\widetilde{X} + f(x) = 0,\\
+        &\widetilde{X}(0)=0,\\
+        &\widetilde{X}'(l)=0.
+    \end{aligned} \right.
+\end{equation}
+
+Найпростішим методом її розв'язання є метод функцій Гріна, який ви вивчали на курсі диференціальних рівнянь. Спочатку знаходимо функцію Гріна $G(x,s)$ до цієї задачі:
+
+\begin{enumerate} 
+  \item При $x \neq s$, вона має задовільняти однорідній частині рівняння, тобто 
+  \begin{equation*}
+    v^2G''+\omega^2G=0.    
+  \end{equation*}
+  Тоді, при вказаних вище умовах, маємо для кожної з областей $(x<s) \;\;\text{і} \;\;(x>s)$:
+  \begin{equation*}
+    G(x,s)=C_i(s)\cos\left(\frac{\omega x}{v}\right)+C_j(s)\sin\left(\frac{\omega x}{v}\right),    
+  \end{equation*}
+  \begin{equation*} 
+    \left\{ \begin{aligned} %%
+            & i=1,\; j=2,\;\; x<s;\\
+            & i=3,\; j=4,\;\; x>s.
+    \end{aligned} \right.
+\end{equation*}
+
+  \item Вона має задовільняти крайовим умовам.
+  \begin{equation*}
+    G(x,s)=C_2(s)\sin\left(\frac{\omega x}{v}\right),\;\;x<s 
+  \end{equation*}
+  \begin{equation*}
+    G(x,s)=C_3(s)\left(\cos\left(\frac{\omega x}{v}\right)+\sin\left(\frac{\omega x}{v}\right)\tan\left(\frac{\omega l}{v}\right)\right),\;\;x>s 
+  \end{equation*}
+  
+  \item При $x=s$ вона неперервна по $x$, а її похідна має скачок, що дорівнює оберненій величині до коефіцієнта при другій похідній та залежить від $s$, замість $x$. У нашому випадку цей скачок дорівнює $\frac{1}{v^2}$.
+  \begin{equation*}
+    C_2(s)\sin\left(\frac{\omega s}{v}\right)=C_3(s)\left(\cos\left(\frac{\omega s}{v}\right)+\sin\left(\frac{\omega s}{v}\right)\tan\left(\frac{\omega l}{v}\right)\right) 
+  \end{equation*}
+  \begin{equation*}
+    C_2(s)\cos\left(\frac{\omega s}{v}\right)+\frac{1}{v\omega}=C_3(s)\left(\cos\left(\frac{\omega s}{v}\right)\tan\left(\frac{\omega l}{v}\right)-\sin\left(\frac{\omega s}{v}\right)\right)
+  \end{equation*}
+  Після спрощень отримуємо:
+  \begin{equation*}
+    C_3=-\frac{\sin\left(\frac{\omega s}{v}\right)}{v\omega}
+  \end{equation*}
+  \begin{equation*}
+    C_2=-\frac{\cos\left(\frac{\omega (s-l)}{v}\right)}{v\omega\cos\left(\frac{\omega l}{v}\right)}
+  \end{equation*}
+  \begin{equation*}
+    G(x,s)=-\frac{\cos\left(\frac{\omega (s-l)}{v}\right)}{v\omega\cos\left(\frac{\omega l}{v}\right)}\sin\left(\frac{\omega x}{v}\right),\;\;x<s 
+  \end{equation*}
+  \begin{equation*}
+    G(x,s)=-\frac{\cos\left(\frac{\omega (x-l)}{v}\right)}{v\omega\cos\left(\frac{\omega l}{v}\right)}\sin\left(\frac{\omega s}{v}\right),\;\;x>s 
+  \end{equation*}
+
+\end{enumerate}
+
+Звідси отримуємо просторову складову, що відповідає усталеним коливанням, для загальної функції $f$:
+\begin{equation} \label{tired}
+    \tilde{u} = \int_0^x\frac{\cos\left(\frac{\omega (x-l)}{v}\right)\sin\left(\frac{\omega s}{v}\right) f(s)}{v\omega\cos\left(\frac{\omega l}{v}\right)}ds+ \int_x^l\frac{\cos\left(\frac{\omega (s-l)}{v}\right)\sin\left(\frac{\omega x}{v}\right) f(s)}{v\omega\cos\left(\frac{\omega l}{v}\right)}ds
+\end{equation}
+
+Підставивши у (\ref{tired}) окремий випадок і виконавши інтегрування, отримаємо:
+\begin{equation}
+    \tilde{u} = \frac {f_0\cos(\omega t)}{\omega^2}\left(\frac{\cos\left(\frac{\omega (x-l)}{v}\right)}{\cos\left(\frac{\omega l}{v}\right)}-1\right)
+\end{equation}
+
+Повний розв'язок є комбінацією однорідної $u_0$ і вимушеної $\tilde{u}$ частини: $u = u_0 + \tilde{u}$. Задача на $u_0$ отримується підстановкою цієї комбінації у (\ref{sweat}) і виглядає наступним чином: 
+\begin{equation} 
+    \left\{ \begin{aligned} %%
+            \;&u_0 = u_0(x,t), \\
+            &0 \leq x \leq l, t \geq 0, \\
+            &{(u_0)}_{tt}=v^2{(u_0)}_{xx}, \\
+            &u_0(0,t) = 0, {(u_0)}_x(l,t) = 0,\\  
+            &u_0(x,0) = -\tilde{u}(x,0),\\
+            &{(u_0)}_t(x,0) = 0.\\
+    \end{aligned} \right.
+\end{equation}
+
+Маємо просту задачу на хвильове рівняння з початковими умовами. Пошук власних мод для таких крайових умов вже виконаний у домашній задачі №1,2. Випишемо результат:
+
+\begin{equation*} 
+    \left\{ \begin{aligned} %%
+            \;&\lambda_n = \frac{\pi^2 (2n-1)^2}{4l^2} - \text{власнi числа},\\
+            &k_n = \frac{\pi (2n-1)}{2l} - \text{власнi хвильові вектори},\\
+            &\omega_n=vk_n - \text{власнi частоти},\\
+            &\text{де } n \in \mathbb{N},\\ 
+            &{(u_0)}_n = \left(A_n\sin\omega_nt + B_n\cos\omega_nt\right)\sin k_nx - \text{власнi моди}.       
+    \end{aligned} \right.
+\end{equation*}
+
+Одразу можемо побачити, що оскільки початковий розподіл швидкостей нульовий, то $\forall n \in \mathbb{N}, A_n=0$. Тоді однорідна частина розв'язку матиме вигляд:
+
+\begin{equation} \label{nosleep}
+    u = \sum_{n=1}^\infty B_n\cos\omega_nt\sin k_nx
+\end{equation}
+
+Залишається підставити (\ref{nosleep}) в умову на початкове зміщення:
+
+\begin{equation} 
+    u_0(x,0) = \sum_{n=1}^\infty B_n\sin k_nx = -\tilde{u} = \frac{f_0}{\omega^2}\left(1 - \frac{\cos\left(\frac{\omega (x-l)}{v}\right)}{\cos\left(\frac{\omega l}{v}\right)}\right)
+\end{equation}
+ 
+Коефіцієнти $B_n$ для просторового розподілу сили загального вигляду знаходяться наступним чином:
+
+\begin{equation} 
+    B_n = -\frac 2l \int\limits_0^l \tilde{u} \sin k_nx \;dx
+\end{equation}
+
+І після всіх підстановок загальна задача буде розв'язана. Знайдемо ці коефіцієнти для окремого випадку:
+
+\begin{equation} 
+    \begin{aligned}
+        &B_n = \frac {2f_0}{l\omega^2} \int_0^l\left(1-\frac{\cos\left(\frac{\omega (x-l)}{v}\right)}{\cos\left(\frac{\omega l}{v}\right)}\right)\sin(k_nx)dx=\frac {2f_0}{l\omega^2}\left(\frac{1}{k_n}-\frac{k_n}{k_n^2-\left(\frac \omega{v}\right)^2}\right)=\\
+        &=-\frac{2f_0}{lk_n\left(\omega_n^2-\omega^2\right)}
+    \end{aligned}    
+\end{equation}
+
+Повний розв'язок задачі матиме вигляд:
+
+\begin{equation} \label{nosleep}
+    u = \tilde{u}\cos{\omega t} + \sum_{n=1}^\infty B_n\cos\omega_nt\sin k_nx
+\end{equation}
+
+Для окремого випадку:
+
+\begin{equation} 
+    u = \frac{f_0}{\omega^2} \left(\frac{\cos\left(\frac{\omega (x-l)}{v}\right)}{\cos\left(\frac{\omega l}{v}\right)}-1\right) \cos{\omega t} - \sum_{n=1}^\infty \frac{2f_0}{lk_n\left(\omega_n^2-\omega^2\right)} \cos\omega_nt\sin k_nx
+\end{equation}
+
+\textit{Добре видно, що при наближенні частоти $\omega$, з якою діє сила, до власної частоти $\omega_n$, амплітуда відповідної власної моди нескінченно зростатиме. Це явище відповідає визначенню резонансу.}
+
+Тепер спрямуємо $\omega$ до 0. При цьому вимушений розв'язок матиме вигляд:
+
+\begin{equation*}
+    \begin{aligned}
+        &\frac {f_0}{\omega^2}\left(\frac{\cos\left(\frac{\omega (x-l)}{v}\right)}{\cos\left(\frac{\omega l}{v}\right)}-1\right)\cos{\omega t}=\left[ \cos\left(\frac{\omega (x-l)}{v}\right)=1-\frac{\omega^2 (x-l)^2}{v^2}+O(\omega^4)\right]=\\
+        &\frac {f_0\left(1-\frac{\omega^2 (x-l)^2}{v^2}-1+\frac{\omega^2 l^2}{v^2}+O(\omega^4)\right)}{\omega^2-\frac{\omega^4 l^2}{v^2}+O(\omega^6)}=\frac {f_0\left( 2xl-x^2+O(\omega^2)\right)}{v^2(1+O(\omega^2))}.
+    \end{aligned}
+\end{equation*}
+
+І повний розв'язок матиме вигляд:
+\begin{equation} 
+    u = \frac{f_0\left( 2xl-x^2\right)}{v^2} - \sum_{n=1}^\infty \frac{2f_0}{lk_n\omega_n^2}\cos(\omega_n t)\sin(k_n x)
+\end{equation}
+
+Що повністю відповідає розв'язку (\ref{gray}) задачі  №5,1.
+
+%\end{document}

@@ -1,12 +1,12 @@
-\documentclass[a4paper, 14pt]{extreport}
+%\documentclass[a4paper, 14pt]{extreport}
 
-\usepackage{StyleMMF}
+%\usepackage{StyleMMF}
 
-\begin{document}
+%\begin{document}
 
-\setcounter{chapter}{2}
+%\setcounter{chapter}{2}
 
-\chapter{Другий спосіб знаходження коефіцієнтів. Коливання стержня з вільними кінцями, неповнота базису.}
+%\chapter{Другий спосіб знаходження коефіцієнтів. Коливання стержня з вільними кінцями, неповнота базису.}
 
 \section[Задача №3.3]{3.3}
 
@@ -81,24 +81,22 @@
 
 \end{itemize}
 
-%Альтернативний шлях -- знайти за означенням коефіцієнти розкладу у ряд Фур'є.
+Альтернативний шлях -- знайти за означенням коефіцієнти розкладу у ряд Фур'є.
 
-%\begin{equation}
-%    A_n = \frac{2}{l} \int_{0}^{l} \varphi (x)  \sin \left( (\frac{1}{2} + n) \frac{\pi x}{l} \right) dx    
-%\end{equation}
+\begin{equation}
+    A_n = \frac{2}{l} \int_{0}^{l} \varphi (x)  \sin \left( (\frac{1}{2} + n) \frac{\pi x}{l} \right) dx    
+\end{equation}
 
-%Одержали інтеграл ортогональності 
+Одержали інтеграл ортогональності 
 
-%\begin{equation}
-%    \int^{l}_0 \sin \left( \frac{3 \pi x}{2 l} \right) \sin \left( (\frac{1}{2} + n) \frac{\pi x}{l} \right) dx = \int^{l}_0 \chi_1 (x) \chi_n (x) dx = \delta_{1n}
-%\end{equation}
+\begin{equation}
+    \int^{l}_0 \sin \left( \frac{3 \pi x}{2 l} \right) \sin \left( (\frac{1}{2} + n) \frac{\pi x}{l} \right) dx = \int^{l}_0 \chi_1 (x) \chi_n (x) dx = \delta_{1n}
+\end{equation}
 
-%Якщо ви не побачите що інтеграл є інтегралом ортогональності, і будете його обчилювати, то втратите час і можете помилитися і одержати неправильну відповідь (що часто і буває).
+Якщо ви не побачите що інтеграл є інтегралом ортогональності, і будете його обчилювати, то втратите час і можете помилитися і одержати неправильну відповідь (що часто і буває).
 
-%Результат $A_1 = h, A_0 = A_2 = A_3 = ... = 0$ та для швидкостей $B_0 = \frac{v_0}{\omega_0}, B_1 = B_2 = B_3 = ... = 0$
+Результат $A_1 = h, A_0 = A_2 = A_3 = ... = 0$ та для швидкостей $B_0 = \frac{v_0}{\omega_0}, B_1 = B_2 = B_3 = ... = 0$
 
-%Отримали теж саме, але складнішим шляхом!
+Отримали теж саме, але складнішим шляхом!
 
-\end{document}
-
-\widehat{} 
+%\end{document}

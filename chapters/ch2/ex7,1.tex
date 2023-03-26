@@ -1,13 +1,171 @@
-\documentclass[a4paper, 14pt]{extreport}
+%\documentclass[a4paper, 14pt]{extreport}
 
-\usepackage{StyleMMF}
+%\usepackage{StyleMMF}
 
-\begin{document}
+%\begin{document}
 
-\chapter{Задачі з неоднорідними межовими умовами загального вигляду}
+%\setcounter{chapter}{6}
+
+%\chapter{Задачі з неоднорідними межовими умовами загального вигляду}
 
 \section[Задача №7.1]{7.1}
 
-\textit{Знайти коливання пружного стержня, якщо правий кінець його закріплений нерухомо, а до лівого при $t > 0$ прикладена сила $F(t)$ , шляхом зведення до задачі з неоднорідним рівнянням. Відповідь одержати для частинного випадку $F(t) = F_0 e^{-\alpha t}$. При $t < 0$ стержень перебував у положенні рівноваги.}
+\textit{Знайти коливання пружного стержня, якщо правий кінець його закріплений нерухомо, до лівого при $t > 0$ прикладена сила $F(t)$, а шляхом зведення до задачі з неоднорідним рівнянням. Відповідь одержати для частинного випадку $F(t) = F_0 e^{-\alpha t}$. При $t < 0$ стержень перебував у положенні рівноваги.} 
 
-\end{document}
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+\noindent Формальна постановка задачі:
+\begin{equation} %\label{probcond12}
+    \left\{ \begin{aligned} %%
+            \;&u = u(x,t), \\
+            &u_{tt} = v^2 u_{xx}, \\
+            &0 \leq x \leq l, t \geq 0 \\
+            &u_x(0,t) = \frac{F_0}{\beta} e^{-\alpha t}, \, u(l,t) = 0, \\
+            &u(x,0) = 0, \, u_t(x,0) = 0.
+    \end{aligned} \right.
+\end{equation}
+
+Шукаємо розв'язок у вигляді:
+\begin{equation} %\label{subst12}
+    u(x,t) = w(x,t) + \mathcal{V}(x,t),
+\end{equation}
+де $w(x,t)$ -- задовольняє межовим умовам, а $\mathcal{V}(x,t)$ -- довільна функція.
+
+Найпростішим видом функції $w(x,t)$ буде:
+\begin{equation}
+    w(x,t) = \frac{F_0}{\beta} e^{-\alpha t} (x - l) = f_0 e^{-\alpha t} (x - l)
+\end{equation}
+Перевіримо виконання межових умов
+\begin{equation*}
+    w_x(0,t) = f_0 e^{-\alpha t} \frac{\mathrm{d}}{\mathrm{d}x} (x - l) = f_0 e^{-\alpha t}, \quad w(l,t) = f_0 e^{-\alpha t} (l - l) = 0
+\end{equation*}
+
+Виконаємо перетворення рівняння та початкових умов і перепишемо задачу для функції $v(x,t)$.\\
+Рівняння:
+\begin{equation*}
+    u_{tt} = v^2 u_{xx}
+    \;\Rightarrow\;
+    \mathcal{V}_{tt} + \alpha^2 f_0 e^{-\alpha t} (x-l) = v^2\mathcal{V}_{xx} 
+\end{equation*}
+Межові умови:
+\begin{equation*}
+    u_x(0,t) = f_0 e^{-\alpha t}, \, u(l,t) = 0
+    \;\Rightarrow\; 
+    \mathcal{V}_x(0,t) = 0 \, \mathcal{V}(l,t) = 0
+\end{equation*}
+Початкові умови:
+\begin{equation*}
+    u(x,0) = f_0 (x-l) + \mathcal{V}(x,0) = 0
+    \;\Rightarrow\;
+    \mathcal{V}(x,0) = - f_0 (x-l)
+\end{equation*}
+\begin{equation*}
+    u_t(x,0) = -\alpha f_0 (x-l) + \mathcal{V}_t(x,0) = 0
+    \;\Rightarrow\;
+    \mathcal{V}_t(x,0) = \alpha f_0  (x-l)
+\end{equation*}
+Отже, отримуємо задачу для $\mathcal{V}(x,t)$ з однорідними межовими умова, але з неоднорідними рівнянням та початковими умовами.
+\begin{equation} \label{new-var-cond}
+    \left\{ \begin{aligned} %%
+            \;&\mathcal{V} = \mathcal{V}(x,t), \\
+            &\mathcal{V}_{tt} - v^2 \mathcal{V}_{xx} = -\alpha^2 f_0 e^{-\alpha t} (x-l), \\
+            &0 \leq x \leq l, t \geq 0 \\
+            &\mathcal{V}_x(0,t) = 0, \, \mathcal{V}(l,t) = 0, \\
+            &\mathcal{V}(x,0) = - f_0 (x-l),\\
+            &\mathcal{V}_t(x,0) = \alpha f_0 (x-l).
+    \end{aligned} \right.
+\end{equation}
+
+Розв'язок шукаємо у вигдялі:
+\begin{equation}
+    \mathcal{V}(x,t) = \sum_{n=0}^\infty \widetilde{\mathcal{V}}_n(t) \cos k_n x,
+\end{equation}
+де $k_n = \frac{\pi}{l}(n + 1/2)$ -- хвильове число.
+
+Зрозуміло, що це розклад шуканої функції по власних функціях системи (див. ров'язок відповідної задачі Штурма-Ліувілля в задачі 1.3). По цій же системі функцій треба розкласти неоднорідність рівняння.
+
+\begin{equation*}
+    \begin{gathered}
+        (x-l) = \sum_{n=0}^\infty a_n \cos k_n x\\
+        a_n = \frac{2}{l} \int\limits_0^l (\xi-l) \cos k_n \xi \;\mathrm{d}\xi =\frac{2}{l} \bigg[\overbrace{\frac{\xi}{k_n}\sin k_n\xi \bigg|_0^l}^{=0} - \frac{1}{k_n} \int\limits_0^l \sin k_n\xi \;\mathrm{d}\xi -\\
+    \end{gathered}
+\end{equation*}
+\begin{equation} \label{fourier-sum}
+    \begin{gathered}
+        -\overbrace{\frac{l}{k_n}\sin k_n\xi \bigg|_0^l}^{=0}\bigg] = -\frac{2}{k_n l} \int\limits_0^l \sin k_n\xi \;\mathrm{d}\xi = \frac{2}{k_n^2 l} \cos k_n\xi \bigg|_0^l = -\frac{2}{k_n^2 l} 
+        \;\Rightarrow \\
+        \Rightarrow\; (x-l) = -\frac{2}{l}\sum_{n=0}^\infty \frac{\cos k_n x}{k_n^2}
+    \end{gathered}
+\end{equation}
+
+Отже, маємо 
+\begin{equation}
+    \begin{gathered}
+        \sum_{n=0}^\infty \widetilde{\mathcal{V}}_n'' \cos k_n x + v^2 \sum_{n=0}^\infty k_n^2 \widetilde{\mathcal{V}}_n \cos k_n x =  \frac{2 \alpha^2}{l} f_0 e^{-\alpha t} \sum_{n=0}^\infty \frac{\cos k_n x}{k_n^2} 
+        \;\Rightarrow\\
+        \Rightarrow\; 
+        \widetilde{\mathcal{V}}_n'' + v^2 k_n^2 \widetilde{\mathcal{V}}_n = \frac{2\alpha^2f_0}{l k_n^2} e^{-\alpha t} 
+        \;\Rightarrow\;
+        \widetilde{\mathcal{V}}_n'' + \omega_n^2 \widetilde{\mathcal{V}}_n = \kappa_n\alpha^2 e^{-\alpha t}, 
+    \end{gathered}
+\end{equation}
+де $\kappa_n = \frac{2f_0}{l k_n^2}$ -- розмірна константа $\big[\kappa_n\big] = \big[\text{м}\big]$
+
+Розв'яжемо отримане лінійне неожнорідне рівняння. Його розв'язок шукатимето у вигляді:
+\begin{equation}
+    \widetilde{\mathcal{V}}_n(t) = A_n \sin\omega_nt + B_n \cos\omega_nt + \widetilde{\mathcal{V}}_{\text{неод}}(t)
+\end{equation}
+За умови $\alpha \neq \pm i\omega_n$ (що виконується завжди, бо $\alpha \in \mathbb{R}$), доданок, відповідний неоднорідності, можемо записати у вигляді: 
+\[\widetilde{\mathcal{V}}_{\text{неод}}(t) = \gamma e^{-\alpha t}\]
+Нам залишаться визначити константу $\gamma$, для цього підставимо "вгаданий"\\ розв'язок в рівняння. 
+\begin{equation*}
+    (\gamma e^{-\alpha t})'' + \omega_n^2 \gamma e^{-\alpha t} = \kappa_n\alpha^2 e^{-\alpha t}
+    \;\Rightarrow\;
+    \gamma(\alpha^2 + \omega_n^2) = \kappa_n\alpha^2
+    \;\Rightarrow\;
+    \gamma = \frac{\kappa_n\alpha^2}{(\omega_n^2 + \alpha^2)}
+\end{equation*}
+Отже, загальний розв'язок рівняння 
+\begin{equation} \label{gen-time-sol}
+    \widetilde{\mathcal{V}}_n(t) = A_n \sin\omega_nt + B_n \cos\omega_nt + \frac{\kappa_n\alpha^2}{(\omega_n^2 + \alpha^2)} e^{-\alpha t}
+\end{equation}  
+
+Ми вже розкладали неоднорідність в рівнянні по власним функціям системи, таким же шляхом треба розкласти початкові умови задачі (\ref{new-var-cond}). Нам треба знову ж розкласти функцію $x - l$, тому можемо скористатися готовим результатом (\ref{fourier-sum}).
+\begin{equation}
+    \begin{aligned} %%
+        &\mathcal{V}(x,0) = - f_0 (x-l),\\
+        &\mathcal{V}_t(x,0) = \alpha f_0 (x-l).
+    \end{aligned} 
+    \quad\Rightarrow\quad
+    \begin{aligned} %%
+        &\widetilde{\mathcal{V}}_n(0) = 2 f_0/l k_n^2 = \kappa_n,\\
+        &\frac{\mathrm{d}\;}{\mathrm{d}t}\widetilde{\mathcal{V}}_n(0) = -2\alpha f_0/lk_n^2 = -\kappa_n\alpha.
+    \end{aligned} 
+\end{equation}
+З отриманих початковими умовами для $n$-их коефіцієнтів розкладу в ряд за власними функціями системи визначемо константи $A_n$ та $B_n$ в розв'язку (\ref{gen-time-sol}). 
+\begin{equation*}
+    \widetilde{\mathcal{V}}_n(0) = B_n + \frac{\kappa_n\alpha^2}{(\omega_n^2 + \alpha^2)} = \kappa_n
+    \;\Rightarrow\;
+    B_n  = \kappa_n - \frac{\kappa_n\alpha^2}{\omega_n^2 + \alpha^2} = \frac{\omega_n^2}{\omega_n^2 + \alpha^2} \kappa_n
+\end{equation*}
+\begin{equation*}
+    \frac{\mathrm{d}\;}{\mathrm{d}t}\widetilde{\mathcal{V}}_n(0) = A_n\omega_n - \frac{\kappa_n\alpha^3}{(\omega_n^2 + \alpha^2)} = -\kappa_n\alpha
+    \;\Rightarrow\;
+    A_n = -\frac{\alpha\omega_n}{\omega_n^2 + \alpha^2} \kappa_n
+\end{equation*}
+Підставляємо в розв'язок
+\begin{equation} \label{unic-time-sol}
+    \widetilde{\mathcal{V}}_n(t) = \frac{\kappa_n}{(\omega_n^2 + \alpha^2)} \left(\omega_n^2\cos\omega_nt - \alpha\omega_n\sin\omega_nt +  \alpha^2e^{-\alpha t}\right)
+\end{equation}  
+Тепер запишемо вид функції $\mathcal{V}(x,t)$
+\begin{equation}
+    \mathcal{V}(x,t) = \sum_{n=0}^\infty \frac{\kappa_n}{(\omega_n^2 + \alpha^2)} \left(\omega_n^2\cos\omega_nt - \alpha\omega_n\sin\omega_nt +  \alpha^2e^{-\alpha t}\right) \cos k_n x
+\end{equation}
+І повний розв'язок задачі
+\begin{equation}
+    u(x,t) = f_0 e^{-\alpha t} (x - l) +  \sum_{n=0}^\infty \frac{\kappa_n \cos k_n x}{(\omega_n^2 + \alpha^2)} \left(\omega_n^2\cos\omega_nt - \alpha\omega_n\sin\omega_nt +  \alpha^2e^{-\alpha t}\right) 
+\end{equation}
+
+%\end{document}

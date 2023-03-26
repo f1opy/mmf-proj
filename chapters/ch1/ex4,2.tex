@@ -1,12 +1,11 @@
-\documentclass[a4paper, 14pt]{extreport}
+%\documentclass[a4paper, 14pt]{extreport}
 
-\usepackage{StyleMMF}
+%\usepackage{StyleMMF}
 
-\begin{document}
+%\begin{document}
 
-\setcounter{chapter}{3}
-
-\chapter{Рівняння теплопровідності з однорідними межовими умовами}
+%\setcounter{chapter}{3}
+%\chapter{Рівняння теплопровідності з однорідними межовими умовами}
 
 \section[Задача №4.2]{4.2}
 
@@ -18,8 +17,8 @@
 
 \begin{wrapfigure}{r}{0.3\textwidth}
     \centering
-    Graph under comment
-    %\input{../graphs/4,2init-cond.tex}  % main compilation
+    %Graph under comment
+    \input{../graphs/4,2init-cond.tex}  % main compilation
     %\input{../../graphs/4,2init-cond.tex}  % this compilation
 \end{wrapfigure}
 
@@ -82,7 +81,7 @@
 Отже, отримаємо остаточний розв'язок
 \begin{equation}
     \begin{aligned}
-        \;&u_n(x,n) = T_0 + \widetilde{X}_n \cdot \widetilde{T}_n = T_0 + C_n e^{-t/\tau_n} \sin(k_n x),\\
+        \;&u_n(x,t) = T_0 + \widetilde{X}_n \cdot \widetilde{T}_n = T_0 + C_n e^{-t/\tau_n} \sin(k_n x),\\
         &k_n = \frac{\pi n}{l} - \text{ хвильові вектори}, \\
         &\tau_n = \frac{1}{D k_n^2} = \frac{l^2}{D \pi^2 n^2} - \text{ характерний час зміни температури}, \\
         &n = 1, 2,\ldots
@@ -123,7 +122,7 @@
 Отже, розв'язком буде
 \begin{equation}
     \begin{aligned}
-        u(x,n) = T_0 + \frac{2}{l}\sum_{n=1}^{\infty}\big[&T_1(1 - \cos(k_n l/2)) +\\
+        u(x,t) = T_0 + \frac{2}{l}\sum_{n=1}^{\infty}\big[&T_1(1 - \cos(k_n l/2)) +\\
         + T_2(\cos(k_n l/2) - (-1)^n) + &T_0 ((-1)^n - 1)\big] e^{-t/\tau_n} \frac{\sin(k_n x)}{k_n}
     \end{aligned}
 \end{equation}
@@ -136,11 +135,11 @@
 \begin{figure}[h]
     \centering
     %\large \textbf{Graph under comment}%
-    %\input{../graphs/4,2sols} %%for compiling main 
-    \input{../../graphs/4,2sols} %%for compiling this file
+    \input{../graphs/4,2sols} %%for compiling main 
+    %\input{../../graphs/4,2sols} %%for compiling this file
 \caption{Перші чотири розв'язки}
 \end{figure}
 
 Проміжок часу називається малим, коли $t \ll \tau$, а великим -- $t > \tau$
 
-\end{document}
+%\end{document}
