@@ -1,13 +1,145 @@
 %\documentclass[a4paper, 14pt]{extreport}
 
 %\usepackage{StyleMMF}
+%\usepackage{bookmark}
 
 %\begin{document}
 
+%\setcounter{chapter}{6}
 %\chapter{Задачі з неоднорідними межовими умовами загального вигляду}
 
 \section[Задача №7.2]{7.2}
 
 \textit{Розв’язати задачу №7.1 методом розкладання по власних функціях.}
+
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+\noindent Формальна постановка задачі:
+\begin{equation} %\label{probcond12}
+    \left\{ \begin{aligned} 
+            \;&u = u(x,t), \\
+            &u_{tt} = v^2 u_{xx}, \\
+            &0 \leq x \leq l, t \geq 0 \\
+            &u_x(0,t) = \frac{F_0}{\beta} e^{-\alpha t} = f_0 e^{-\alpha t},\\
+            &u(l,t) = 0, \\
+            &u(x,0) = 0, \, u_t(x,0) = 0.
+    \end{aligned} \right.
+\end{equation}
+
+Розв'язок шукаємо у вигляді:
+\begin{equation}
+    u(x,t) = \sum\limits_{n = 0}^\infty T_n(t) X_n(x),
+\end{equation}
+де $X_n(x)$ -- власні функції задачі. Їх визначаємо, розв'язуючи задачу з однорідними межовими умовами.
+\begin{equation*}
+    \begin{gathered}
+        \left\{ \begin{aligned} 
+            \;&u_{tt} = v^2 u_{xx}, \\
+            &u_x(0,t) = 0, \, u(l,t) = 0.
+        \end{aligned} \right.
+        \;\Rightarrow\;
+        \left\{ \begin{aligned} 
+            \;&X_m'' + k_m^2 X_m = 0, \\
+            &X_m'(0) = 0, \, X_m(l) = 0.
+        \end{aligned} \right.
+        \;\Rightarrow\\
+        \vspace{10pt}
+        \Rightarrow\;
+        \left\{ \begin{aligned} 
+            \;&k_m = \frac{\pi}{l}(m + 1/2) \text{ -- хвильві числа,} \\
+            &X_m(x) = \cos k_mx,\, m = 0,1,2\ldots
+        \end{aligned} \right.
+    \end{gathered}
+\end{equation*}
+
+Розкладемо рівняння по власним функціям. Для цього домножимо йього на $X_m / \left\lVert X_m\right\rVert^2$ та проінтегруємо по $x$.
+\begin{equation} \label{series}
+    \frac{1}{\left\lVert X_m\right\rVert^2} \int\limits_0^l u_{tt} X_m \;\mathrm{d}x = \frac{v^2}{\left\lVert X_m\right\rVert^2} \int\limits_0^l u_{xx} X_m \;\mathrm{d}x
+\end{equation}
+Випишемо окремо перетворення для лівої та правої частини рівняня. Почнемо з лівої
+\begin{equation*}
+    \frac{1}{\left\lVert X_m\right\rVert^2} \int\limits_0^l u_{tt} X_m \;\mathrm{d}x =  \sum\limits_{n=0}^\infty \frac{T_n''(t)}{\left\lVert X_m\right\rVert^2} \int\limits_0^l X_n(x) X_m(x) \;\mathrm{d}x = \sum\limits_{n=0}^\infty T_n''(t) \delta_{n,m} = T_m''(t)
+\end{equation*}
+
+Тепер розглянемо праву частину рівняння, двічі використаємо інтегрування частинами
+\begin{equation*}
+    \frac{1}{\left\lVert X_m\right\rVert^2} \int\limits_0^l u_{xx} X_m \;\mathrm{d}x = \sum\limits_{n=0}^\infty \frac{T_n(t)}{\left\lVert X_m\right\rVert^2} \int\limits_0^l X_n''(x) X_m(x) \;\mathrm{d}x \  \textcolor{red}{=}
+\end{equation*}
+Випишемо окремо інтегрування під сумою
+\begin{equation*}
+    \begin{gathered}
+        \int\limits_0^l X_n''(x) X_m(x) \;\mathrm{d}x = X_n'(x) X_m(x) \bigg|_0^l - \int\limits_0^l X_n'(x) X_m'(x) \;\mathrm{d}x = \\
+        = X_n'(x) X_m(x) \bigg|_0^l - X_n(x) X_m'(x) \bigg|_0^l + \int\limits_0^l X_n(x) X_m''(x) \;\mathrm{d}x
+    \end{gathered}
+\end{equation*}
+Скористаємося рівнянням для $X_n(x)$:
+\begin{equation*}
+    \begin{gathered}
+        X_n'(x) X_m(x) \bigg|_0^l - X_n(x) X_m'(x) \bigg|_0^l - k_n^2 \int\limits_0^l X_n(x) X_m(x) \;\mathrm{d}x =\\
+        = X_n'(x) X_m(x) \bigg|_0^l - X_n(x) X_m'(x) \bigg|_0^l - k_n^2 \left\lVert X_m\right\rVert^2 \delta_{n,m}
+    \end{gathered}
+\end{equation*}
+І повернемося до початкового виразу та запишемо його через зміщення $u(x,t)$
+\begin{equation*}
+    \begin{gathered}
+        \textcolor{red}{=}\ \sum\limits_{n=0}^\infty \frac{T_n(t)}{\left\lVert X_m\right\rVert^2} \bigg[X_n'(x) X_m(x) \bigg|_0^l - X_n(x) X_m'(x) \bigg|_0^l - k_n^2 \left\lVert X_m\right\rVert^2 \delta_{n,m}\bigg] =\\
+        = - k_m^2 T_m(t) + \frac{1}{\left\lVert X_m\right\rVert^2} \left[ u_x(x,t) X_m(x) \bigg|_0^l - u(x,t) X_m'(x) \bigg|_0^l \right] \ \textcolor{red}{=}
+    \end{gathered}
+\end{equation*}
+Скористаємося межовими умовами початкової задачі та задачі Штурма-Ліувілля для власних функцій системи при обчисленні значень отриманих виразів після інтегрування
+\begin{equation*}
+    \begin{gathered}
+        \textcolor{red}{= } -k_n^2 T_m(t) + \frac{2}{l} \bigg[ u_x(l,t) X_m(l) - u_x(0,t) X_m(0) -\\
+        - u(x,l) X_m'(l) + u(x,0) X_m'(0) \bigg] = - k_n^2 T_m(t) - \frac{2 f_0}{l} e^{-\alpha t},
+    \end{gathered}
+\end{equation*}
+тут для $X_m(x)$ дивимось на межові умови задачі Штурма-Ліувілля, а для $u(x,t)$ -- межові умови початкової задачі.
+
+Повертаємося до розкладу рівняння (\ref{series}), збираючи разом результати обчислень для лівої та правої частинами
+\begin{equation}
+    T_m''(t) = - k_m^2v^2 T_m(t)  - \frac{2v^2 f_0}{l} e^{-\alpha t}, \quad \text{або} \quad T_n''(t) + \omega_n^2 T_n(t) = - \kappa_n \omega_n^2  e^{-\alpha t}
+\end{equation}
+
+Отримали лінійне неожнорідне рівняння для $T_n(t)$, його розв'язок шукаємо у вигляді
+\begin{equation}
+    T_n(t) = A_n \cos\omega_nt + B_n \sin\omega_nt + \gamma e^{-\alpha t},
+\end{equation}
+а $\gamma$, коефіцієнт частинного розв'язку, визначаємо підстановкою в рівняння
+\begin{equation*}
+    \widetilde{T}_n(t) = \gamma e^{-\alpha t} 
+    \quad\Rightarrow\;
+    \alpha^2\gamma + \omega_n^2\gamma = - \kappa_n \omega_n^2
+    \;\Rightarrow\;
+    \gamma = - \frac{\kappa_n \omega_n^2}{\omega_n^2 + \alpha^2}
+\end{equation*} 
+Маємо
+\begin{equation}
+    T_n(t) = A_n \cos\omega_nt + B_n \sin\omega_nt - \frac{\kappa_n \omega_n^2}{\omega_n^2 + \alpha^2} e^{-\alpha t}
+\end{equation}
+
+Залишається визначити коефіцієнти $A_n$ та $B_n$. Оскільки, обидві умови однорідні можна одразу записати:
+\begin{equation*}
+    \left\{ \begin{aligned}
+        \;&T_n(0) = 0,\\
+        &T_n'(0) = 0; 
+    \end{aligned} \right.
+    \quad\Rightarrow\;
+    \left\{ \begin{aligned}
+        \;&T_n(0) = A_n - \frac{\kappa_n \omega_n^2}{\omega_n^2 + \alpha^2} = 0,\\
+        &T_n'(0) = B_n\omega_n + \frac{\alpha \kappa_n \omega_n^2}{\omega_n^2 + \alpha^2} = 0; 
+    \end{aligned} \right.
+    \;\Rightarrow\;
+    \left\{ \begin{aligned}
+        \;&A_n = \frac{\kappa_n \omega_n^2}{\omega_n^2 + \alpha^2},\\
+        &B_n = - \frac{\kappa_n \alpha \omega_n}{\omega_n^2 + \alpha^2}. 
+    \end{aligned} \right.
+\end{equation*}
+
+Наш остаточний розв'язок 
+\begin{equation}
+    u(x,t) = \sum\limits_0^l \frac{\kappa_n \cos k_nx}{\omega_n^2 + \alpha^2} \left(\omega_n^2 \cos\omega_nt - \alpha \omega_n \sin\omega_nt - \omega_n^2 e^{-\alpha t} \right)
+\end{equation}
 
 %\end{document}

@@ -1,0 +1,119 @@
+%\documentclass[a4paper, 14pt]{extreport}
+
+%\usepackage{StyleMMF}
+
+%\setcounter{chapter}{9}
+
+%\begin{document}
+
+%\chapter{Приведення лінійних рівнянь у частинних похідних 2-го порядку з двома змінними до заданого вигляду}
+
+\section[Задача №10.1]{10.1}
+
+\textit{Визначити тип рівняння $u_{xx} + 4u_{xy} + cu_{yy} + u_x = 0$, привести його до канонічного вигляду для $c = 0$ і знайти загальний розв’язок.}
+
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+Загальний вид рівняння:
+\begin{equation}
+    a_{11}u_{xx} + 2a_{12}u_{xy} + a_{22}u_{yy} + b_1u_x + b_2u_y + cu = 0, \quad \text{або} \quad \hat{L}u + cu = 0
+\end{equation}
+Тип рівняння визначається визначником матриці, яка складається з коефіцієнтів перед другими похідними. \textit{Фактично оператор $\hat{L}$ є білінійною формою з лінійної алгебри, де замість змінних будуть похідні.}
+\begin{equation}
+    \Delta = -
+    \begin{vmatrix}
+        a_{11} & a_{12}\\
+        a_{12} & a_{22}
+    \end{vmatrix} 
+    = a_{12}^2 - a_{11}a_{22} = 2^2 - 1\cdot c = 4 - c 
+\end{equation}
+При $c = 0$ визначник $\Delta > 0$, тому маємо рівняння гіперболічного типу. 
+
+Суть канонізації -- перейти до нових змінних для яких рівняння прийматиме канонічний вид. Для визначення таких змінних записуємо  спочатку характеристичне рівняння:
+\begin{equation}
+    a_{11} (\mathrm{d}y)^2 + 2a_{12} \mathrm{d}x\mathrm{d}y + a_{22} (\mathrm{d}x)^2 = 0, \quad \text{або} \quad \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{a_{12} \pm \sqrt{a_{12}^2 - a_{11}a_{22}}}{a_{12}}
+\end{equation}
+Обидва рівняння приводять до 
+\begin{equation}
+    y'_1 = 4, \qquad y'_2 = 0.
+\end{equation}
+Звідси маємо перші інтеграли
+\begin{equation}
+    \begin{gathered}
+        y'_1 = 4 
+        \quad\Rightarrow\quad
+        y_1 = 4x
+        \quad\Rightarrow\quad
+        \Phi(x,y) = y - 4x = C_1\\
+        y'_2 = 0 
+        \quad\Rightarrow\quad
+        \Psi(x,y) = y = C_2
+    \end{gathered}
+\end{equation}
+З теорії нові змінні отримаємо формальною заміною $C_1 \to \xi$, $C_2 \to \eta$. Отже, нові змінні
+\begin{equation}
+    \left\{ \begin{aligned}
+        \xi = y - 4x,\\
+        \eta = y.
+    \end{aligned} \right.
+\end{equation}
+
+Далі треба зробити заміну змінних. Для цього окремо випишемо похідні від нових змінних
+\begin{equation*}
+    \xi_x = -4,\, \xi_y = 1,\, \eta_x = 0,\, \eta_y = 1,\, \xi_{xy} = \eta_{xy} = 0,\, \xi_{xx} = \eta_{xx} = 0,\, \xi_{yy} = \eta_{yy} = 0.
+\end{equation*}  
+
+Тепер не важко виконати заміну змінних 
+\begin{equation*}
+    \begin{gathered}
+        u_x = u_\xi \xi_x + u_\eta \eta_x = -4 u_\xi,\\
+        u_y = u_\xi \xi_y + u_\eta \eta_y = u_\xi + u_\eta,\\
+        u_{xx} = (-4 u_\xi)'_x = -4(u_{\xi\xi} \xi_x + u_{\eta\eta} \eta_x) = 16 u_{\xi\xi},\\
+        u_{xy} = (-4 u_\xi)'_y = -4(u_{\xi\xi} \xi_y + u_{\eta\eta} \eta_y) = -4(u_{\xi\xi} + u_{\xi\eta}).
+    \end{gathered}
+\end{equation*}
+Підставляємо отримані вирази в рівняння 
+\begin{equation*}
+    u_{xx} + 4u_{xy} + u_x = 16 u_{\xi\xi} - 16(u_{\xi\xi} + u_{\xi\eta}) - 4u_\xi = 0
+    \quad\Rightarrow\quad
+    u_{\xi\eta} + \frac{1}{4}u_\xi = 0
+\end{equation*}
+Отже, отримали рівняння в канонічному виді
+\begin{equation}
+    u_{\xi\eta} + \frac{1}{4}u_\xi = 0
+\end{equation}
+
+Розв'яжемо отримане рівняння. Легко побачити, що по $\xi$ можна проінтегрувати. 
+\begin{equation*}
+    u_{\xi\eta} + \frac{1}{4}u_\xi = 0
+    \quad\Rightarrow\quad
+    \left(u_\eta + \frac{1}{4}u\right)'_\xi = 0
+    \quad\Rightarrow\quad
+    u_\eta + \frac{1}{4}u = f(\eta)
+\end{equation*}
+Звідки ми отримали лінійне неоднорідне диференційне рівняння однієї змінної. Розв'яжемо спочатку однорідне рівняння
+\begin{equation*}
+    \tilde{u}_\eta + \frac{1}{4}\tilde{u} = 0
+    \quad\Rightarrow\quad
+    \ln\tilde{u} = -\frac{1}{4}\eta + \ln C 
+    \quad\Rightarrow\quad
+    \tilde{u} = Ce^{-\eta/4} 
+\end{equation*}
+Варіюєму змінну $C \to C(\eta)$
+\begin{equation*}
+    u = C(\eta)e^{-\eta/4} 
+    \quad\Rightarrow\quad
+    C'e^{-\eta/4} = f(\eta)
+    \quad\Rightarrow\quad
+    C(\eta) = \int f(\eta) e^{\eta/4} \;\mathrm{d}\eta + \gamma
+\end{equation*}
+
+Отже, маємо розв'язок рівняння
+\begin{equation}
+    u(\xi,\eta) = \gamma e^{-\eta/4} + e^{-\eta/4} \cdot \int^\eta f(z) e^{z/4} \;\mathrm{d}z
+\end{equation} 
+
+
+%\end{document}

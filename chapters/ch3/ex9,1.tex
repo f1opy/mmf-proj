@@ -1,0 +1,108 @@
+%\documentclass[a4paper, 14pt]{extreport}
+
+%\usepackage{StyleMMF}
+
+%\setcounter{chapter}{8}
+
+%\begin{document}
+
+%\chapter{Використання загального розв’язку хвильового рівняння у вигляді суперпозиції зустрічних хвиль. Нестаціонарна задача розсіяння.}
+
+\section[Задача №9.1]{9.1}
+
+\textit{Півнескінченна струна (сила натягу $T_0$, швидкість хвиль $v$) з вільним кінцем перебувала у стані рівноваги. Починаючи з моменту часу $t=0$, на її кінець діє у поперечному напрямі задана сила $F(t)$. Знайти розв’язок задачі про вимушені коливання струни у квадратурах, а також знайти поле зміщень у явному вигляді і зобразити графічно форму струни, якщо: а) $F(t) = F_0$, б) $F(t) = F_0 \cos\omega t$, в) $F(t) = F_0 \sin\omega t$\\
+Задача є прикладом так званої задачі про поширення межового режиму: задачі для півнескінченної струни з неоднорідною межовою умовою. Указівка: задача відшукання форми хвилі, створеної таким джерелом, зводиться до диференціального рівняння першого порядку; проблема знаходження сталої інтегрування вирішується, якщо врахувати умову неперервності хвильового поля на передньому фронті хвилі, тобто на межі областей $x > vt$ й $x < vt$.}
+
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+\noindent Формальна постановка задачі:
+\begin{equation} %\label{probcond12}
+    \left\{ \begin{aligned} %%
+            \;&u = u(x,t), \\
+            &u_{tt} = v^2 u_{xx}, \\
+            &0 \leq x < \infty, t \geq 0 \\
+            &u_x(0,t) = F(t)/\beta = f(t),\\
+            &u(x,0) = 0, \, u_t(x,0) = 0.
+    \end{aligned} \right.
+\end{equation}
+
+Шукаємо розв'язок у вигляді:
+\begin{equation}
+    u(x,t) = g(t - x/v) + h(t + x/v)
+\end{equation}
+
+Із початкових умов маємо систему:
+\begin{equation}
+    \left\{ \begin{aligned}
+        \;&u(x,0) = g(-x/v) + h(x/v) = 0,\\
+        &u_t(x,0) = g'(-x/v) + h'(x/v) = 0.
+\end{aligned} \right.
+\end{equation}
+Інтегруємо друге рівняння та розв'язуємо лінійну систему
+\begin{equation*}
+    \begin{gathered}
+        \left\{ \begin{aligned}
+            \;&g(-\xi) + h(\xi) = 0,\\
+            &\int g'(-\xi)\;\mathrm{d}\xi + \int h'(\xi)\;\mathrm{d}\xi = 0;
+        \end{aligned} \right.
+        \quad\Rightarrow\quad
+        \left\{ \begin{aligned}
+            \;&g(-\xi) + h(\xi) = 0,\\
+            &h(\xi) + C_2 - g(-\xi) + C_1 = 0;
+        \end{aligned} \right.
+        \quad\Rightarrow\\
+        \Rightarrow\quad
+        \left\{ \begin{aligned}
+            \;&g(-\xi) + h(\xi) = 0,\\
+            &-g(-\xi) + h(\xi) = 2\widetilde{C};
+        \end{aligned} \right.
+        \quad\Rightarrow\quad
+        \left\{ \begin{aligned}
+            \;&g(-\xi) = -\widetilde{C},\\
+            &h(\xi) = \widetilde{C}.
+        \end{aligned} \right.
+    \end{gathered}
+\end{equation*}
+Обираємо константу інтегрування $\widetilde{C}$ рівною нулю, тоді 
+\begin{equation*}
+    \left\{ \begin{aligned}
+        \;&g(-x/v) = 0,\\
+        &h(x/v) = 0;
+    \end{aligned} \right.
+    \quad\Rightarrow\quad
+    \left\{ \begin{aligned}
+        \;&g(\xi) = 0, \text{ при } \xi < 0,\\
+        &h(\eta)= 0, \text{ при } \eta > 0.
+    \end{aligned} \right.
+\end{equation*}
+
+Отже, $h(t + x/v) = 0$ в нашій задачі, адже $x \geq 0$ та $t > 0$, що фізично означає відсутність хвилі, яка поширюється з нескінченность до краю струни (падаючої хвилі).\\
+Маємо розв'язок у виді біжучої хвилі, яка створюється межовою умовою.
+\begin{equation}
+    u(x,t) = g(t - x/v)
+\end{equation}
+
+З межової умови визначимо розв'язок
+\begin{equation}
+    u_x(0,t) = f(t)
+    \quad\Rightarrow\quad
+    -\frac{1}{v}g'(t) = f(t)
+    \quad\Rightarrow\quad
+    g(t) = - v \int\limits_0^t f(\tau) \;\mathrm{d}\tau
+\end{equation}
+
+Загальний вид розв'язку
+\begin{equation}
+    u(x,t) = - v \int\limits_0^{t-x/v} f(\tau) \;\mathrm{d}\tau
+\end{equation}
+
+Обчислимо розв'язки для визначених межових умов:
+\begin{enumerate}
+    \item[\text{а})] \[u(x,t) = - \frac{vF_0}{\beta} \int\limits_0^{t-x/v}  \;\mathrm{d}\tau = -\frac{vF_0}{\beta} \left(t - \frac{x}{v}\right),\]
+    \item[\text{б})] \[u(x,t) = - \frac{vF_0}{\beta} \int\limits_0^{t-x/v} \sin\omega\tau \;\mathrm{d}\tau = -\frac{vF_0}{\omega\beta} \cos\omega(t - x/v),\]
+    \item[\text{в})] \[u(x,t) = - \frac{vF_0}{\beta} \int\limits_0^{t-x/v} \cos\omega\tau \;\mathrm{d}\tau = \frac{vF_0}{\omega\beta} \sin\omega(t - x/v).\]
+\end{enumerate} 
+
+%\end{document}
