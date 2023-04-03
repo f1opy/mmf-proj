@@ -17,7 +17,7 @@
 \end{center}
 
 \noindent Формальна постановка задачі:
-\begin{equation} %\label{probcond12}
+\begin{equation} \label{cond7,2}
     \left\{ \begin{aligned} 
             \;&u = u(x,t), \\
             &u_{tt} = v^2 u_{xx}, \\
@@ -32,7 +32,7 @@
 \begin{equation}
     u(x,t) = \sum\limits_{n = 0}^\infty T_n(t) X_n(x),
 \end{equation}
-де $X_n(x)$ -- власні функції задачі. Їх визначаємо, розв'язуючи задачу з однорідними межовими умовами.
+де $X_n(x)$ -- власні функції задачі. Їх визначаємо, розв'язуючи задачу Штурма-Ліувілля з однорідними межовими умовами.
 \begin{equation*}
     \begin{gathered}
         \left\{ \begin{aligned} 
@@ -55,7 +55,7 @@
 \end{equation*}
 
 Розкладемо рівняння по власним функціям. Для цього домножимо йього на $X_m / \left\lVert X_m\right\rVert^2$ та проінтегруємо по $x$.
-\begin{equation} \label{series}
+\begin{equation} \label{series-exp7,2}
     \frac{1}{\left\lVert X_m\right\rVert^2} \int\limits_0^l u_{tt} X_m \;\mathrm{d}x = \frac{v^2}{\left\lVert X_m\right\rVert^2} \int\limits_0^l u_{xx} X_m \;\mathrm{d}x
 \end{equation}
 Випишемо окремо перетворення для лівої та правої частини рівняня. Почнемо з лівої
@@ -97,7 +97,7 @@
 \end{equation*}
 тут для $X_m(x)$ дивимось на межові умови задачі Штурма-Ліувілля, а для $u(x,t)$ -- межові умови початкової задачі.
 
-Повертаємося до розкладу рівняння (\ref{series}), збираючи разом результати обчислень для лівої та правої частинами
+Повертаємося до розкладу рівняння (\ref{series-exp7,2}), збираючи разом результати обчислень для лівої та правої частинами
 \begin{equation}
     T_m''(t) = - k_m^2v^2 T_m(t)  - \frac{2v^2 f_0}{l} e^{-\alpha t}, \quad \text{або} \quad T_n''(t) + \omega_n^2 T_n(t) = - \kappa_n \omega_n^2  e^{-\alpha t}
 \end{equation}

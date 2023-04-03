@@ -16,8 +16,8 @@
     \textbf{Розв'язок}
 \end{center}
 Формальна постановка задачі:
-\begin{equation} \label{probcond5}
-    \left\{ \begin{aligned} %%
+\begin{equation} \label{cond3,3}
+    \left\{ \begin{aligned} 
         &\;u = u(x,t), \\
         &\;u_{tt} = v^2 u_{xx}, \\
         &\;0 \leq x \leq l, t \geq 0, \\
@@ -29,10 +29,10 @@
 
 Це задача із заданими початковими умовами (а саме - початковим розподілом зміщення та швидкостей), яка має єдиний розв'язок.
 
-Для початку скористаємося розв'язком задачі 2.1:
+Для початку скористаємося розв'язком (\ref{mode2,1}) задачі №2,1:
 
 \begin{equation}
-    \left\{ \begin{aligned} \label{fullsol2}
+    \left\{ \begin{aligned} \label{mode3,3}
         \;&u_0(x,t) = A_0 + B_0 t, \\
         &u_n(x,t) = \left[A_n\cos(\omega_n t) + B_n\sin(\omega_n t)\right] \cos(k_n x), \\
         &k_n = \frac{\pi n}{l} - \text{ хвильові вектори}, \\
@@ -41,26 +41,25 @@
     \end{aligned}\right.
 \end{equation}
 І запишемо загальний розв'язок:
-\begin{equation} \label{gensol2}
+\begin{equation} \label{gensol3,3}
     u(x,t) = A_0 + B_0 t + \sum^{\infty}_{n=1} \left[A_n\cos(\omega_n t) + B_n\sin(\omega_n t)\right] \cos(k_n x)
 \end{equation}
 Та похідна по часу:
-\begin{equation} \label{dersol2}
+\begin{equation} \label{(sol3,3)_t}
     \begin{aligned}
         u_t(x,t) = B_0 + \sum^{\infty}_{n=1}\left[-A_n\omega_n\sin(\omega_n t) + B_n\omega_n\cos(\omega_n t)\right] \cos(k_n x)  
     \end{aligned}
 \end{equation}
 
-Підставляємо (\ref{gensol2}) у початкові умови (\ref{probcond5}):
+Підставляємо (\ref{gensol3,3}) у початкові умови (\ref{cond3,3}):
 
-\begin{equation} \label{sol-init-pos}
+\begin{equation}
     u(x,0) = \varphi(x) \;\Rightarrow\; A_0 + \sum^{\infty}_{n=1} A_n\cos k_nx = 0
 \end{equation}
 
+Підставляємо (\ref{(sol3,3)_t}) у початкові умови (\ref{cond3,3}):
 
-Підставляємо (\ref{dersol2}) у початкові умови (\ref{probcond5}):
-
-\begin{equation} \label{sol-init-pos}
+\begin{equation}
     u_t(x,0) = \psi(x) \;\Rightarrow\; B_0 + \sum^{\infty}_{n=1} B_n \omega_n \cos k_nx = \nu_0     
 \end{equation}
 

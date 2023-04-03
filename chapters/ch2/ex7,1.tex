@@ -17,8 +17,8 @@
 \end{center}
 
 \noindent Формальна постановка задачі:
-\begin{equation} %\label{probcond12}
-    \left\{ \begin{aligned} %%
+\begin{equation} \label{cond7,1}
+    \left\{ \begin{aligned}
             \;&u = u(x,t), \\
             &u_{tt} = v^2 u_{xx}, \\
             &0 \leq x \leq l, t \geq 0 \\
@@ -28,7 +28,7 @@
 \end{equation}
 
 Шукаємо розв'язок у вигляді:
-\begin{equation} %\label{subst12}
+\begin{equation} \label{subst7,1}
     u(x,t) = w(x,t) + \mathcal{V}(x,t),
 \end{equation}
 де $w(x,t)$ -- задовольняє межовим умовам, а $\mathcal{V}(x,t)$ -- довільна функція.
@@ -67,7 +67,7 @@
     \mathcal{V}_t(x,0) = \alpha f_0  (x-l)
 \end{equation*}
 Отже, отримуємо задачу для $\mathcal{V}(x,t)$ з однорідними межовими умова, але з неоднорідними рівнянням та початковими умовами.
-\begin{equation} \label{new-var-cond}
+\begin{equation} \label{new-cond7,1}
     \left\{ \begin{aligned} %%
             \;&\mathcal{V} = \mathcal{V}(x,t), \\
             &\mathcal{V}_{tt} - v^2 \mathcal{V}_{xx} = -\alpha^2 f_0 e^{-\alpha t} (x-l), \\
@@ -89,10 +89,10 @@
 \begin{equation*}
     \begin{gathered}
         (x-l) = \sum_{n=0}^\infty a_n \cos k_n x\\
-        a_n = \frac{2}{l} \int\limits_0^l (\xi-l) \cos k_n \xi \;\mathrm{d}\xi =\frac{2}{l} \bigg[\overbrace{\frac{\xi}{k_n}\sin k_n\xi \bigg|_0^l}^{=0} - \frac{1}{k_n} \int\limits_0^l \sin k_n\xi \;\mathrm{d}\xi -\\
+        a_n = \frac{2}{l} \int\limits_0^l (\xi-l) \cos k_n\xi \;\mathrm{d}\xi =\frac{2}{l} \bigg[ \overbrace{\frac{\xi}{k_n} \sin k_n\xi \bigg|_0^l}^{=0} - \frac{1}{k_n} \int\limits_0^l \sin k_n\xi \;\mathrm{d}\xi -\\
     \end{gathered}
 \end{equation*}
-\begin{equation} \label{fourier-sum}
+\begin{equation} \label{fourier-sum7,1}
     \begin{gathered}
         -\overbrace{\frac{l}{k_n}\sin k_n\xi \bigg|_0^l}^{=0}\bigg] = -\frac{2}{k_n l} \int\limits_0^l \sin k_n\xi \;\mathrm{d}\xi = \frac{2}{k_n^2 l} \cos k_n\xi \bigg|_0^l = -\frac{2}{k_n^2 l} 
         \;\Rightarrow \\
@@ -128,11 +128,11 @@
     \gamma = \frac{\kappa_n\alpha^2}{(\omega_n^2 + \alpha^2)}
 \end{equation*}
 Отже, загальний розв'язок рівняння 
-\begin{equation} \label{gen-time-sol}
+\begin{equation} \label{gen-time-sol7,1}
     \widetilde{\mathcal{V}}_n(t) = A_n \sin\omega_nt + B_n \cos\omega_nt + \frac{\kappa_n\alpha^2}{(\omega_n^2 + \alpha^2)} e^{-\alpha t}
 \end{equation}  
 
-Ми вже розкладали неоднорідність в рівнянні по власним функціям системи, таким же шляхом треба розкласти початкові умови задачі (\ref{new-var-cond}). Нам треба знову ж розкласти функцію $x - l$, тому можемо скористатися готовим результатом (\ref{fourier-sum}).
+Ми вже розкладали неоднорідність в рівнянні по власним функціям системи, таким же шляхом треба розкласти початкові умови задачі (\ref{new-cond7,1}). Нам треба знову ж розкласти функцію $x - l$, тому можемо скористатися готовим результатом (\ref{fourier-sum7,1}).
 \begin{equation}
     \begin{aligned} %%
         &\mathcal{V}(x,0) = - f_0 (x-l),\\
@@ -144,7 +144,7 @@
         &\frac{\mathrm{d}\;}{\mathrm{d}t}\widetilde{\mathcal{V}}_n(0) = -2\alpha f_0/lk_n^2 = -\kappa_n\alpha.
     \end{aligned} 
 \end{equation}
-З отриманих початковими умовами для $n$-их коефіцієнтів розкладу в ряд за власними функціями системи визначемо константи $A_n$ та $B_n$ в розв'язку (\ref{gen-time-sol}). 
+З отриманих початковими умовами для $n$-их коефіцієнтів розкладу в ряд за власними функціями системи визначемо константи $A_n$ та $B_n$ в розв'язку (\ref{gen-time-sol7,1}). 
 \begin{equation*}
     \widetilde{\mathcal{V}}_n(0) = B_n + \frac{\kappa_n\alpha^2}{(\omega_n^2 + \alpha^2)} = \kappa_n
     \;\Rightarrow\;
@@ -156,7 +156,7 @@
     A_n = -\frac{\alpha\omega_n}{\omega_n^2 + \alpha^2} \kappa_n
 \end{equation*}
 Підставляємо в розв'язок
-\begin{equation} \label{unic-time-sol}
+\begin{equation} \label{unic-time-sol7,1}
     \widetilde{\mathcal{V}}_n(t) = \frac{\kappa_n}{(\omega_n^2 + \alpha^2)} \left(\omega_n^2\cos\omega_nt - \alpha\omega_n\sin\omega_nt +  \alpha^2e^{-\alpha t}\right)
 \end{equation}  
 Тепер запишемо вид функції $\mathcal{V}(x,t)$
@@ -164,7 +164,7 @@
     \mathcal{V}(x,t) = \sum_{n=0}^\infty \frac{\kappa_n}{(\omega_n^2 + \alpha^2)} \left(\omega_n^2\cos\omega_nt - \alpha\omega_n\sin\omega_nt +  \alpha^2e^{-\alpha t}\right) \cos k_n x
 \end{equation}
 І повний розв'язок задачі
-\begin{equation}
+\begin{equation} \label{Cauchy-sol7,1}
     u(x,t) = f_0 e^{-\alpha t} (x - l) +  \sum_{n=0}^\infty \frac{\kappa_n \cos k_n x}{(\omega_n^2 + \alpha^2)} \left(\omega_n^2\cos\omega_nt - \alpha\omega_n\sin\omega_nt +  \alpha^2e^{-\alpha t}\right) 
 \end{equation}
 

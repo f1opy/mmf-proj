@@ -24,7 +24,7 @@
 \end{center}
 
 \noindent Формальна постановка задачі:
-\begin{equation} %\label{probcond10}
+\begin{equation} \label{cond5,3}
     \left\{ \begin{aligned} %%
             \;&u = u(x,t), \\
             &\tau u_t=L^2u_{xx}-u, \\
@@ -41,17 +41,15 @@
 L^2\frac{d^2f}{dx^2} - f = 0
 \end{equation*}
 
-Звідси маємо $u_{\text{неодн}}=f(x)=C_1\sinh{(\frac{x}{L})}+C_2\cosh{(\frac{x}{L})}$. Підставляючи отриманий розв'язок у межову умову на лівому боці, отримуємо, що $C_2=0$. Підставляючи його тепер в умову на правому боці,  $C_1=\frac{I_0L}{\cosh{(\frac{l}{L})}}$. Остаточно маємо:
-
+Звідси маємо $u_{\text{неодн}} = f(x) = C_1\sinh(x/L) + C_2\cosh(x/L)$. Підставляючи отриманий розв'язок у межові умови, отримуємо \[C_1 = \frac{I_0L}{\cosh(l/L)}, \quad C_2 = 0.\] Остаточно маємо:
 \begin{equation}
-u_{\text{неодн}}=\frac{I_0L\sinh{(\frac{x}{L})}}{\cosh{(\frac{l}{L})}}
+u_{\text{неодн}}=\frac{I_0L\sinh(x/L)}{\cosh(l/L)}
 \end{equation}
 
-Далі шукаємо поний розв'язок у вигляді $u=u_{\text{неодн}}+u_{\text{одн}}$. Підставивши $u$ в задачу (5.1) i отримаємо однорідну задачу на $u_{\text{одн}}$:
-
+Далі шукаємо поний розв'язок у вигляді $u = u_{\text{неодн}} + u_{\text{одн}}$. Підставивши $u$ в задачу (\ref{cond5,3}) i отримаємо однорідну задачу на $u_{\text{одн}}$:
 
 \begin{equation*} 
-    \left\{ \begin{aligned} %%
+    \left\{ \begin{aligned}
             \;&u_{\text{одн}} = u_{\text{одн}}(x,t), \\
             &\tau (u_{\text{одн}})_t=L^2(u_{\text{одн}})_{xx}-u_{\text{одн}}, \\
             &u_{\text{одн}}(x,0)=-\frac{I_0L\sinh{(\frac{x}{L})}}{\cosh{(\frac{l}{L})}},\\
@@ -59,37 +57,36 @@ u_{\text{неодн}}=\frac{I_0L\sinh{(\frac{x}{L})}}{\cosh{(\frac{l}{L})}}
             &(u_{\text{одн}})_x(l,t) = 0. 
     \end{aligned} \right.
 \end{equation*}
-\\
 
 Перш ніж розділити змінні, спростимо рівняння класичним прийомом, який непогано було б запам'ятати. Якщо ми маємо рівння типу 
 \begin{equation}
-U_t=DU_{xx}+aU    
+U_t = D U_{xx} + aU    
 \end{equation}
-з однорідними межовими умовами, то підстановка $U = u\exp{(at)}$ перетворить його рівняння на $u_t=Du_{xx}$, а межові та початкові умови для $u$ будуть такими самими як були на $U$.\\\\
+з однорідними межовими умовами, то підстановка $U = u\exp(at)$ перетворить його рівняння на $u_t = D u_{xx}$, а межові та початкові умови для $u$ будуть такими самими як були на $U$.\\
 
-Тепер використаємо цей прийом. Підставимо $u_{\text{одн}} = \tilde{u}\exp{(-\frac{t}{\tau})}$ та отримаэмо задачу на $\tilde{u}$:
+Тепер використаємо цей прийом. Підставимо $u_{\text{одн}} = \tilde{u}\exp(-\frac{t}{\tau})$ та отримаэмо задачу на $\tilde{u}$:
 
-\begin{equation} \label{probcond8}
-    \left\{ \begin{aligned} %%
+\begin{equation} \label{new-cond5,3}
+    \left\{ \begin{aligned}
             \;&\tilde{u} = \tilde{u}(x,t), \\
             &\tilde{u}_t = D \tilde{u}_{xx}, \\
             &0 \leq x \leq l, t \geq 0, \\
-            &\tilde{u}(x,0)=-\frac{I_0L\sinh{(\frac{x}{L})}}{\cosh{(\frac{l}{L})}},\\
+            &\tilde{u}(x,0) = -\frac{I_0L \sinh(x/L)}{\cosh(l/L)},\\
             &\tilde{u}(0,t) = 0, \\
             &\tilde{u}_x(l,t) = 0. 
     \end{aligned} \right.
 \end{equation}
 \\
 
-А такі задачі ми вже добре вміємо розв'язувати. Потрібно знайти розв'язки %(\ref{probcond8})
+А такі задачі ми вже добре вміємо розв'язувати. Потрібно знайти розв'язки (\ref{new-cond5,3})
 наступного вигляду:
-\begin{equation} \label{subst2}
+\begin{equation} \label{subst5,3}
     \tilde{u}(x,t) = X(x) \cdot T(t) \neq 0 
 \end{equation}
 
 Після підстановки відокремлення змінних (див. задачу 1.1) маємо:
-\begin{equation} \label{managedvar}
-    \frac{\dot{T}}{DT} = \frac{X^{\prime\prime}}{X} = - \lambda
+\begin{equation}
+    \frac{T'}{DT} = \frac{X^{\prime\prime}}{X} = -\lambda
 \end{equation}
 
 Отримуємо задачу Штурма-Ліувіля на $X(x)$ яка розв'язана у домашній задачі №1,2 з посібника. Випишемо результат:
@@ -101,9 +98,8 @@ U_t=DU_{xx}+aU
             &X_n(x) = \sin k_nx - \text{власнi функції}.
         \end{aligned} \right.
     \end{equation}
-\\
+
 \textit{Оскільки всі власні числа додатні, то після підстановки $\tilde{u}$ в $u_{\text{одн}}$ показники часових експонент не зможуть скомпенсуватися, адже будуть одного знаку, отже $u_{\text{одн}}$ є залежним від часу і виділити незалежну частину неможливо. А це означає, що знайдене раніше $u_{\text{неодн}}$ і є шуканим стаціонарним розв'язком задачі.}
-\\
 
 Тепер розв'яжемо рівняння на $T_n(t)$:
 \begin{equation} 
@@ -115,13 +111,13 @@ U_t=DU_{xx}+aU
 \end{equation}
 
 Збираючи по отриманим функціям $T(t)$ і $X(x)$ власні функції задачі й просумувавши їх, отримуємо загальний розв'язок:
-\begin{equation} \label{sol}
-    \tilde{u}(x,t)=\sum_{n=1}^{\infty} C_n\exp{\left(-\frac t{\tau_n}\right)}\sin\left(k_n x\right)
+\begin{equation} \label{mode5,3}
+    \tilde{u}(x,t) = \sum_{n=1}^{\infty} C_n\exp{\left(-\frac t{\tau_n}\right)}\sin\left(k_n x\right)
 \end{equation}
 
-Тепер підставимо (\ref{sol}) у початкові умови:
-\begin{equation} \label{0}
-    \tilde{u}(x,0)=\sum_{n=1}^{\infty} C_n\sin\left(k_n x\right)=-\frac{I_0L\sinh{(\frac{x}{L})}}{\cosh{(\frac{l}{L})}}
+Тепер підставимо (\ref{mode5,3}) у початкові умови:
+\begin{equation} \label{init-con5,3}
+    \tilde{u}(x,0) = \sum_{n=1}^{\infty} C_n\sin\left(k_n x\right) = -\frac{I_0L\sinh{(\frac{x}{L})}}{\cosh{(\frac{l}{L})}}
 \end{equation}
 
 Ліва сторона рівності є розкладом Фур'є правої сторони по синусах. Знайдемо коефіцієнти цього розкладу:
@@ -134,7 +130,7 @@ U_t=DU_{xx}+aU
     \end{aligned}
 \end{equation*}
 
-Підставляючи отримані коефіцієнти у (\ref{0}), а його у $u_{\text{одн}}$ і сумуючи з $u_{\text{неодн}}$, отримуємо відповідь:
+Підставляючи отримані коефіцієнти у (\ref{init-con5,3}), а його у $u_{\text{одн}}$ і сумуючи з $u_{\text{неодн}}$, отримуємо відповідь:
 \begin{equation*} 
     %\begin{aligned}
         u(x,t)=\frac{I_0L\sinh{(\frac{x}{L})}}{\cosh{(\frac{l}{L})}}+\frac{2L^2I_0}{l}\sum_{n=1}^{\infty}\frac{L^2I_0(-1)^n}{1+L^2\lambda_n}\exp{\left(-\left(\frac t{\tau_n}+\frac{t}{\tau}\right) \right)}\sin\left(k_n x\right)

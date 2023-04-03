@@ -15,7 +15,7 @@
 \end{center}
 
 \noindent Формальна постановка задачі:
-\begin{equation} \label{probcond8}
+\begin{equation} \label{cond4,4}
     \left\{ \begin{aligned} %%
             \;&u = u(x,t), \\
             &u_t = D u_{xx}, \\
@@ -25,9 +25,9 @@
     \end{aligned} \right.
 \end{equation}
 
-Виконуючи розділення змінних ми отримаємо дві попереднбо розв'язані задачі. Задачу Штурма-Ліувілля з задачі №2.1 та часове диференціальне рівняня з задачі №4.2. Отже, загальний розв'язок можна одразу записати комбінуюці відомі.
+Виконуючи розділення змінних ми отримаємо дві вже розв'язані задачі. Задачу Штурма-Ліувілля (\ref{sepvar2,1}) з задачі №2.1 та часове диференціальне рівняня (\ref{time-eq4,2}) з задачі №4.2. Отже, загальний розв'язок можна одразу записати комбінуюці відомі.
 
-\begin{equation} \label{gen-sol8}
+\begin{equation} \label{gensol4,4}
     u(x,t) = C_0 + \sum_{n=1}^{\infty}C_n e^{-t/\tau_n} \cos k_n x,
 \end{equation}
 \begin{equation*}
@@ -50,7 +50,7 @@
         = (-1)^{n+1} \cdot \frac{4\pi}{4k_n^2l^2 - \pi^2} = \frac{4}{\pi} \cdot \frac{(-1)^{n+1}}{4n^2 - 1}
     \end{gathered}
 \end{equation*}
-Тепер підставимо (\ref{gen-sol8}) в початкову умову і отримаємо:
+Тепер підставимо (\ref{gensol4,4}) в початкову умову (\ref{cond4,4}) і отримаємо:
 \begin{equation}
     \begin{gathered}
         u(x,0) = C_0 + \sum_{n=1}^{\infty}C_n \cos k_n x = T_1 \cos(\pi x/2l) + T_2 \cos(2\pi x/l) =\\

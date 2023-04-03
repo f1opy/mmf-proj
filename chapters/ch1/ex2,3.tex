@@ -18,7 +18,7 @@
     \textbf{Розв'язок}
 \end{center}
 Формальна постановка задачі:
-\begin{equation} \label{probcond3}
+\begin{equation} \label{cond2,3}
     \left\{ \begin{aligned} %%
         &\;u = u(x,t), \\
         &\;u_{tt} = v^2 u_{xx}, \\
@@ -36,9 +36,9 @@
     \end{aligned} \right.
 \end{equation}
 
-Це задача із заданими початковими умовами, яка має єдиний розв'язок. Щоб розв’язати її, необiдно роздiлити змiннi, знайти власнi функцiї i власнi значення задачi Штурма-Лiувiлля i знайти власнi моди. Це було зроблено у  задачі №1.1 попередньго заняття (\ref{sol1}). Результатом є нескiнченний набiр власних мод: 
+Це задача із заданими початковими умовами, яка має єдиний розв'язок. Щоб розв’язати її, необiдно роздiлити змiннi, знайти власнi функцiї та власнi значення задачi Штурма-Лiувiлля i знайти власнi моди. Це було зроблено у  задачі №1.1 попередньго заняття (\ref{mode1,1}). Результатом є нескiнченний набiр власних мод: 
 \begin{equation}
-    \left\{ \begin{aligned} \label{fullsol}
+    \left\{ \begin{aligned} \label{mode2,3}
         \;&u_n(x,t) = \left[A_n\cos(\omega_n t) + B_n\sin(\omega_n t)\right] \sin(k_n x), \\
         &k_n = \frac{\pi n}{l}, \, n = 1, 2,\ldots\\
         &\omega_n = vk_n = \frac{v \pi n}{l} - \text{ власні частоти}.
@@ -46,15 +46,15 @@
 \end{equation}
 
 Легко переконатися, що жодна окрема власна мода не може задовольнити початковi умови задачi (чому?). Щоб задовольнити початковi умови, необхiдно записати так званий загальний або формальний розв’язок задачi, який є суперпозицiєю всiх мод:
-\begin{equation} \label{gensol}
+\begin{equation} \label{gensol2,3}
     u(x,t) = \sum^{\infty}_{n=1} u_n(x,t) = \sum^{\infty}_{n=1} \left[A_n\cos(\omega_n t) + B_n\sin(\omega_n t)\right] \sin(k_n x)
 \end{equation}
-Поява знака суми у цьому виразi означає, що його права частина бiльше не залежить вiд $n$. Коли коефiцiєнти $A_n$ i $B_n$ будуть знайденi, вiн стане розв’язком (єдиним!) вихiдної задачi. Коефiцiєнти загального розв’язку знаходимо iз початкових умов. Підставляємо (\ref{gensol}) у початкові умови (\ref{probcond3}):
-\begin{equation} \label{sol-init-pos}
+Поява знака суми у цьому виразi означає, що його права частина бiльше не залежить вiд $n$. Коли коефiцiєнти $A_n$ i $B_n$ будуть знайденi, вiн стане розв’язком (єдиним!) вихiдної задачi. Коефiцiєнти загального розв’язку знаходимо iз початкових умов. Підставляємо (\ref{gensol2,3}) у початкові умови (\ref{cond2,3}):
+\begin{equation} \label{init-pos2,3}
     u(x,0) = \varphi(x) \;\Rightarrow\; \sum^{\infty}_{n=1} A_n\sin(k_n x) = \varphi(x)
 \end{equation}
 
-\begin{equation} \label{sol-init-vel}
+\begin{equation} \label{init-vel2,3}
     \begin{aligned}
         u_t(x,0) &= \psi(x)
         \;\Rightarrow\\
@@ -63,7 +63,7 @@
     \end{aligned}
 \end{equation}
 Отже, ми одержали дві умови, для визначення $A_n$ і $B_n$, вiдповiдно. Далi необхiдно скористатися ортогональнiстю власних функцiй задачi Штурма-Лiувiлля (див. Конспект лекцiй, §4). У загальному виглядi iнтеграл ортогональностi власних функцiй має вигляд:
-\begin{equation} \label{orth}
+\begin{equation} \label{orth2,3}
     \int_0^l X_n(x) \cdot X_m(x) \,\mathrm{d}x = ||X_n||^2\delta_{n,m},
 \end{equation}
 де $||X_n||$ -- норма власної функції. Переконаємося, що власнi функцiї дiйсно ортогональнi, i обчислимо квадрат норми.
@@ -86,8 +86,8 @@
     \end{equation*}
 \end{enumerate}
 
-Щоб одержати правильні вирази для коефіцієнтів загального розв'язку, застосовуємо формальну процедуру, описану у §4 Конспекту лекцій. Доможуємо кожну з одержаних рівностей (\ref{sol-init-pos}) та (\ref{sol-init-vel}) на $m$-ту власну функції $\sin(k_m x)$ та інтегруємо від $0$ до $l$. 
-\begin{subequations} \label{fourier-coefs}
+Щоб одержати правильні вирази для коефіцієнтів загального розв'язку, застосовуємо формальну процедуру, описану у §4 Конспекту лекцій. Доможуємо кожну з одержаних рівностей (\ref{init-pos2,3}) та (\ref{init-vel2,3}) на $m$-ту власну функції $\sin(k_m x)$ та інтегруємо від $0$ до $l$. 
+\begin{subequations} \label{fourier-coefs2,3}
     \begin{gather}
         \begin{aligned}
             &\int\limits_0^l \varphi(x) \sin(k_m x) \,\mathrm{d}x = \sum^{\infty}_{n=1} A_n \int\limits_0^l \sin(k_n x) \sin(k_m x) \,\mathrm{d}x =\\
@@ -103,7 +103,7 @@
         \end{aligned}
     \end{gather}
 \end{subequations} 
-Обчислюємо отримані інтеграли (\ref{fourier-coefs}).
+Обчислюємо отримані інтеграли (\ref{fourier-coefs2,3}).
 \begin{equation*}
     \begin{aligned}
         &A_n = \frac{2}{l} \int\limits_0^l \varphi(x) \sin(k_n x) \,\mathrm{d}x = \frac{2}{l} \int\limits_0^l \frac{hx}{l} \sin(k_n x) \,\mathrm{d}x =\\
@@ -118,8 +118,8 @@
         =&\ \left.\frac{2\nu_0}{k_n\omega_n l} \cos(k_n x)\right|_l^0 = \frac{2\nu_0}{l} \frac{1 - (-1)^n}{k_n\omega_n}
     \end{aligned}
 \end{equation*}
-Підставляємо визначені константи в (\ref{gensol}) і одержуємо відповідь:
-\begin{equation} \label{sol3}
+Підставляємо визначені константи в (\ref{gensol2,3}) і одержуємо відповідь:
+\begin{equation} \label{Cauchy-sol2,3}
     u(x,t) = \frac{2}{l}\sum^{\infty}_{n=1} \left[\nu_0 (1 - (-1)^n)\frac{\sin(\omega_n t)}{\omega_n} - h(-1)^n\cos(\omega_n t)\right] \frac{\sin(k_n x)}{k_n}
 \end{equation}
 

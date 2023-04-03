@@ -18,11 +18,10 @@
     \large{\textbf{Розв'язок}}
 \end{center}
 
-\noindent Спершу розберемося з розмірностями. Під розподіленою силою слід розуміти величину $\vec{f}=\frac{\Delta \vec{F}}{\Delta m} = \frac{d\vec{F}}{dV} \nu$, де $\nu =\frac 1\rho$ - питомий об'єм.
-\\
-\\
+\noindent Спершу розберемося з розмірностями. Під розподіленою силою слід розуміти величину $\vec{f}=\frac{\Delta \vec{F}}{\Delta m} = \frac{d\vec{F}}{dV} \nu$, де $\nu =\frac 1\rho$ - питомий об'єм. 
+
 \noindent Формальна постановка задачі:
-\begin{equation} \label{sweat}
+\begin{equation} \label{cond6,1}
     \left\{ \begin{aligned} %%
             \;&u = u(x,t), \\
             &0 \leq x \leq l, t \geq 0, \\
@@ -35,11 +34,10 @@
             &u_x(l,t) =0 . 
     \end{aligned} \right.
 \end{equation}
-\\
 
 Виділимо складову розв'язку $\tilde{u}$, яка відповідає вимушеним коливанням. Шукатимемо її у формі $\tilde{u}(x,t) = \widetilde{X}(x) \cos\omega t$. Після підстановки отримуємо наступну задачу (нам не принципово, щоб вона задовільняла ще й початкові умови):
-\begin{equation} \label{probcond8}
-    \left\{ \begin{aligned} %%
+\begin{equation} 
+    \left\{ \begin{aligned} 
         &v^2\widetilde{X}'' + \omega^2\widetilde{X} + f(x) = 0,\\
         &\widetilde{X}(0)=0,\\
         &\widetilde{X}'(l)=0.
@@ -51,61 +49,61 @@
 \begin{enumerate} 
   \item При $x \neq s$, вона має задовільняти однорідній частині рівняння, тобто 
   \begin{equation*}
-    v^2G''+\omega^2G=0.    
+    v^2 G'' + \omega^2G = 0.    
   \end{equation*}
   Тоді, при вказаних вище умовах, маємо для кожної з областей $(x<s) \;\;\text{і} \;\;(x>s)$:
   \begin{equation*}
-    G(x,s)=C_i(s)\cos\left(\frac{\omega x}{v}\right)+C_j(s)\sin\left(\frac{\omega x}{v}\right),    
+    G(x,s) = C_i(s) \cos\left(\frac{\omega x}{v}\right) + C_j(s) \sin\left(\frac{\omega x}{v}\right),    
   \end{equation*}
   \begin{equation*} 
-    \left\{ \begin{aligned} %%
-            & i=1,\; j=2,\;\; x<s;\\
-            & i=3,\; j=4,\;\; x>s.
+    \left\{ \begin{aligned}
+            & i=1,\, j=2,\, x<s;\\
+            & i=3,\, j=4,\, x>s.
     \end{aligned} \right.
 \end{equation*}
 
   \item Вона має задовільняти крайовим умовам.
   \begin{equation*}
-    G(x,s)=C_2(s)\sin\left(\frac{\omega x}{v}\right),\;\;x<s 
+    G(x,s) = C_2(s) \sin\left(\frac{\omega x}{v}\right), \, x<s 
   \end{equation*}
   \begin{equation*}
-    G(x,s)=C_3(s)\left(\cos\left(\frac{\omega x}{v}\right)+\sin\left(\frac{\omega x}{v}\right)\tan\left(\frac{\omega l}{v}\right)\right),\;\;x>s 
+    G(x,s) = C_3(s) \left[\cos\left(\frac{\omega x}{v}\right) + \sin\left(\frac{\omega x}{v}\right) \tan\left(\frac{\omega l}{v}\right)\right], \, x>s 
   \end{equation*}
   
   \item При $x=s$ вона неперервна по $x$, а її похідна має скачок, що дорівнює оберненій величині до коефіцієнта при другій похідній та залежить від $s$, замість $x$. У нашому випадку цей скачок дорівнює $\frac{1}{v^2}$.
   \begin{equation*}
-    C_2(s)\sin\left(\frac{\omega s}{v}\right)=C_3(s)\left(\cos\left(\frac{\omega s}{v}\right)+\sin\left(\frac{\omega s}{v}\right)\tan\left(\frac{\omega l}{v}\right)\right) 
+    C_2(s) \sin\left(\frac{\omega s}{v}\right) = C_3(s) \left[\cos\left(\frac{\omega s}{v}\right) + \sin\left(\frac{\omega s}{v}\right) \tan\left(\frac{\omega l}{v}\right)\right] 
   \end{equation*}
+
   \begin{equation*}
-    C_2(s)\cos\left(\frac{\omega s}{v}\right)+\frac{1}{v\omega}=C_3(s)\left(\cos\left(\frac{\omega s}{v}\right)\tan\left(\frac{\omega l}{v}\right)-\sin\left(\frac{\omega s}{v}\right)\right)
+    C_2(s) \cos\left(\frac{\omega s}{v}\right) + \frac{1}{v\omega} = C_3(s) \left[\cos\left(\frac{\omega s}{v}\right) \tan\left(\frac{\omega l}{v}\right) - \sin\left(\frac{\omega s}{v}\right)\right]
   \end{equation*}
   Після спрощень отримуємо:
   \begin{equation*}
-    C_3=-\frac{\sin\left(\frac{\omega s}{v}\right)}{v\omega}
+    C_3 = -\frac{\sin\left(\frac{\omega s}{v}\right)}{v\omega}
   \end{equation*}
   \begin{equation*}
-    C_2=-\frac{\cos\left(\frac{\omega (s-l)}{v}\right)}{v\omega\cos\left(\frac{\omega l}{v}\right)}
+    C_2 = -\frac{\cos\left(\frac{\omega(s-l)}{v}\right)}{v\omega \cos\left(\frac{\omega l}{v}\right)}
   \end{equation*}
   \begin{equation*}
-    G(x,s)=-\frac{\cos\left(\frac{\omega (s-l)}{v}\right)}{v\omega\cos\left(\frac{\omega l}{v}\right)}\sin\left(\frac{\omega x}{v}\right),\;\;x<s 
+    G(x,s) = -\frac{\cos\left(\frac{\omega(s-l)}{v}\right)}{v\omega\cos\left(\frac{\omega l}{v}\right)} \sin\left(\frac{\omega x}{v}\right), \, x<s 
   \end{equation*}
   \begin{equation*}
-    G(x,s)=-\frac{\cos\left(\frac{\omega (x-l)}{v}\right)}{v\omega\cos\left(\frac{\omega l}{v}\right)}\sin\left(\frac{\omega s}{v}\right),\;\;x>s 
+    G(x,s) = -\frac{\cos\left(\frac{\omega(x-l)}{v}\right)}{v\omega\cos\left(\frac{\omega l}{v}\right)} \sin\left(\frac{\omega s}{v}\right), \, x>s 
   \end{equation*}
-
 \end{enumerate}
 
 Звідси отримуємо просторову складову, що відповідає усталеним коливанням, для загальної функції $f$:
-\begin{equation} \label{tired}
-    \tilde{u} = \int_0^x\frac{\cos\left(\frac{\omega (x-l)}{v}\right)\sin\left(\frac{\omega s}{v}\right) f(s)}{v\omega\cos\left(\frac{\omega l}{v}\right)}ds+ \int_x^l\frac{\cos\left(\frac{\omega (s-l)}{v}\right)\sin\left(\frac{\omega x}{v}\right) f(s)}{v\omega\cos\left(\frac{\omega l}{v}\right)}ds
+\begin{equation} \label{Green-sol}
+    \tilde{u} = \int\limits_0^x \frac{\cos\left(\frac{\omega(x-l)}{v}\right) \sin\left(\frac{\omega s}{v}\right) f(s)}{v\omega\cos\left(\frac{\omega l}{v}\right)} \; \mathrm{d}s + \int\limits_x^l \frac{\cos\left(\frac{\omega (s-l)}{v}\right)\sin\left(\frac{\omega x}{v}\right) f(s)}{v\omega\cos\left(\frac{\omega l}{v}\right)} \; \mathrm{d}s
 \end{equation}
 
-Підставивши у (\ref{tired}) окремий випадок і виконавши інтегрування, отримаємо:
+Підставивши у (\ref{Green-sol}) окремий випадок і виконавши інтегрування, отримаємо:
 \begin{equation}
     \tilde{u} = \frac {f_0\cos(\omega t)}{\omega^2}\left(\frac{\cos\left(\frac{\omega (x-l)}{v}\right)}{\cos\left(\frac{\omega l}{v}\right)}-1\right)
 \end{equation}
 
-Повний розв'язок є комбінацією однорідної $u_0$ і вимушеної $\tilde{u}$ частини: $u = u_0 + \tilde{u}$. Задача на $u_0$ отримується підстановкою цієї комбінації у (\ref{sweat}) і виглядає наступним чином: 
+Повний розв'язок є комбінацією однорідної $u_0$ і вимушеної $\tilde{u}$ частини: $u = u_0 + \tilde{u}$. Задача на $u_0$ отримується підстановкою цієї комбінації у (\ref{cond6,1}) і виглядає наступним чином: 
 \begin{equation} 
     \left\{ \begin{aligned} %%
             \;&u_0 = u_0(x,t), \\
@@ -120,7 +118,7 @@
 Маємо просту задачу на хвильове рівняння з початковими умовами. Пошук власних мод для таких крайових умов вже виконаний у домашній задачі №1,2. Випишемо результат:
 
 \begin{equation*} 
-    \left\{ \begin{aligned} %%
+    \left\{ \begin{aligned}
             \;&\lambda_n = \frac{\pi^2 (2n-1)^2}{4l^2} - \text{власнi числа},\\
             &k_n = \frac{\pi (2n-1)}{2l} - \text{власнi хвильові вектори},\\
             &\omega_n=vk_n - \text{власнi частоти},\\
@@ -129,13 +127,13 @@
     \end{aligned} \right.
 \end{equation*}
 
-Одразу можемо побачити, що оскільки початковий розподіл швидкостей нульовий, то $\forall n \in \mathbb{N}, A_n=0$. Тоді однорідна частина розв'язку матиме вигляд:
+Одразу можемо побачити, що оскільки початковий розподіл швидкостей нульовий, то $\forall n \in \mathbb{N}, A_n = 0$. Тоді однорідна частина розв'язку матиме вигляд:
 
-\begin{equation} \label{nosleep}
+\begin{equation} \label{hom-modes6,1}
     u = \sum_{n=1}^\infty B_n\cos\omega_nt\sin k_nx
 \end{equation}
 
-Залишається підставити (\ref{nosleep}) в умову на початкове зміщення:
+Залишається підставити (\ref{hom-modes6,1}) в умову на початкове зміщення:
 
 \begin{equation} 
     u_0(x,0) = \sum_{n=1}^\infty B_n\sin k_nx = -\tilde{u} = \frac{f_0}{\omega^2}\left(1 - \frac{\cos\left(\frac{\omega (x-l)}{v}\right)}{\cos\left(\frac{\omega l}{v}\right)}\right)
@@ -144,21 +142,21 @@
 Коефіцієнти $B_n$ для просторового розподілу сили загального вигляду знаходяться наступним чином:
 
 \begin{equation} 
-    B_n = -\frac 2l \int\limits_0^l \tilde{u} \sin k_nx \;dx
+    B_n = -\frac{2}{l} \int\limits_0^l \tilde{u} \sin k_nx \;\mathrm{d}x
 \end{equation}
 
 І після всіх підстановок загальна задача буде розв'язана. Знайдемо ці коефіцієнти для окремого випадку:
 
 \begin{equation} 
     \begin{aligned}
-        &B_n = \frac {2f_0}{l\omega^2} \int_0^l\left(1-\frac{\cos\left(\frac{\omega (x-l)}{v}\right)}{\cos\left(\frac{\omega l}{v}\right)}\right)\sin(k_nx)dx=\frac {2f_0}{l\omega^2}\left(\frac{1}{k_n}-\frac{k_n}{k_n^2-\left(\frac \omega{v}\right)^2}\right)=\\
-        &=-\frac{2f_0}{lk_n\left(\omega_n^2-\omega^2\right)}
+        &B_n = \frac{2f_0}{l\omega^2} \int\limits_0^l \left(1 - \frac{\cos\left(\frac{\omega(x-l)}{v}\right)}{\cos\left(\frac{\omega l}{v}\right)}\right)\sin(k_nx)dx = \frac{2f_0}{l\omega^2} \left(\frac{1}{k_n} - \frac{k_n}{k_n^2 - \left(\frac{\omega}{v}\right)^2}\right)=\\
+        &= -\frac{2f_0}{lk_n \left(\omega_n^2 - \omega^2\right)}
     \end{aligned}    
 \end{equation}
 
 Повний розв'язок задачі матиме вигляд:
 
-\begin{equation} \label{nosleep}
+\begin{equation}
     u = \tilde{u}\cos{\omega t} + \sum_{n=1}^\infty B_n\cos\omega_nt\sin k_nx
 \end{equation}
 
@@ -184,6 +182,6 @@
     u = \frac{f_0\left( 2xl-x^2\right)}{v^2} - \sum_{n=1}^\infty \frac{2f_0}{lk_n\omega_n^2}\cos(\omega_n t)\sin(k_n x)
 \end{equation}
 
-Що повністю відповідає розв'язку (\ref{gray}) задачі  №5,1.
+Що повністю відповідає розв'язку (\ref{Cauchy-sol5,1}) задачі  №5,1.
 
 %\end{document}

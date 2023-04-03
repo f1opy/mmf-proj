@@ -15,7 +15,7 @@
     \textbf{Розв'язок}
 \end{center}
 Формальна постановка задачі:
-\begin{equation} \label{probcond4}
+\begin{equation} \label{cond3,1}
     \left\{ \begin{aligned} %%
         &\;u = u(x,t), \\
         &\;u_{tt} = v^2 u_{xx}, \\
@@ -48,27 +48,27 @@
 
 І запишемо загальний розв'язок:
 
-\begin{equation} \label{gensol}
+\begin{equation} \label{gensol3,1}
     u(x,t) = \sum^{\infty}_{n=0} \left[A_n\cos(\omega_n t) + B_n\sin(\omega_n t)\right] \sin(k_n x)
 \end{equation}
 
-\begin{equation} \label{dersol}
+\begin{equation} \label{(sol3,1)_t}
     \begin{aligned}
         u_t(x,t) &= 
    \sum^{\infty}_{n=0}\left[-A_n\omega_n\sin(\omega_n t) + B_n\omega_n\cos(\omega_n t)\right] \sin(k_n x)  
     \end{aligned}
 \end{equation}
 
-Підставляємо (\ref{gensol}) у початкові умови (\ref{probcond4}):
+Підставляємо (\ref{gensol3,1}) у початкові умови (\ref{cond3,1}):
 
-\begin{equation} \label{sol-init-pos}
+\begin{equation}
     u(x,0) = \varphi(x) \;\Rightarrow\; \sum^{\infty}_{n=0} A_n\sin\left((n + \frac{1}{2}) \frac{\pi x}{l} \right) = h \sin \left( \frac{3 \pi x}{2l} \right)
 \end{equation}
 
 
-Підставляємо (\ref{dergensol31}) у початкові умови (\ref{probcond4}):
+Підставляємо (\ref{(sol3,1)_t}) у початкові умови (\ref{cond3,1}):
 
-\begin{equation} \label{sol-init-pos}
+\begin{equation}
     u_t(x,0) = \psi(x) \;\Rightarrow\; \sum^{\infty}_{n=0} B_n \omega_n \sin\left((n + \frac{1}{2}) \frac{\pi x}{l} \right) = v_0 \sin \left( \frac{ \pi x}{2l} \right)
 \end{equation}
 
@@ -86,7 +86,7 @@
 
 Результат $A_1 = h, A_0 = A_2 = A_3 = ... = 0$
 
-Аналогічно робимо з \ref{dergensol}: 
+Аналогічно робимо з \ref{(sol3,1)_t}: 
 
 \begin{equation}
     \begin{aligned}
