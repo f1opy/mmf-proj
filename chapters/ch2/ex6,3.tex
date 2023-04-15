@@ -13,4 +13,124 @@
 \textit{Знайти коливання струни із закріпленими кінцями під дією сили $f(x,t) = f_0 t^N, \, N > 0$ однорідно розподіленої по довжині струни. У початковий момент струна нерухома, і зміщення дорівнює нулю. Остаточні обчислення виконати
 для $N=2$.}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+\noindent Формальна постановка задачі:
+\begin{equation} \label{cond6,3}
+    \left\{ \begin{aligned} %%
+            \;&u = u(x,t), \\
+            &0 \leq x \leq l, t \geq 0, \\
+            &u_{tt} = v^2u_{xx} + f_0 t^N, \\
+            &u(0,t) = 0,\, u(l,t) = 0,\\
+            &u(x,0) = 0,\, u_t(x,0) = 0.
+    \end{aligned} \right.
+\end{equation}
+
+Розкладемо неожнорідність рівняння по власних функціях задачі Штурма-Ліувіля нашої системи. Оскільки неоднорідністі не залежить від $x$, то нам треба розкласти константу.
+\begin{equation*} 
+    \begin{gathered}
+        g(x) = 1, \quad \tilde{g}(x) = \sum_{n=1}^\infty g_n \sin k_nx\\
+        g_n = \frac{2}{l} \int\limits_0^l \sin k_nx \;\mathrm{d}x = \frac{2}{k_nl} \cos k_nx \bigg|_l^0 = \big| \cos k_nl = (-1)^n \big| = \frac{2}{k_nl}\big(1 - (-1)^n\big)
+        \;\Rightarrow
+    \end{gathered}
+\end{equation*}
+\begin{equation} \label{Fourier-exp6,3}
+    \Rightarrow\quad
+    1 = \frac{2}{l} \sum_{n=1}^\infty \frac{1 - (-1)^n}{k_n} \sin k_nx    
+\end{equation}
+
+Отже, розклад неоднорідністі рівняння запишеться у вигляді
+\begin{equation}
+    f_0 t^N = \frac{2f_0}{l} t^N \sum_{n=1}^\infty \frac{1 - (-1)^n}{k_n} \sin k_nx    
+\end{equation}
+
+Розв'язок шукаємо також у вигляді розкладу по власних функціях:
+\begin{equation} \label{subst6,3}
+    u(x,t) = \sum_{n=1}^\infty u_n(t) \sin k_nx
+\end{equation} 
+Підставимо (\ref{Fourier-exp6,3}) та (\ref{subst6,3}) в рівняння (\ref{cond6,3}) і отримаємо
+\begin{equation*}
+    \begin{gathered}
+        \sum_{n=1}^\infty u_n''(t) \sin k_nx = -v^2 \sum_{n=1}^\infty k_n^2 u_n(t) \sin k_nx + \frac{2f_0}{l} t^N \sum_{n=1}^\infty \frac{1 - (-1)^n}{k_n} \sin k_nx 
+        \;\Rightarrow\\
+        \Rightarrow\quad
+        \sum_{n=1}^\infty \bigg[u_n'' + v^2k_n^2u_n - \frac{2f_0}{l} \frac{1 - (-1)^n}{k_n} t^N \bigg] \sin k_nx = 0
+        \quad\Rightarrow
+    \end{gathered}
+\end{equation*}
+\begin{equation} \label{time-eq6,3}
+    \Rightarrow\quad
+    u_n'' + \omega_n^2 u_n = \frac{2f_0}{l} \frac{1 - (-1)^n}{k_n} t^N,
+\end{equation}
+де $\omega_n = vk_n$ 
+
+Знайдемо початкові умови для $u_n(t)$ прмою підстановкою (\ref{subst6,3}) в початкові умови для $u(x,t)$ (\ref{cond6,3})
+\begin{equation} \label{new-init-cond6,3}
+    \left\{ \begin{aligned}
+        \;&u(x,0) = u_n(0)\sin k_nx = 0,\\
+        &u_t(x,0) = u_n'(0)\sin k_nx = 0.
+    \end{aligned} \right.
+    \quad\Rightarrow\quad
+    \left\{ \begin{aligned}
+        \;&u_n(0) = 0,\\
+        &u_n'(0) = 0.
+    \end{aligned} \right.
+\end{equation}
+
+Маємо неоднорідне лінійне рівняння (\ref{time-eq6,3}) з початковими умовами (\ref{new-init-cond6,3}). Його розв'язок можно записати у вигляді
+\begin{equation}
+    u_n(t) = C_1 \cos\omega_nt + C_2 \sin\omega_nt + \tilde{u}_n(t)
+\end{equation}
+У нас неоднорідність це поліном $N$-того ступеню, тому шукаємо неоднорідний розв'язок у вигляді довільного полінома $N$-того ступеню.\newline
+При $N=2$:
+\begin{equation*}
+    \tilde{u}_n(t) = at^2 + bt + c
+    \quad\Rightarrow\quad
+    \tilde{u}_n'' + \omega_n^2 \tilde{u}_n = 2a + \omega_n^2 (at^2 + bt + c) = \frac{2f_0}{l} \cdot \frac{1 - (-1)^n}{k_n} t^2 \equiv \alpha t^2
+\end{equation*}
+\begin{equation*}
+    \left\{ \begin{aligned}
+        \;&2a + \omega_n^2 c = 0,\\
+        &\omega_n^2 a = \alpha,\\
+        &b = 0;
+    \end{aligned} \right.
+    \quad\Rightarrow\quad
+    \left\{ \begin{aligned}
+        \;&b = 0\\
+        &a = \alpha/\omega_n^2,\\
+        &c = -2\alpha/\omega_n^4.\\
+    \end{aligned} \right.
+    \quad\Rightarrow\quad
+    \tilde{u}_n(t) = \alpha \left(\frac{t^2}{\omega_n^2} - \frac{2}{\omega_n^4}\right)
+\end{equation*}
+\begin{equation}
+    \tilde{u}_n(t) = \frac{2f_0}{\omega_n^4} \cdot \frac{1 - (-1)^n}{k_nl} \big(\omega_n^2t^2 - 2\big)
+\end{equation}
+
+Із початкових умов (\ref{new-init-cond6,3}) визначаємо константи
+\begin{equation*}
+    \left\{ \begin{aligned}
+        \;&u_n(0) = C_1 - \frac{2\alpha}{\omega_n^4} = 0,\\
+        &u_n'(0) = C_2 = 0;
+    \end{aligned} \right.
+    \quad\Rightarrow\quad
+    C_1 = \frac{2\alpha}{\omega_n^4}
+    \quad\Rightarrow
+\end{equation*}
+\begin{equation}
+    \Rightarrow\quad 
+    u_n(t) =  \frac{2\alpha}{\omega_n^4} \cos\omega_nt + \frac{\alpha}{\omega_n^4} \left(\omega_n^2t^2 - 2\right) = \frac{\alpha}{\omega_n^4} \bigg[ 2(\cos\omega_nt - 1) +  \omega_n^2t^2\bigg],
+\end{equation}
+де $\alpha = 2f_0 \cdot \big(1 - (-1)^n\big)/k_nl$
+
+Підставляємо вираз для $u_n(t)$ в (\ref{subst6,3}) і маємо розв'язок задачі
+\begin{equation}
+    \begin{gathered}
+        u(x,t) = 2f_0 \sum_{n=1}^\infty \frac{1 - (-1)^n}{\omega_n^4} \bigg[ 2(\cos\omega_nt - 1) +  \omega_n^2t^2\bigg] \cdot \frac{\sin k_nx}{k_nl} = \\
+        =  2f_0 \sum_{n=1}^\infty \frac{1 - (-1)^n}{\omega_n^4} \bigg[\omega_n^2t^2 - 4\sin^2\omega_nt\bigg] \cdot \frac{\sin k_nx}{k_nl}
+    \end{gathered}
+\end{equation}
+
 %\end{document}

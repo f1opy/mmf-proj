@@ -13,5 +13,92 @@
 \textit{При $t < t_0$ по півнескінченній струні $0 \geq x < \infty$ у напрямі її кінця поширюється хвиля заданої форми (падаючий «імпульс»), причому передній фронт хвилі при $t \geq t_0$ не досягає кінця струни. Знайти коливання струни при $t > t_0$ і форму відбитого імпульсу для скінченного $t_0$ і $t_0 \to -\infty$. Кінець струни: а) закріплений жорстко; б) зазнає дії сили тертя, пропорційної швидкості. Як пояснити відсутність відбивання при певному значенні коефіцієнта тертя?\\
 Указівка: звести до задачі про поширення межового режиму типу задачі 9.1, використати вказівку до цієї задачі та умову, що при $t < t_0$ фронт хвилі не досягає кінця струни.}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+\noindent Формальна постановка задачі:
+\begin{equation} \label{withered}
+    \left\{ \begin{aligned} 
+            \;&u = u(x,t), \\
+            &u_{tt} = v^2 u_{xx}, \\
+            &0 \leq x \leq \infty, t \geq t_0 \\
+            &\text{а)}\; u(0,t) = 0,\\
+            &\text{б)}\; \mu u_x(0,t) = u_t(0,t),\\
+            &u(x,t) = F_0(vt + x) - \text{падаюча хвиля, для  } t<t_0\\
+            &F(t) = 0,\;t < t_0 \text{  - падаюча хвиля не досягне кінця струни до }t_0.\\
+    \end{aligned} \right.
+\end{equation}
+Де $\mu$ - коефіцієнт тертя. 
+
+Повний розв'язок хвильового рівняння представляється комбінацією двох збурень, що поширюються у протилежних напрямках та є фукнціями однієї змінної. У нашому випадку це падаюча та відбита хвиля у відповідному порядку:
+
+\begin{equation}
+    u(x,t) = u_{\text{пад}}(x,t) + u_{\text{від}}(x,t) = F(x + tv) + f(x - tv)
+\end{equation}
+
+З постановки (\ref{withered}) ми знаємо частину, що відповідає падаючій хвилі:
+\begin{equation*}
+    u_{\text{пад}}(x,t) = F_0(x + tv)
+\end{equation*}
+
+Звідси маємо умову на $u_{\text{від}}$ при $t<t_0$:
+
+\begin{equation} \label{hunger}
+    u_{\text{від}}(x,t)=0
+\end{equation}
+
+Для випадку \textit{а)} можна було б cкористатися доведенною в лекціях вимогою на непарність $u(x,t)$ по змінній $x$ для приведенної граничної умови. Але розв'яжемо обидва випадки одним методом. Розглянемо точку $x=0$ у момент часу $t>t_0$:
+
+\begin{equation}  \label{slave}
+    \begin{aligned} 
+            &\text{а)}\;u_{\text{від}}(0,t) + u_{\text{пад}}(0,t) = 0 \quad\Rightarrow\\
+            &\Rightarrow\quad u_{\text{від}}(0,t) = f(x - tv)|_{x=0} = f(-tv) = -F_0(tv), \\
+            & \\
+            &\text{б)}\; \mu u_x(0,t) - u_t(0,t) = 0 \quad\Rightarrow\\
+            &\Rightarrow\quad \mu \frac{\partial u_{\text{від}}}{\partial x}\bigg|_{x=0} +\frac{\partial u_{\text{від}}}{\partial t}\bigg|_{x=0} = (\mu + v)f'(-tv) =\\
+            &= -(\mu - v)F_0'(tv)
+    \end{aligned} 
+\end{equation}
+
+З отриманих рівнянь (\ref{slave}) та умови (\ref{hunger}) можна одразу отримати відповіді:
+
+\begin{equation} 
+    \begin{aligned} 
+            &\text{а)}\;u_{\text{від}}(x,t) =
+                \begin{cases}
+                    0 & \text{, якщо } t < t_0, \text{ або } x > vt \\
+                    -F_0(tv - x) & \text{, якщо } t > t_0,\;x < vt.
+                \end{cases}
+            & \\
+            & \\
+            &\text{б)}\;u_{\text{від}}(x,t)=
+                \begin{cases}
+                    0 & \text{, якщо } t < t_0, \text{ або } x > vt \\
+                    \frac{\mu - v}{\mu + v}(F_0(tv - x) + c) & \text{, якщо } t > t_0,\;x < vt.
+                \end{cases}
+    \end{aligned} 
+\end{equation}
+
+Де \textit{c} - константа інтегрування. Накладаючи вимогу неперервності $u_{\text{від}}(0,t_0) = 0$ маємо $c = -F_0(0)$. Якщо $F(\xi)$ є неперервною функцією, то $c = 0$. Ці результати можна переписати у більш винтонченній формі за допомогою тета-функції:
+
+\begin{equation} 
+    \begin{aligned} 
+            &\text{а)}\;u_{\text{від}}(x,t)=-F_0(tv-x) \Theta\big(v(t - t_0) - x\big)\\
+            & \\
+            &\text{б)}\;u_{\text{від}}(x,t)=\frac{\mu - v}{\mu + v} \big(F_0(tv-x)-F_0(0)\big) \Theta\big(v(t - t_0) - x\big).
+    \end{aligned} 
+\end{equation}
+
+При $t_0 \rightarrow - \infty, \quad \Theta\big(v(t - t_0) - x\big) = 1$, тож поле матиме форму: 
+
+\begin{equation} 
+    \begin{aligned} 
+            &\text{а)}\;u_{\text{від}}(x,t)=-F_0(tv - x)\\
+            & \\
+            &\text{б)}\;u_{\text{від}}(x,t) = \frac{\mu - v}{\mu + v} (F_0(tv - x) - F_0(0)).
+    \end{aligned} 
+\end{equation}
+
 
 %\end{document}
