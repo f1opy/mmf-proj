@@ -1,6 +1,6 @@
 %\documentclass[a4paper, 14pt]{extreport}
 
-%\usepackage{StyleMMF}
+%\usepackage{../../main/StyleMMF}
 
 %\setcounter{chapter}{10}
 
@@ -16,5 +16,107 @@ $x \to +\infty$, щоб для $V=0$ задача мала лише нульов
 Ряд просумувати.\\
 Указівка: скористайтесь формулою для суми геометричної прогресії.}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+Формальна постановку задачі:
+\begin{equation} \label{cond11,3}
+    \left\{ \begin{aligned} 
+        \;&u = u(x,y), \\
+          &x \geq 0,0 \leq y \leq b, \\
+          &\Delta u = 0, \\
+          &u(x,0) = 0,\\ &u(x,b) = 0,\\
+          &u(0,y) = V,\\ &u(x,y)\big|_{x\to\infty} \to 0.\\
+    \end{aligned} \right.
+\end{equation}
+
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+Можемо скористатися результатом, отриманим в задачі 1(посилання), і одразу записати розв'язок в загальному виді.
+
+\begin{equation} \label{gensol11,3}
+    \begin{aligned}
+        u(x,y) &= \sum_{n=1}^{\infty} \left(\tilde{A}_n\mathrm{sh}k_nx + \tilde{B}_n\mathrm{ch}k_nx\right) \sin k_ny =\\
+        &= \sum_{n=1}^{\infty} \left(A_n e^{k_nx} + B_ne^{-k_nx}\right) \sin k_ny,
+    \end{aligned}
+\end{equation}
+де $k_n = \pi n/b$.
+
+Використаємо межові умови для $y$ (\ref{cond11,3}) для визначення невідомих коефіцієнтів. Оскільки при $x \to +\infty$ потенціал прямує до нуля, то в отриманому розв'язку (\ref{gensol11,3}) треба покласти константи $A_n$ для кожного $n$ рівними нулю.  
+\begin{equation*}
+    u(0,y) = \sum_{n=1}^{\infty} B_n \sin k_ny = V
+\end{equation*}
+Домножуємо на $m$-ту власну функція задачі Штурма-Ліувілля та інтегруємо по $y$ від $0$ до $b$.
+\begin{equation*}
+    B_m = \frac{2}{b} \int_0^b V \sin k_m y \;\mathrm{d}y = \frac{2V}{bk_m} \big(1 - (-1)^m\big)
+\end{equation*}
+Помітимо, що при парних значеннях $m$ маємо $B_m = 0$. Явно випишемо коефіцієнти тільки з непарними номерами
+\begin{equation}
+    B_{2k+1} = \frac{2V}{bk_{2k+1}} \big(1 - (-1)^{2k+1}\big) = \frac{2V}{b} \frac{b}{\pi (2k+1)} \cdot 2 = \frac{4V}{\pi (2k+1)}
+\end{equation}
+Підставляємо знайдені коефіцієнти в загальний розв'язок (\ref{gensol11,3}) і отримуємо розв'язок у вигляді ряду
+\begin{equation} 
+    u(x,y) = \frac{4V}{\pi} \sum_{k=0}^{\infty} \frac{e^{-\pi(2k+1)x/b}}{2k+1} \sin\big(\pi(2k+1)y/b\big),
+\end{equation}
+
+Тепер знайдемо суму ряду отриманого розв'язку. Для цього використовуємо формулу Ейлера для $\sin k_{2k+1}y$ 
+\begin{equation*} 
+    u(x,y) = \frac{4V}{\pi} \sum_{k=0}^{\infty} \frac{1}{2k+1} \bigg( \frac{e^{-\pi(2k+1)(x - iy)/b} - e^{-\pi(2k+1)(x + iy)/b}}{2i} \bigg)
+\end{equation*}
+та обчислимо похідну по $x$
+\begin{equation*} 
+    \begin{gathered}
+        u_x = -\frac{4V}{\pi} \sum_{k=0}^{\infty} \frac{\pi (2k+1)}{(2k+1)b} \bigg( \frac{e^{-\pi(2k+1)(x - iy)/b} - e^{-\pi(2k+1)(x + iy)/b}}{2i} \bigg) =\\
+        = \frac{2iV}{b} \sum_{s=0}^{\infty} \bigg(e^{-k_{2s+1}(x - iy)} - e^{-k_{2s+1}(x + iy)}\bigg)
+    \end{gathered}
+\end{equation*}
+Маємо під сумою дві геометричні прогресії зі знаменниками \[q_1 = e^{-2\pi(x - iy)/b} \quad\text{та}\quad q_2 = e^{-2\pi(x + iy)/b}\] відповідно. За формулою суми нескінченної геометричної прогресії обчислимо їх суми.
+\begin{equation}
+    \begin{gathered}
+        S_1 = \frac{e^{-\pi(x - iy)/b}}{1 - e^{-2\pi(x - iy)/b}} = \frac{1}{e^{\pi(x - iy)/b} - e^{-\pi(x - iy)/b}}
+    \end{gathered}
+\end{equation}
+\begin{equation}
+    S_2 = \frac{1}{e^{\pi(x + iy)/b} - e^{-\pi(x + iy)/b}} 
+\end{equation}
+Маємо 
+\begin{equation*} 
+    \begin{gathered}
+        u_x = \frac{2iV}{b} \bigg(\frac{1}{e^{\pi(x - iy)/b} - e^{-\pi(x - iy)/b}} - \frac{1}{e^{\pi(x + iy)/b} - e^{-\pi(x + iy)/b}}\bigg) =\\
+        = \frac{2iV}{b} \frac{e^{\pi(x + iy)/b} - e^{-\pi(x + iy)/b} - e^{\pi(x - iy)/b} + e^{-\pi(x - iy)/b}}{(e^{\pi(x - iy)/b} - e^{-\pi(x - iy)/b})(e^{\pi(x + iy)/b} - e^{-\pi(x + iy)/b})} =\\
+        = \frac{2iV}{b} \frac{(e^{\pi x/b} - e^{-\pi x/b})(e^{i\pi y/b} - e^{-i\pi y/b})}{e^{2\pi x/b} + e^{-2\pi x/b} - (e^{2\pi iy/b} + e^{-2\pi iy/b})} =\\
+        = \frac{2iV}{b} \cdot 2i \frac{\mathrm{ch\,}(\pi x/b)\sin(\pi y/b)}{\mathrm{ch\,}(2\pi x/b) - \cos(2\pi y/b)} = -\frac{4V}{b} \frac{\mathrm{ch\,}(\pi x/b)\sin(\pi y/b)}{\mathrm{ch\,}(2\pi x/b) - \cos(2\pi y/b)}
+    \end{gathered} 
+\end{equation*}
+
+Сумою ряду буде
+\begin{equation}
+    u(x,y) = -\frac{4V}{b}\sin(\pi y/b) \int \frac{\mathrm{ch\,}(\pi x/b) \;\mathrm{d}x}{\mathrm{ch\,}(2\pi x/b) - \cos(2\pi y/b)}
+\end{equation}
+Обчислимо інтеграл
+\begin{equation*}
+    \begin{gathered}
+        \int \frac{\mathrm{ch\,}(\pi x/b) \;\mathrm{d}x}{\mathrm{ch\,}(2\pi x/b) - \cos(2\pi y/b)} = \bigg| z = \mathrm{sh\,}(\pi x/b), \mathrm{d}z = \frac{\pi}{b}\mathrm{ch\,}(\pi x/b) \mathrm{d}x\bigg| = \\
+        = \frac{b}{\pi} \int \frac{\mathrm{d}z}{1 - 2z^2 - \cos(2\pi y/b)} = \frac{b}{\pi} \int \frac{\mathrm{d}z}{2\sin^2(\pi y/b) - 2z^2} =\\
+        = \frac{b}{2\pi} \frac{1}{\sin(\pi y/b)}\mathrm{arctg}\bigg(\frac{z}{\sin(\pi y/b)}\bigg) + \tilde{C} = \frac{b}{2\pi} \frac{1}{\sin(\pi y/b)}\mathrm{arctg}\bigg(\frac{\mathrm{sh}(\pi x/b)}{\sin(\pi y/b)}\bigg) + \tilde{C}
+    \end{gathered}
+\end{equation*}
+Отже
+\begin{equation}
+    u(x,y) = C - \frac{2V}{\pi} \mathrm{arctg}\bigg(\frac{\mathrm{sh}(\pi x/b)}{\sin(\pi y/b)}\bigg) 
+\end{equation}
+З межової умови в $x = 0$ визсачимо значення констатни
+\begin{equation*}
+    u(0,y) = C - \frac{2V}{\pi} \cdot 0 = V \;\Rightarrow\; C = V
+\end{equation*}
+Остаточно, маємо розв'язок 
+\begin{equation}
+    u(x,y) = V - \frac{2V}{\pi} \mathrm{arctg}\bigg(\frac{\mathrm{sh}(\pi x/b)}{\sin(\pi y/b)}\bigg) = V \bigg(1 - \frac{2}{\pi} \mathrm{arctg}\bigg(\frac{\mathrm{sh}(\pi x/b)}{\sin(\pi y/b)}\bigg)\bigg)
+\end{equation}
+
+При $x \to \infty$: \[\lim_{x\to+\infty} 1 - \frac{2}{\pi} \mathrm{arctg}\bigg(\frac{\mathrm{sh}(\pi x/b)}{\sin(\pi y/b)}\bigg) = 1 - \frac{2}{\pi}\frac{\pi}{2} = 0 \;\Rightarrow\; u(x,y) \to 0\]
 
 %\end{document}

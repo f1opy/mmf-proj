@@ -1,16 +1,86 @@
 %\documentclass[a4paper, 14pt]{extreport}
-
-%\usepackage{StyleMMF}
-
+%
+%\usepackage{../../main/StyleMMF}
+%
 %\setcounter{chapter}{11}
-
+%
 %\begin{document}
-
+%
 %\chapter{Функції Гріна звичайних диференціальних задач}
 
 \section[Задача №12.2]{12.2}
 
 \textit{Користуючись означенням функції Гріна $G(t)$, але не використовуючи її явного вигляду, показати безпосередньою підстановкою в умови задачі, що функція \[y(t) = \int\limits_0^t G(t - t') f(t') \;\mathrm{d}t' + y'(0) G(t) + y(0) G'(t)\] є розв’язком задачі про вимушені коливання гармонічного осцилятора при $t>0$ під дією узагальненої сили $f(t)$ з початковими умовами $y(0)=y_0, \, y'(0)=\nu_0$. Розв’язками яких частинних задач є окремі доданки цього виразу?}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+Закон руху  
+\begin{equation} \label{sol12,2}
+    y(t) = \int\limits_0^t G(t - t') f(t') \;\mathrm{d}t' + y'(0) G(t) + y(0) G'(t)
+\end{equation}
+є розв'язком задачі:
+\begin{equation} \label{cond12,2}
+    \left\{ \begin{aligned}
+        \;&y'' + \omega^2y = 0,\, t \geq 0,\\
+          &y(0) = y_0,\, y'(0) = v_0.
+    \end{aligned} \right.
+\end{equation}
+
+Обчислимо першу похідну по часу від розв'язку (\ref{sol12,2})
+\begin{equation*} 
+    y'(t) = G(0)f(t) + \int\limits_0^t G'(t - t') f(t') \;\mathrm{d}t' + y'(0) G'(t) + y(0) G''(t) \textcolor{red}{=}
+\end{equation*}
+За означенням функції Гріна $G(t)$ (\ref{cond12,1})
+\begin{equation*}
+    G''(t) = -\omega^2 G(t), \quad G(0) = 0, \quad G'(0) = 1
+\end{equation*}
+Підставимо $G''(t)$ та $G(0)$
+\begin{equation*} 
+    \textcolor{red}{=} \int\limits_0^t G'(t - t') f(t') \;\mathrm{d}t' + y'(0) G'(t) - \omega^2 y(0)G(t) 
+\end{equation*}
+
+Аналогічно друга похідна
+\begin{equation*} 
+    \begin{gathered}
+        y''(t) = G'(0) f(t) + \int\limits_0^t G''(t - t') f(t') \;\mathrm{d}t' + y'(0) G''(t) - \omega^2 y(0) G'(t) =\\
+        = f(t) - \omega^2 \left(\int\limits_0^t G(t - t') f(t') \;\mathrm{d}t' + y'(0) G(t) + y(0) G'(t) \right) = f(t) - \omega^2 y(t)
+    \end{gathered}
+\end{equation*}
+
+Підставимо другу похідну в рівняння
+\begin{equation*}
+    y'' + \omega^2 y = f(t) - \omega^2 y + \omega^2 y \equiv f(t)
+\end{equation*}
+Таким чином (\ref{sol12,2}) задовільняє рівняння (\ref{cond12,2}) 
+
+Визначимо для яких задач є розв'язками кожен з доданків (\ref{sol12,2}). Для цього треба покласти 2 з 3 параметрів (зовнішня сила та початкові умови) рівними нулю.
+\begin{enumerate}
+    \item $y(0) = 0, y'(0) = 0$
+    \[y(t) = \int\limits_0^t G(t - t') f(t') \;\mathrm{d}t' \quad \text{є розв'язком задачі:}\] 
+    \begin{equation}
+        \left\{ \begin{aligned}
+            \;&y'' + \omega^2y = f(t),\, t \geq 0,\\
+              &y(0) = 0,\, y'(0) = 0.
+        \end{aligned} \right.
+    \end{equation}
+    \item $f(t) = 0, y(0) = 0$
+    \[y(t) = y'(0) G(t) \quad \text{є розв'язком задачі:}\] 
+    \begin{equation}
+        \left\{ \begin{aligned}
+            \;&y'' + \omega^2y = 0,\, t \geq 0,\\
+              &y(0) = 0,\, y'(0) = 1.
+        \end{aligned} \right.
+    \end{equation}
+    \item $f(t) = 0, y'(0) = 0$
+    \[y(t) = y(0) G'(t) \quad \text{є розв'язком задачі:}\] 
+    \begin{equation}
+        \left\{ \begin{aligned}
+            \;&y'' + \omega^2y = 0,\, t \geq 0,\\
+              &y(0) = 1,\, y'(0) = 0.
+        \end{aligned} \right.
+    \end{equation}
+\end{enumerate}
 
 %\end{document}

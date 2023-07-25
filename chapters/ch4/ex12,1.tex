@@ -1,6 +1,6 @@
 %\documentclass[a4paper, 14pt]{extreport}
 
-%\usepackage{StyleMMF}
+%\usepackage{../../main/StyleMMF}
 
 %\setcounter{chapter}{11}
 
@@ -12,5 +12,42 @@
 
 \textit{Функція Гріна $G(t)$ задачі Коші для рівняння гармонічного осцилятора \[y'' + \omega^2y = f(t), \, t \geq 0, \, y(0)=y_0, \, y'(0)=\nu_0\] є розв’язком цієї задачі при $\nu_0 = 1 , \, y_0 = 1$ і $f(t) = 0$. Тобто $y = G(t)$ задовольняє умови \[y'' + \omega^2y = 0, \, t \geq 0, \, y(0)=1, \, y'(0)=1\] Знайдіть явний вигляд функції Гріна сцилятора; чи зберігає вона смисл при $\omega \to 0$?}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+Запишимо постановку задачі для визначення функції Гріна $G(t)$
+\begin{equation}
+    \left\{ \begin{aligned} \label{cond12,1}
+        \;&y'' + \omega^2y = 0, t \geq 0,\\
+          &y(0) = 0, y'(0) = 1.
+    \end{aligned} \right.
+\end{equation}
+
+Функція Гріна є розв'язком рівняння, тому
+\begin{equation*}
+    y = G(t) \;\to\; G'' + \omega^2G = 0,
+\end{equation*}
+а розв'язком буде
+\begin{equation}
+    G(t) = A\cos\omega t + B\sin\omega t
+\end{equation}
+З початкових умов визначаємо константи
+\begin{equation*}
+    \begin{aligned}
+        &G(0) = A = 0 \;\Rightarrow\; A = 0\\
+        &G'(0) = B\omega = 1 \;\Rightarrow\; B = \frac{1}{\omega}
+    \end{aligned}
+\end{equation*}
+Таким чином функція Гріна для осцилятора має вигляд
+\begin{equation}
+    G(t) = \frac{\sin\omega t}{\omega}
+\end{equation}
+
+Перевіримо чи зберігає функція Гріна сенс при $\omega \to 0$.
+\begin{equation*}
+    \lim_{\omega\to0} \frac{\sin\omega t}{\omega} = t \cdot \lim_{\omega\to0} \frac{\sin\omega t}{\omega t} = t
+\end{equation*}
+Зрозуміло, що $\omega = 0$ відповідає відсутності повертаючої сили в системі, тобто тоді ми отримаємо задачу про вільний рух. Повертаючись до умови задачі Коші, яка визначає функцію Гріна, бачимо, що початкова умова описує частинку, яка в початковий момент часу в точці $y_0 = 0$ має швидкість $v_0 = 1$. При вільному русі закон руху буде лінійною функцією і, використовуючи початкові умови, отримаємо $G(t) = t$. 
 
 %\end{document}

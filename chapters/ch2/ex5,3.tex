@@ -1,6 +1,6 @@
 %\documentclass[a4paper, 14pt]{extreport}
 
-%\usepackage{StyleMMF}
+%\usepackage{../StyleMMF}
 
 %\begin{document}
 
@@ -25,7 +25,7 @@
 
 \noindent Формальна постановка задачі:
 \begin{equation} \label{cond5,3}
-    \left\{ \begin{aligned} %%
+    \left\{ \begin{aligned}
             \;&u = u(x,t), \\
             &\tau u_t=L^2u_{xx}-u, \\
             &0 \leq x \leq l, t \geq 0, \\
@@ -51,18 +51,14 @@ u_{\text{неодн}}=\frac{I_0L\sinh(x/L)}{\cosh(l/L)}
 \begin{equation*} 
     \left\{ \begin{aligned}
             \;&u_{\text{одн}} = u_{\text{одн}}(x,t), \\
-            &\tau (u_{\text{одн}})_t=L^2(u_{\text{одн}})_{xx}-u_{\text{одн}}, \\
-            &u_{\text{одн}}(x,0)=-\frac{I_0L\sinh{(\frac{x}{L})}}{\cosh{(\frac{l}{L})}},\\
+            &\tau (u_{\text{одн}})_t = L^2(u_{\text{одн}})_{xx} - u_{\text{одн}}, \\
+            &u_{\text{одн}}(x,0) = -\frac{I_0L\sinh{(\frac{x}{L})}}{\cosh{(\frac{l}{L})}},\\
             &u_{\text{одн}}(0,t) = 0, \\
             &(u_{\text{одн}})_x(l,t) = 0. 
     \end{aligned} \right.
 \end{equation*}
 
-Перш ніж розділити змінні, спростимо рівняння класичним прийомом, який непогано було б запам'ятати. Якщо ми маємо рівння типу 
-\begin{equation}
-U_t = D U_{xx} + aU    
-\end{equation}
-з однорідними межовими умовами, то підстановка $U = u\exp(at)$ перетворить його рівняння на $u_t = D u_{xx}$, а межові та початкові умови для $u$ будуть такими самими як були на $U$.\\
+Перш ніж розділити змінні, спростимо рівняння класичним прийомом, який непогано було б запам'ятати. Якщо ми маємо рівння типу \[U_t = D U_{xx} + aU\] з однорідними межовими умовами, то підстановка $U = u\exp(at)$ перетворить його рівняння на $u_t = D u_{xx}$, а межові та початкові умови для $u$ будуть такими самими як були на $U$.\\
 
 Тепер використаємо цей прийом. Підставимо $u_{\text{одн}} = \tilde{u}\exp(-\frac{t}{\tau})$ та отримаэмо задачу на $\tilde{u}$:
 
@@ -76,7 +72,6 @@ U_t = D U_{xx} + aU
             &\tilde{u}_x(l,t) = 0. 
     \end{aligned} \right.
 \end{equation}
-\\
 
 А такі задачі ми вже добре вміємо розв'язувати. Потрібно знайти розв'язки (\ref{new-cond5,3})
 наступного вигляду:
@@ -104,15 +99,15 @@ U_t = D U_{xx} + aU
 Тепер розв'яжемо рівняння на $T_n(t)$:
 \begin{equation} 
     \left\{ \begin{aligned}
-        &\dot{T_n}+\lambda_n DT_n=0,\\
+        &\dot{T_n} + \lambda_n DT_n = 0,\\
         &\frac1{\tau_n} = D\lambda_n - \text{власний характерний час},\\
-        &T_n=C_n\exp{\left(-\frac t{\tau_n}\right)}.
+        &T_n = C_n\exp{\left(-\frac{t}{\tau_n}\right)}.
     \end{aligned} \right.
 \end{equation}
 
 Збираючи по отриманим функціям $T(t)$ і $X(x)$ власні функції задачі й просумувавши їх, отримуємо загальний розв'язок:
 \begin{equation} \label{mode5,3}
-    \tilde{u}(x,t) = \sum_{n=1}^{\infty} C_n\exp{\left(-\frac t{\tau_n}\right)}\sin\left(k_n x\right)
+    \tilde{u}(x,t) = \sum_{n=1}^{\infty} C_n\exp{\left(-\frac{t}{\tau_n}\right)}\sin(k_n x)
 \end{equation}
 
 Тепер підставимо (\ref{mode5,3}) у початкові умови:
@@ -124,17 +119,15 @@ U_t = D U_{xx} + aU
 
 \begin{equation*}
     \begin{aligned} 
-        &C_n\int_{0}^{l} \left( \sin\left(k_n x\right)\right)^2\;dx= \frac{lC_n}{2}
-        =-\frac{I_0L}{\cosh{(\frac{l}{L})}}\int_{0}^{l}\sinh{\left(\frac{x}{L}\right)}\sin\left(k_n x\right)\;dx=\\
-        &=\left[\cos(k_n l)=(-1)^n\right]=-\frac{I_0L}{\cosh{(\frac{l}{L})}}\frac{4l^2L(-1)^{n+1}\cosh{(\frac{l}{L})}}{4l^2+\pi^2L^2(2n-1)^2}=\frac{L^2I_0(-1)^n}{1+L^2\lambda_n}.
+        &C_n\int_{0}^{l} \left(\sin\left(k_n x\right)\right)^2\;\mathrm{d}x = \frac{lC_n}{2}
+        = -\frac{I_0L}{\cosh{\big(\frac{l}{L}\big)}} \int\limits_{0}^{l} \sinh{\left(\frac{x}{L}\right)} \sin(k_nx)\;\mathrm{d}x =\\
+        &= \left[\cos(k_nl) - (-1)^n \right] = -\frac{I_0L}{\cosh{\big(\frac{l}{L}\big)}} \frac{4l^2L(-1)^{n+1} \cosh{\big(\frac{l}{L}\big)}}{4l^2 + \pi^2L^2(2n-1)^2} = \frac{L^2I_0 (-1)^n}{1 + L^2\lambda_n}.
     \end{aligned}
 \end{equation*}
 
 Підставляючи отримані коефіцієнти у (\ref{init-con5,3}), а його у $u_{\text{одн}}$ і сумуючи з $u_{\text{неодн}}$, отримуємо відповідь:
-\begin{equation*} 
-    %\begin{aligned}
-        u(x,t)=\frac{I_0L\sinh{(\frac{x}{L})}}{\cosh{(\frac{l}{L})}}+\frac{2L^2I_0}{l}\sum_{n=1}^{\infty}\frac{L^2I_0(-1)^n}{1+L^2\lambda_n}\exp{\left(-\left(\frac t{\tau_n}+\frac{t}{\tau}\right) \right)}\sin\left(k_n x\right)
-    %\end{aligned}
+\begin{equation*}
+    u(x,t) = \frac{I_0L \sinh{\big(\frac{x}{L}\big)}}{\cosh{\big(\frac{l}{L}\big)}} + \frac{2L^2I_0}{l} \sum_{n=1}^{\infty} \frac{L^2I_0 (-1)^n}{1 + L^2\lambda_n} \exp{\left(-\left(\frac{t}{\tau_n} + \frac{t}{\tau}\right) \right)}\sin(k_nx)
 \end{equation*}
 
 %\end{document}

@@ -1,6 +1,6 @@
 %\documentclass[a4paper, 14pt]{extreport}
 
-%\usepackage{StyleMMF}
+%\usepackage{../StyleMMF}
 %\usepackage{bookmark}
 
 %\begin{document}
@@ -92,7 +92,7 @@
 \begin{equation*}
     \begin{gathered}
         \textcolor{red}{= } -k_n^2 T_m(t) + \frac{2}{l} \bigg[ u_x(l,t) X_m(l) - u_x(0,t) X_m(0) -\\
-        - u(x,l) X_m'(l) + u(x,0) X_m'(0) \bigg] = - k_n^2 T_m(t) - \frac{2 f_0}{l} e^{-\alpha t},
+        - u(l,t) X_m'(l) + u(0,t) X_m'(0) \bigg] = - k_n^2 T_m(t) - \frac{2 f_0}{l} e^{-\alpha t},
     \end{gathered}
 \end{equation*}
 тут для $X_m(x)$ дивимось на межові умови задачі Штурма-Ліувілля, а для $u(x,t)$ -- межові умови початкової задачі.
@@ -102,7 +102,7 @@
     T_m''(t) = - k_m^2v^2 T_m(t)  - \frac{2v^2 f_0}{l} e^{-\alpha t}, \quad \text{або} \quad T_n''(t) + \omega_n^2 T_n(t) = - \kappa_n \omega_n^2  e^{-\alpha t}
 \end{equation}
 
-Отримали лінійне неожнорідне рівняння для $T_n(t)$, його розв'язок шукаємо у вигляді
+Отримали лінійне неоднорідне рівняння для $T_n(t)$, його розв'язок шукаємо у вигляді
 \begin{equation}
     T_n(t) = A_n \cos\omega_nt + B_n \sin\omega_nt + \gamma e^{-\alpha t},
 \end{equation}

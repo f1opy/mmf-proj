@@ -1,16 +1,106 @@
 %\documentclass[a4paper, 14pt]{extreport}
-
-%\usepackage{StyleMMF}
-
+%
+%\usepackage{../../main/StyleMMF}
+%
 %\setcounter{chapter}{10}
-
+%
 %\begin{document}
-
+%
 %\chapter{Рівняння Лапласа в прямокутній області.}
 
 \section[Задача №11.1]{11.1}
 
 \textit{Знайти стаціонарний розподіл температури в однорідній прямокутній пластині, якщо вздовж лівої її сторони (довжиною $b$) підтримується заданий розподіл температури, права сторона теплоізольована, а верхня і нижня (довжиною $a$) підтримуються при нульовій температурі. Відповідь запишіть через коефіцієнти Фур’є розподілу температури на лівій стороні, вважаючи їх відомими. Які якісні зміни відбуваються у розв’язку при переході від довгої і вузької пластини ($a \gg b$) до короткої і широкої ($a \ll b$)? Намалюйте для цих випадків графіки функцій, що описують зміну температури в повздовжньому напрямку для кількох перших поперечних мод; функції нормуйте так, щоб на лівій стороні пластини вони приймали однакове значення одиниця. Як змінюється в залежності від співвідношення сторін відносна роль внесків різних поперечних мод у розподіл температури на правій стороні пластини?}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+Для стаціонарної задачі $u \neq u(t)$ рівняння параболічного типу, яке відповідає задачі теплопровідності, перетворюється на на еліптичне. Тобто нам потрібно розглянути задачу, де є дві незалежні просторові змінні. Запишемо постановку задачі:
+\begin{equation} \label{cond11,1}
+    \left\{ \begin{aligned} 
+        \;&u = u(x,y), \\
+          &\Delta u = u_{xx} + u_{yy} = 0, \\
+          &0 \leq x \leq a,\\ &0 \leq y \leq b, \\
+          &u(0,y) = \varphi(y),\\ &u_x(a,y) = 0,\\
+          &u(x,0) = 0,\\ &u(x,b) = 0.
+    \end{aligned} \right.
+\end{equation}
+
+Виконаємо розділення змінних $u(x,y) = X(x)\cdot Y(y)$. Для $Y(y)$ отримаємо багато разів розв'язану задачу Штурма-Ліувілля, а для $X(x)$ -- лінійне рівняння.
+\begin{equation} 
+    \left\{ \begin{aligned}
+        \;&Y'' + \lambda Y = 0, \\ 
+          &0 \leq y \leq b, \\
+          &Y(0) = 0,\, Y(b) = 0 
+    \end{aligned} \right.
+    \quad\Rightarrow\quad
+    \left\{ \begin{aligned}
+        \;& Y_n(y) = \sin k_ny, \\
+          & k_n = \sqrt{\lambda_n} = \pi n/b, n \in \mathbb{N} 
+    \end{aligned} \right.
+\end{equation}
+Запишемо розв'язок рівняння для $X(x)$
+\begin{equation}
+    X'' - k_n^2 X = 0
+    \quad\Rightarrow\quad
+    X_n(x) = A_n\mathrm{sh}k_nx + B_n\mathrm{ch}k_nx
+\end{equation}
+
+Виконуємо зворотню заміну та отримаємо, виконуючи підсумовування по всім модам, загальний розв'язок задачі.
+\begin{equation}
+    u(x,y) = \sum_{n=1}^{\infty} \left(A_n\mathrm{sh}k_nx + B_n\mathrm{ch}k_nx\right) \sin k_ny
+\end{equation}
+
+Залишається із межових умов для змінної $x$ визначити невідомі константи $A_n$ та $B_n$. Маємо
+\begin{equation}
+    \left\{ \begin{aligned}
+        \;&u(0,y) = \sum_{n=1}^{\infty} B_n \sin k_ny = \varphi(y),\\
+          &u_x(a,y) = \sum_{n=1}^{\infty} \left(A_nk_n\mathrm{ch}k_na + B_nk_n\mathrm{sh}k_na\right) \sin k_ny = 0.
+    \end{aligned} \right.
+\end{equation}
+В правій частині першого рівняння підставимо розклад межової умови в ряд Фур'є, який вважається відомим, та визначимо $B_n$
+\begin{equation}
+    \sum_{n=1}^{\infty} B_n \sin k_ny = \frac{2}{b} \sum_{n=1}^{\infty} \varphi_n \sin k_ny
+    \quad\Rightarrow\quad 
+    B_n = \frac{2}{b} \varphi_n
+\end{equation} 
+З другої, однорідної, межової умови маємо
+\begin{equation}
+    A_n\mathrm{ch}k_na + B_n\mathrm{sh}k_na = 0
+    \quad\Rightarrow\quad
+    A_n = - B_n \mathrm{th}k_na = -\frac{2}{b}\varphi_n \mathrm{th}k_na
+\end{equation}
+Підставляємо отримані значення в загальний розв'язок
+\begin{equation} \label{gensol11,1}
+    u(x,y) = \frac{2}{b}\sum_{n=1}^{\infty} \varphi_n \big(\mathrm{ch}k_nx - \mathrm{th}(k_na)\mathrm{sh}k_nx\big) \sin k_ny,
+\end{equation}
+або, скориставшись однією з властивостей гіперболічних функцій, запишемо
+\begin{equation}
+    u(x,y) = \frac{2}{b}\sum_{n=1}^{\infty} \varphi_n \cdot \frac{\mathrm{ch}\big(k_n(x-a)\big)}{\mathrm{ch}k_na} \sin k_ny
+\end{equation}
+
+Розглянемо, використовуючи формулу (\ref{gensol11,1}), граничні випадки: а) довгої і вузької пластини, б) короткої і широкої.\\
+a) $a \gg b$
+\begin{equation*}
+    \mathrm{th}k_na = \mathrm{th}(\pi na/b)\bigg|_{a \gg b} \to 1
+\end{equation*}
+Таким чином розв'язок переходить в 
+\begin{equation}
+    u(x,y) = \frac{2}{b}\sum_{n=1}^{\infty} \varphi_n \big(\mathrm{ch}k_nx - \mathrm{sh}k_nx\big) \sin k_ny = \frac{2}{b}\sum_{n=1}^{\infty} \varphi_n e^{-k_nx} \sin k_ny,
+\end{equation}
+що відповідає рівнянню теплопровідності для одновимірного випадку; температура спадає за експоненційним законом при віддалені від джерела   
+
+б) $a \ll b$
+\begin{equation*}
+    \mathrm{th}(\pi na/b)\bigg|_{a \ll b} \to 0, \quad \mathrm{ch}(\pi nx/b)\bigg|_{b\to\infty} \to 1,
+\end{equation*}
+оскільки $x \leq a$, то умову $a \ll b$ можна замінити на $b\to\infty$
+
+Отже, при зменшенні $b$ зменшуються втрати теплоти, оскільки ширина пластинки набагато менша за довжину джерела.\\
+Таким чином розв'язок переходить в 
+\begin{equation}
+    u(x,y) = \frac{2}{b}\sum_{n=1}^{\infty} \mathrm{ch}k_nx\sin k_ny
+\end{equation}
 
 %\end{document}

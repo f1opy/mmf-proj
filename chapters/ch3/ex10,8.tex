@@ -1,16 +1,49 @@
 %\documentclass[a4paper, 14pt]{extreport}
-
-%\usepackage{StyleMMF}
-
+%
+%\usepackage{../../main/StyleMMF}
+%
 %\setcounter{chapter}{9}
-
+%
 %\begin{document}
-
+%
 %\chapter{Приведення лінійних рівнянь у частинних похідних 2-го порядку з двома змінними до заданого вигляду}
 
 \section[Задача №10.8]{10.8}
 
-\textit{Привести рівняння $u_{tt} = v^2 (u_{rr} + (2/r) u_r) + cu$ до самоспряженого вигляду: \[\rho(r)u_{tt} = \frac{\partial\;}{\partial r} \left(k(r) \frac{\partial u}{\partial r}\right) - q(r)u.\]}
+\textit{Привести рівняння $u_{tt} = v^2 \big(u_{rr} + (2/r) u_r\big) + cu$ до самоспряженого вигляду: \[\rho(r)u_{tt} = \frac{\partial\;}{\partial r} \left(k(r) \frac{\partial u}{\partial r}\right) - q(r)u.\]}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+Запишемо рівняння, розкриваючи дужки 
+\begin{equation} \label{eq10,8}
+    u_{tt} = v^2u_{rr} + \frac{2v^2}{r}u_r + cu
+\end{equation}
+Домножимо його на довільну функцію $\rho(r)$, яку ми визначимо далі
+\begin{equation*}
+    \rho(r)u_{tt} = v^2\rho(r)u_{rr} + \frac{2v^2\rho(r)}{r}u_r + c\rho(r)u
+\end{equation*}
+
+Порівнюючи його з рівнянням у самоспряженому вигляді, позначимо \[k(r) = v^2\rho(r),\quad k'(r) = \frac{2v^2\rho(r)}{r},\quad q(r) = - c\rho(r).\] Ми отримали вирази для функції $k(r)$ та її похідної. Звідси і знайдемо рівняння для $\rho(r)$: диференцюємо вираз для $k(r)$ і прирівнюємо до $k'(r)$.
+\begin{equation}
+    \big(v^2\rho(r)\big)' = \frac{2v^2\rho(r)}{r}
+\end{equation}
+Розв'яжемо отримане рівняння
+\begin{equation*}
+    \rho'(r) = \frac{2\rho(r)}{r}
+    \;\Rightarrow\;
+    \frac{\mathrm{d}\rho}{\rho} = \frac{2\mathrm{d}r}{r}
+    \;\Rightarrow\;
+    \ln\rho = 2\ln r + \ln K = \ln(Kr^2)
+    \;\Rightarrow\;
+    \rho(r) = Kr^2
+\end{equation*}
+Оскільки на $\rho(r)$ ми домножили все рівняння і враховуючи, що рівняння є однорідним, то можна покласти $K = 1$.
+
+Маємо вихідне рівняння (\ref{eq10,8}) в самоспряженому вигляді:
+\begin{equation}
+    r^2u_{tt} = \frac{\partial\;}{\partial r} \left(v^2r^2 \frac{\partial u}{\partial r}\right) + cr^2u
+\end{equation}
 
 %\end{document}

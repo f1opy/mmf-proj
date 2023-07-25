@@ -1,12 +1,12 @@
-%\documentclass[a4paper, 14pt]{extreport}
+\documentclass[a4paper, 14pt]{extreport}
 
-%\usepackage{StyleMMF}
+\usepackage{../../main/StyleMMF}
 
-%\setcounter{chapter}{7}
+\setcounter{chapter}{7}
 
-%\begin{document}
+\begin{document}
 
-%\chapter{Метод характеристик і формула Даламбера: нескінченна пряма, півнескінченна пряма та відрізок. Метод непарного продовження.}
+\chapter{Метод характеристик і формула Даламбера: нескінченна пряма, півнескінченна пряма та відрізок. Метод непарного продовження.}
 
 \textbf{\large Вільні коливання нескінченної струни.}
 
@@ -14,5 +14,211 @@
 
 \textit{Зобразити графічно поле зміщень і поле швидкостей нескінченної струни в характерні послідовні моменти часу, якщо початковий відхил (зміщення) має форму рівнобедреного трикутника висотою $h$ і основою $2L$, а початкова швидкість дорівнює нулю. Чи всі частини трикутника приходять у рух одразу? Відповідь поясніть.}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
 
-%\end{document}
+
+\begin{figure}
+    \centering
+
+    \begin{tikzpicture}
+
+        \tikzmath{\l = 3; \h = 2; \v = 3/20; \y0 = -31.5; \dt = \l/\v/4;}
+
+        %\begin{axis}
+        %    [width = \textwidth,
+        %    axis y line = center, axis x line = none,
+        %    ylabel = $t$,
+        %    xmin = -10, xmax = 10, ymin = \y0, ymax = 4,
+        %    axis line style = thin, ticks = none]   
+        %    
+        %\end{axis}
+
+        \begin{axis} %% t6
+            [width = \textwidth,
+            %axis lines = center,
+            axis y line = none, axis x line = center,
+            ylabel = $t$, xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0, ymax = 4,
+            axis line style = thin, ticks = none]   
+            
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_6 = \frac{3l}{2v}$}};
+
+            %
+            %\tikzmath{\t1 = \l/(4*\v);} 
+            %\draw[->] (-9.5,\t1) node[left] {\footnotesize{$t_1 = l/4v$}} -- (10,\t1) node[SE] {$x$};
+
+        \end{axis}
+
+        \begin{axis} %% t5
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + \dt, ymax = 4 + \dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_5 = \frac{5l}{4v}$}};
+            
+            % струна
+            \addplot[red, thick, samples=50, domain=-10:-9*\l/4] {0};            
+            \addplot[red, thick, samples=50, domain=-9*\l/4:-5*\l/4] (-9*\l/4,0) -- (-5*\l/4,\h);            
+            \addplot[red, thick, samples=50, domain=-5*\l/4:-\l/4] (-5*\l/4,\h) -- (-\l/4,0);            
+            \addplot[red, thick, samples=50, domain=-\l/4:\l/4] {0};
+            \addplot[red, thick, samples=50, domain=\l/4:5*\l/4] (\l/4,0) -- (5*\l/4,\h);
+            \addplot[red, thick, samples=50, domain=5*\l/5:9*\l/4] (5*\l/4,\h) -- (9*\l/4,0);
+            \addplot[red, thick, samples=50, domain=9*\l/4:9.75] {0};
+
+        \end{axis}
+
+        \begin{axis} %% t4
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 2*\dt,ymax = 4 + 2*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_4 = \frac{l}{v}$}};
+            
+            % пунктирні трикутники
+            \addplot[blue, dashed, samples=50, domain=0:\l] (0,0) -- (\l,\h);            
+            \addplot[blue, dashed, samples=50, domain=\l:2*\l] (\l,\h) -- (2*\l,0);
+
+            \addplot[orange!75!black, dashed, samples=50, domain=-2*\l:-\l] (-2*\l,0) -- (-\l,\h);            
+            \addplot[orange!75!black, dashed, samples=50, domain=-\l:0] (-\l,\h) -- (0,0);
+
+
+            % струна
+            \addplot[red, thick, samples=50, domain=-10:-2*\l] {0};            
+            \addplot[red, thick, samples=50, domain=-2*\l:-\l] (-2*\l,0) --(-\l,\h);            
+            \addplot[red, thick, samples=50, domain=-\l:0] (-\l,\h) --(0,0);            
+            \addplot[red, thick, samples=50, domain=0:\l] (0,0) -- (\l,\h);
+            \addplot[red, thick, samples=50, domain=\l:2*\l] (\l,\h) -- (2*\l,0);
+            \addplot[red, thick, samples=50, domain=2*\l:9.75] {0};
+
+        \end{axis}
+
+        \begin{axis} %% t3
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 3*\dt, ymax = 4 + 3*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[] {\textcolor{black}{$t_3 = \frac{3l}{4v}$}};
+            
+            % пунктирні трикутники
+            \addplot[blue, dashed, samples=50, domain=-\l/4:3*\l/4] (-\l/4,0) -- (3*\l/4,\h);            
+            \addplot[blue, dashed, samples=50, domain=3*\l/4:7*\l/4] (3*\l/4,\h) -- (7*\l/4,0);
+
+            \addplot[orange!75!black, dashed, samples=50, domain=-7*\l/4:-3*\l/4] (-7*\l/4,0) -- (-3*\l/4,\h);            
+            \addplot[orange!75!black, dashed, samples=50, domain=-3*\l/4:\l/4] (-3*\l/4,\h) -- (\l/4,0);
+
+
+            % струна
+            \addplot[red, thick, samples=50, domain=-10:-7*\l/4] {0};            
+            \addplot[red, thick, samples=50, domain=-7*\l/4:-3*\l/4] (-7*\l/4,0) --(-3*\l/4,\h);            
+            \addplot[red, thick, samples=50, domain=-3*\l/4:-\l/4] (-3*\l/4,\h) --(-\l/4,\h/2);            
+            \addplot[red, thick, samples=50, domain=-\l/4:\l/4] {\h/2};            
+            \addplot[red, thick, samples=50, domain=\l/4:3*\l/4] (\l/4,\h/2) -- (3*\l/4,\h);
+            \addplot[red, thick, samples=50, domain=3*\l/4:7*\l/4] (3*\l/4,\h) -- (7*\l/4,0);
+            \addplot[red, thick, samples=50, domain=7*\l/4:9.75] {0};
+
+        \end{axis}
+
+        \begin{axis} %% t2
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 4*\dt, ymax = 4 + 4*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_2 = \frac{l}{2v}$}};
+            
+            % пунктирні трикутники
+            \addplot[blue, dashed, samples=50, domain=-4*\l/4:2*\l/4] (-2*\l/4,0) -- (2*\l/4,\h);            
+            \addplot[blue, dashed, samples=50, domain=2*\l/4:6*\l/4] (2*\l/4,\h) -- (6*\l/4,0);
+
+            \addplot[orange!75!black, dashed, samples=50, domain=-6*\l/4:-2*\l/4] (-6*\l/4,0) -- (-2*\l/4,\h);            
+            \addplot[orange!75!black, dashed, samples=50, domain=-2*\l/4:4*\l/4] (-2*\l/4,\h) -- (4*\l/4,0);
+
+
+            % струна
+            \addplot[red, thick, samples=50, domain=-10:-6*\l/4] {0};            
+            \addplot[red, thick, samples=50, domain=-6*\l/4:-2*\l/4] (-6*\l/4,0) --(-2*\l/4,\h);            
+            \addplot[red, thick, samples=50, domain=-\l/2:\l/2] {\h};     
+            \addplot[red, thick, samples=50, domain=2*\l/4:6*\l/4] (2*\l/4,\h) -- (6*\l/4,0);
+            \addplot[red, thick, samples=50, domain=6*\l/4:9.75] {0};
+            
+        \end{axis}
+
+        \begin{axis} %% t1
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 5*\dt, ymax = 4 + 5*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_1 = \frac{l}{4v}$}};
+
+            % пунктирні трикутники
+            \addplot[blue, dashed, samples=50, domain=-3*\l/4:\l/4] (-3*\l/4,0) -- (\l/4,\h);            
+            \addplot[blue, dashed, samples=50, domain=\l/4:5*\l/4] (\l/4,\h) -- (5*\l/4,0);
+
+            \addplot[orange!75!black, dashed, samples=50, domain=-5*\l/4:-\l/4] (-5*\l/4,0) -- (-\l/4,\h);            
+            \addplot[orange!75!black, dashed, samples=50, domain=-\l/4:3*\l/4] (-\l/4,\h) -- (3*\l/4,0);
+
+
+            % струна
+            \addplot[red, thick, samples=50, domain=-10:-5*\l/4] {0};            
+            \addplot[red, thick, samples=50, domain=-5*\l/4:-3*\l/4] (-5*\l/4,0) --(-3*\l/4,\h/2);            
+            \addplot[red, thick, samples=50, domain=-3*\l/4:-\l/4] {2*\h*(1 + x/\l)};            
+            \addplot[red, thick, samples=50, domain=-\l/4:\l/4] {3*\h/2};            
+            \addplot[red, thick, samples=50, domain=\l/4:3*\l/4] (\l/4,3*\h/2) -- (3*\l/4,\h/2);
+            \addplot[red, thick, samples=50, domain=3*\l/4:5*\l/4] (3*\l/4,\h/2) -- (5*\l/4,0);
+            \addplot[red, thick, samples=50, domain=5*\l/4:9.75] {0};
+            
+        \end{axis}
+
+        \begin{axis} %% t0
+            [width = \textwidth,
+            axis lines = center,
+            %axis y line = none, axis x line = center,
+            xlabel = $x$, ylabel = $t$,
+            xmin = -10, xmax = 10, ymin = \y0 + 6*\dt, ymax = 4 + 6*\dt,
+            axis line style = thin, ticks = none]   
+            
+            %відмітки на осі Ox 
+            \addplot[black, samples=10, domain=-10:10, name path=three] coordinates {(0,-0.1)(0,0.1)}
+            node[anchor=130, pos=0.5] {\footnotesize{0}};
+            \addplot[black, samples=10, domain=-10:10, name path=three] coordinates {(-\l,-0.1)(-\l,0.1)}
+            node[anchor=70, pos=0.5] {\footnotesize{$-l$}};
+            \addplot[black, samples=10, domain=-10:10, name path=three] coordinates {(\l,-0.1)(\l,0.1)}
+            node[anchor=90, pos=0.5] {\footnotesize{$l$}};
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_0 = 0$}};
+        
+            %характеристики
+            \addplot[gray, samples=50, domain=\l:2.7*\l] {(-\l + x)/\v};            
+            \addplot[gray, samples=50, domain=-0.7*\l:\l] {(\l - x)/\v};            
+
+            \addplot[gray, samples=50, domain=-\l:1.7*\l] {(\l + x)/\v};            
+            \addplot[gray, samples=50, domain=-3.7*\l:-\l] {(-\l - x)/\v}; 
+
+            % пунктирний трикутник
+            \addplot[green!50!black, dashed, samples=50, domain=-\l:0] {\h*(1 + x/\l)};            
+            \addplot[green!50!black, dashed, samples=50, domain=0:\l] {\h*(1 - x/\l)};
+
+            % струна
+            \addplot[red, thick, samples=50, domain=-10:-\l] {0};            
+            \addplot[red, thick, samples=50, domain=-\l:0] {2*\h*(1 + x/\l)};            
+            \addplot[red, thick, samples=50, domain=0:\l] {2*\h*(1 - x/\l)};
+            \addplot[red, thick, samples=50, domain=\l:9.75] {0};            
+
+        \end{axis}
+
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}

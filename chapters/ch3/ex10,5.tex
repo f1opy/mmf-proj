@@ -1,16 +1,62 @@
 %\documentclass[a4paper, 14pt]{extreport}
-
-%\usepackage{StyleMMF}
-
+%
+%\usepackage{../../main/StyleMMF}
+%
 %\setcounter{chapter}{9}
-
+%
 %\begin{document}
-
+%
 %\chapter{Приведення лінійних рівнянь у частинних похідних 2-го порядку з двома змінними до заданого вигляду}
 
 \section[Задача №10.5]{10.5}
 
 \textit{Привести до простішого вигляду рівняння $u_t = a^2(u_{xx} + \alpha u_x) + cu$.}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+Перенесемо всі доданки на одну сторону та поділимо на $a^2$
+\begin{equation} \label{eq10,5}
+    u_{xx} + \alpha u_x - a^{-2}u_t + a^{-2}cu = 0
+\end{equation}
+Маємо рівняння параболічного типу в канонічному виді.\\
+Спростимо його позбавившись якнайбільше від похідних першого порядку. Це зробимо використовуючи наступну заміну змінних та функції
+\begin{equation}
+    u(x,t) =  e^{\lambda x + \mu t} v(x,t)
+\end{equation}
+
+Обчислимо перші похідні та другу похідну по просторовый змінній
+\begin{equation*}
+    u_x =  e^{\lambda x + \mu t} (v_x + \lambda v), \; u_t =  e^{\lambda x + \mu t} (v_t + \mu v), \; u_{xx} =  e^{\lambda x + \mu t} (v_{xx} + 2\lambda v_x + \lambda^2 v)
+\end{equation*}
+Підставляємо їх в рівняння (\ref{eq10,5}) та ділимо його на експоненту
+\begin{equation*}
+    v_{xx} + 2\lambda v_x + \lambda^2 v + \alpha (v_x + \lambda v) - a^{-2}(v_t + \mu v) + a^{-2}cv = 0
+\end{equation*}
+Зводимо подібні доданки 
+\begin{equation}
+    v_{xx} + (2\lambda + \alpha)v_x - a^{-2}v_t + (\lambda^2 + \alpha \lambda - a^{-2}\mu  + a^{-2}c)v = 0
+\end{equation}
+Звідси визначимо $\lambda$ та $\mu$, прирівнючи вирази перед $v_x$ та $v$ до нуля.
+\begin{equation}
+    \left\{ \begin{aligned}
+        \;& 2\lambda + \alpha = 0,\\
+          & \lambda^2 + \alpha \lambda - a^{-2}\mu  + a^{-2}c = 0;
+    \end{aligned} \right.
+    \quad\Rightarrow\quad
+    \left\{ \begin{aligned}
+        \;& \lambda = -\alpha/2,\\
+          & \mu = c - a^2\alpha^2/4;
+    \end{aligned} \right.
+\end{equation}
+Таким чином, заміна
+\begin{equation}
+    u(x,t) =  \exp\bigg[\bigg(c - \frac{a^2\alpha^2}{4}\bigg)t - \frac{\alpha t}{2}\bigg] v(x,t)
+\end{equation}
+спрощує вихідне рівняння (\ref{eq10,5}) до вигляду
+\begin{equation}
+    v_t = a^2v_{xx}
+\end{equation}
 
 %\end{document}

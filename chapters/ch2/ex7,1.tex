@@ -1,6 +1,6 @@
 %\documentclass[a4paper, 14pt]{extreport}
 
-%\usepackage{StyleMMF}
+%\usepackage{../StyleMMF}
 
 %\begin{document}
 
@@ -66,7 +66,7 @@
     \;\Rightarrow\;
     \mathcal{V}_t(x,0) = \alpha f_0  (x-l)
 \end{equation*}
-Отже, отримуємо задачу для $\mathcal{V}(x,t)$ з однорідними межовими умова, але з неоднорідними рівнянням та початковими умовами.
+Отже, отримуємо задачу для $\mathcal{V}(x,t)$ з однорідними межовими умовами, але з неоднорідними рівнянням та початковими умовами.
 \begin{equation} \label{new-cond7,1}
     \left\{ \begin{aligned} %%
             \;&\mathcal{V} = \mathcal{V}(x,t), \\
@@ -135,12 +135,12 @@
 
 Ми вже розкладали неоднорідність в рівнянні по власним функціям системи, таким же шляхом треба розкласти початкові умови задачі (\ref{new-cond7,1}). Нам треба знову ж розкласти функцію $x - l$, тому можемо скористатися готовим результатом (\ref{fourier-sum7,1}).
 \begin{equation}
-    \begin{aligned} %%
+    \begin{aligned}
         &\mathcal{V}(x,0) = - f_0 (x-l),\\
         &\mathcal{V}_t(x,0) = \alpha f_0 (x-l).
     \end{aligned} 
     \quad\Rightarrow\quad
-    \begin{aligned} %%
+    \begin{aligned}
         &\widetilde{\mathcal{V}}_n(0) = 2 f_0/l k_n^2 = \kappa_n,\\
         &\frac{\mathrm{d}\;}{\mathrm{d}t}\widetilde{\mathcal{V}}_n(0) = -2\alpha f_0/lk_n^2 = -\kappa_n\alpha.
     \end{aligned} 
