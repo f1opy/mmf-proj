@@ -1,16 +1,82 @@
-\documentclass[a4paper, 14pt]{extreport}
-
-\usepackage{../../main/StyleMMF}
-
-\setcounter{chapter}{12}
-
-\begin{document}
-
-\chapter{Функції Гріна і розв’язки задач для рівнянь у частинних похідних з однорідними межовими умовами}
+% \documentclass[a4paper, 14pt]{extreport}
+%
+%\usepackage{../../main/StyleMMF}
+%\usepackage{subcaption}
+%
+%\setcounter{chapter}{12}
+%
+%\begin{document}
+%
+%\chapter{Функції Гріна і розв’язки задач для рівнянь у частинних похідних з однорідними межовими умовами}
 
 \section[Задача №13.6]{13.6}
 
 \textit{Поставити задачу на функцію Гріна $G(\vec{r},\vec{r}')$ крайової задачі для 3-D рівняння Гельмгольца $\Delta_3 u - \mu^2 u = -f(\vec{r})$ у необмеженому просторі з умовою прямування розв’язку до нуля на нескінченності і розв’язати її за допомогою інтегрального перетворення Фур’є, дати фізичну інтерпретацію розв’язку у термінах стаціонарної дифузії частинок зі скінченним часом життя. Граничним переходом $\mu \to +0$ перейти до функції Гріна рівняння Лапласа. Записати розв’язок задачі з довільним джерелом $f(\vec{r})$ через функцію Гріна.}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
 
-\end{document}
+Постановка задачі на фінкцію Гріна 
+\begin{equation}
+    \left\{ \begin{aligned}
+        \,& u = G(\vec{r}, \vec{r}^{\,\prime}),\\
+        & \Delta_3 u - \mu^2 u = -\delta(\vec{r} - \vec{r}^{\,\prime})
+    \end{aligned} \right.
+\end{equation}
+
+Виконаємо перетворення Фур'є рівняння
+\begin{equation*}
+    - k_x^2 \hat{u} - k_y^2 \hat{u} - k_z^2 \hat{u} - \mu^2 \hat{u} = -e^{i(\vec{k} \cdot (\vec{r} - \vec{r}^{\,\prime}))}
+\end{equation*}
+Звідки отримаємо Фур'є-образ функції Гріна
+\begin{equation}
+    \hat{u}(\vec{k}) = \frac{1}{k^2 + \mu^2} \cdot e^{i(\vec{k} \cdot (\vec{r} - \vec{r}^{\,\prime}))}
+\end{equation} 
+
+Тепер функції Гріна знайдемо оберненим перетворенням Фур'є
+\begin{equation}
+    G(\vec{r} - \vec{r}^{\,\prime}) = \frac{1}{(2\pi)^3} \int_{\mathbb{R}^3} \frac{e^{i(\vec{k} \cdot (\vec{r} - \vec{r}^{\,\prime}))}}{k^2 + \mu^2} \;\mathrm{d}\vec{k} \; \textcolor{red}{=}
+\end{equation}  
+Залишається обчислити отриманий інтеграл. Це не важко зробити використовуючи лемму Жордана та обчислючи лишки.\\
+Переходимо в сферичні координати і позначимо $\rho = |\vec{r} - \vec{r}^{\,\prime}|$ та $\theta$ -- кут між векторами $\vec{k}$ та $\vec{r} - \vec{r}^{\,\prime}$ 
+\begin{equation*}
+    \begin{gathered}
+        \textcolor{red}{=} \; \frac{1}{(2\pi)^3} \int_0^{2\pi} \;\mathrm{d}\phi \int_0^\infty k^2 \;\mathrm{d}k \int_0^\pi \frac{e^{ik\rho \cos\theta}}{k^2 + \mu^2} \;\mathrm{d}(\cos\phi) =\\
+        = \frac{2\pi}{(2\pi)^3} \int_0^\infty \frac{k^2}{k^2 + \mu^2} \bigg( \frac{e^{ik\rho \cos\theta}}{ik\rho} \bigg) \bigg|_0^\pi \;\mathrm{d}k =\\
+        = \frac{1}{8\pi^2i\rho} \bigg[ \int_{-\infty}^\infty \frac{ke^{-ik\rho}}{k^2 + \mu^2} \;\mathrm{d}k - \int_{-\infty}^\infty \frac{ke^{ik\rho}}{k^2 + \mu^2} \;\mathrm{d}k \bigg] \; \textcolor{red}{=}
+    \end{gathered}
+\end{equation*}  
+Підінтегральній вираз має 2 особливі точки $k = \pm i\mu$. Для першого інтегралу потрібно розглянути контур в комплексній півплощині, де $\mathrm{Im}z > 0$, а для другого навпаки -- $\mathrm{Im}z < 0$. 
+
+\begin{figure}[h]
+    \centering
+    %Graph under comment
+    \input{../graphs/complex-contoures.tex}  % main compilation
+    %\input{../../graphs/complex-contoures.tex}  % this compilation
+\end{figure}
+
+За лемою Жордана інтеграл вздовж півкола буде прямувати до нуля при прямуванні його радіуса до нескінченності, тому значення інтегралів, які ми отримали раніше дорівнює 
+\begin{equation*}
+    \begin{gathered}
+        \textcolor{red}{=} \; \frac{2\pi i}{8\pi^2i\rho} \bigg[ \mathop{\mathrm{Res}}_{k = i\mu} \frac{ke^{-ik\rho}}{k^2 + \mu^2} + \mathop{\mathrm{Res}}_{k = -i\mu} \frac{ke^{ik\rho}}{k^2 + \mu^2} \bigg] = \frac{1}{4\pi \rho} \bigg[ \lim_{k = i\mu} \frac{ke^{-ik\rho}}{k + i\mu} + \lim_{k = -i\mu} \frac{ke^{ik\rho}}{k - i\mu} \bigg] =\\
+        = \frac{1}{4\pi \rho} \bigg[ \frac{i\mu e^{\mu\rho}}{2i\mu} + \frac{-i\mu e^{\mu\rho}}{-2i\mu} \bigg] = \frac{1}{4\pi\rho} e^{\mu\rho} = \frac{e^{\mu|\vec{r} - \vec{r}^{\,\prime}|}}{4\pi |\vec{r} - \vec{r}^{\,\prime}|}
+    \end{gathered}
+\end{equation*}  
+Отже, маємо функцію Гріна для рівняння Гельмгольца
+\begin{equation}
+    G(\vec{r} - \vec{r}^{\,\prime}) = \frac{e^{\mu|\vec{r} - \vec{r}^{\,\prime}|}}{4\pi |\vec{r} - \vec{r}^{\,\prime}|}
+\end{equation} 
+
+Фізична інтерпритація: ???
+
+Знайдемо функцію Гріна для рівняння Лапласа
+\begin{equation}
+    G(\vec{r} - \vec{r}^{\,\prime}) = \lim_{\mu \to +0} \frac{e^{\mu|\vec{r} - \vec{r}^{\,\prime}|}}{4\pi |\vec{r} - \vec{r}^{\,\prime}|} = \frac{1}{4\pi |\vec{r} - \vec{r}^{\,\prime}|}
+\end{equation} 
+Розв'язок задачі для довільного джерела
+\begin{equation}
+    u(\vec{r}) = \int_{-\infty}^{+\infty} G(\vec{r} - \vec{r}^{\,\prime}) f(\vec{r}^{\,\prime}) \; \mathrm{d}\vec{r}^{\,\prime} = \frac{1}{4\pi} \int_{-\infty}^{+\infty} \frac{f(\vec{r}^{\,\prime})}{|\vec{r} - \vec{r}^{\,\prime}|} \; \mathrm{d}\vec{r}^{\,\prime}
+\end{equation}
+
+%\end{document}

@@ -1,0 +1,54 @@
+% Зображення контурів на комплексній площині
+
+  \begin{minipage}{.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}
+          [width = \textwidth,
+          axis lines = center,
+          ylabel = $\mathrm{Im}z$, xlabel = $\mathrm{Re}z$,
+          xmin = -5, xmax = 5, ymin = -5, ymax = 5,
+          axis line style = thin, ticks = none]   
+          
+          \tikzmath{\R = 3.75;}
+
+          \draw[red, thick] (-\R,0) -- (\R,0) arc(0:180:\R) --cycle;
+          \addplot[red, thick, domain=-\R:\R] {0};   
+          
+          \addplot[mark=*, red] coordinates {(0,1)}
+          node[anchor=160, pos=0.5] {\footnotesize{$k = i\mu$}};
+
+          \addplot[mark=*] coordinates {(0,-1)}
+          node[anchor=160, pos=0.5] {\footnotesize{$k = -i\mu$}};
+
+      \end{axis}
+    \end{tikzpicture}
+
+    \captionof{figure}{Контур для 1 інтегралу}
+  \end{minipage}
+  \begin{minipage}{.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis} 
+          [width = \textwidth,
+          axis lines = center,
+          ylabel = $\mathrm{Im}z$, xlabel = $\mathrm{Re}z$,
+          xmin = -5, xmax = 5, ymin = -5, ymax = 5,
+          axis line style = thin, ticks = none]   
+          
+          \tikzmath{\R = 3.75;}
+
+          \draw[red, thick] (-\R,0) -- (\R,0) arc(0:-180:\R) --cycle;
+          \addplot[red, thick, domain=-\R:\R] {0};   
+
+          \addplot[mark=*] coordinates {(0,1)}
+          node[anchor=160, pos=0.5] {\footnotesize{$k = i\mu$}};
+
+          \addplot[mark=*, red] coordinates {(0,-1)}
+          node[anchor=160, pos=0.5] {\footnotesize{$k = -i\mu$}};
+
+      \end{axis}
+    \end{tikzpicture}
+    
+    \captionof{figure}{Контур для 2 інтегралу}
+  \end{minipage}

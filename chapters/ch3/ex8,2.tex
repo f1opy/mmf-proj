@@ -12,5 +12,321 @@
 
 \textit{Зобразити графічно поле зміщень і поле швидкостей нескінченної струни в характерні послідовні моменти часу, якщо початкове відхилення (зміщення) дорівнює нулю, початкова швидкість всіх точок струни на деякому відрізку довжиною $2l$ однакова і дорівнює $\nu_0$, а в усіх інших точках дорівнює нулю. У який кінцевий стан переходить струна в результаті такого процесу? З точки зору механіки системи частинок результат є парадоксальним: у початковий момент тілу був переданий імпульс (у поперечному напрямі до струни), а в кінцевому стані струна нерухома, замість того щоб рухатись рівномірно. Зобразіть також вигляд поля зміщень і поля швидкостей при наближенні до границі: $l \to 0$, $\nu_0 \to \infty$ при фіксованому $t$, якщо переданий струні імпульс залишається сталим.}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+\begin{figure}[h!]
+    \centering
+
+    \begin{tikzpicture}
+
+        \tikzmath{\l = 3; \v = 2.25; \w = 3/20; \y0 = -32.5; \dt = \l/\w/4;}
+
+        \begin{axis} %% t6
+            [width = \textwidth,
+            %axis lines = center,
+            axis y line = none, axis x line = center,
+            ylabel = $t$, xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0, ymax = 4,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_6$}};
+
+        \end{axis}
+
+        \begin{axis} %% t5
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + \dt, ymax = 4 + \dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_5$}};
+            
+            %характеристики
+            \addplot[gray] coordinates {(-2.25*\l,0)(-0.25*\l,\v)};            
+            \addplot[gray] coordinates {(-0.25*\l,\v)(9.75,\v)};            
+
+            \addplot[gray] coordinates {(0.25*\l,0)(2.25*\l,-\v)};            
+            \addplot[gray] coordinates {(2.25*\l,-\v)(9.75,-\v)};            
+
+            
+            % струна
+            \addplot[red, thick] coordinates {(-2.25*\l,0)(-0.25*\l,\v)};            
+            \addplot[red, thick] coordinates {(-0.25*\l,\v)(0.25*\l,\v)};           
+            \addplot[red, thick] coordinates {(0.25*\l,\v)(2.25*\l,0)};            
+                        
+        \end{axis}
+
+        \begin{axis} %% t4
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 2*\dt,ymax = 4 + 2*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_4$}};
+            
+            %характеристики
+            \addplot[gray] coordinates {(-2*\l,0)(0,\v)};            
+            \addplot[gray] coordinates {(0,\v)(9.75,\v)};            
+
+            \addplot[gray] coordinates {(0,0)(2*\l,-\v)};            
+            \addplot[gray] coordinates {(2*\l,-\v)(9.75,-\v)};            
+
+            
+            % струна
+            \addplot[red, thick] coordinates {(-2*\l,0)(0,\v)};           
+            \addplot[red, thick] coordinates {(0,\v)(2*\l,0)};             
+                        
+        \end{axis}
+
+        \begin{axis} %% t3
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 3*\dt, ymax = 4 + 3*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[] {\textcolor{black}{$t_3$}};
+            
+            %характеристики
+            \addplot[gray] coordinates {(-1.75*\l,0)(0.25*\l,\v)};            
+            \addplot[gray] coordinates {(0.25*\l,\v)(9.75,\v)};            
+
+            \addplot[gray] coordinates {(-0.25*\l,0)(1.75*\l,-\v)};            
+            \addplot[gray] coordinates {(1.75*\l,-\v)(9.75,-\v)};            
+
+            
+            % струна
+            \addplot[red, thick] coordinates {(-1.75*\l,0)(-0.25*\l,0.75*\v)};            
+            \addplot[red, thick] coordinates {(-0.25*\l,0.75*\v)(0.25*\l,0.75*\v)};           
+            \addplot[red, thick] coordinates {(0.25*\l,0.75*\v)(1.75*\l,0)};              
+                        
+        \end{axis}
+
+        \begin{axis} %% t2
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 4*\dt, ymax = 4 + 4*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_2$}};
+            
+            %характеристики
+            \addplot[gray] coordinates {(-1.5*\l,0)(0.5*\l,\v)};            
+            \addplot[gray] coordinates {(0.5*\l,\v)(9.75,\v)};            
+
+            \addplot[gray] coordinates {(-0.5*\l,0)(1.5*\l,-\v)};            
+            \addplot[gray] coordinates {(1.5*\l,-\v)(9.75,-\v)};            
+
+            
+            % струна
+            \addplot[red, thick] coordinates {(-1.5*\l,0)(-0.5*\l,0.5*\v)};            
+            \addplot[red, thick] coordinates {(-0.5*\l,0.5*\v)(0.5*\l,0.5*\v)};           
+            \addplot[red, thick] coordinates {(0.5*\l,0.5*\v)(1.5*\l,0)};              
+                                    
+        \end{axis}
+
+        \begin{axis} %% t1
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 5*\dt, ymax = 4 + 5*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_1$}};
+
+            %характеристики
+            \addplot[gray] coordinates {(-1.25*\l,0)(0.75*\l,\v)};            
+            \addplot[gray] coordinates {(0.75*\l,\v)(9.75,\v)};            
+
+            \addplot[gray] coordinates {(-0.75*\l,0)(1.25*\l,-\v)};            
+            \addplot[gray] coordinates {(1.25*\l,-\v)(9.75,-\v)};            
+
+            
+            % струна
+            \addplot[red, thick] coordinates {(-1.25*\l,0)(-0.75*\l,0.25*\v)};            
+            \addplot[red, thick] coordinates {(-0.75*\l,0.25*\v)(0.75*\l,0.25*\v)};           
+            \addplot[red, thick] coordinates {(0.75*\l,0.25*\v)(1.25*\l,0)};           
+                                    
+        \end{axis}
+
+        \begin{axis} %% t0
+            [width = \textwidth,
+            axis lines = center,
+            %axis y line = none, axis x line = center,
+            xlabel = $x$, ylabel = $t$,
+            xmin = -10, xmax = 10, ymin = \y0 + 6*\dt, ymax = 4 + 6*\dt,
+            axis line style = thin, ticks = none]   
+            
+            %відмітки на осі Ox 
+            \addplot[black, name path=three] coordinates {(0,-0.1)(0,0.1)}
+            node[anchor=130, pos=0.5] {\footnotesize{0}};
+            \addplot[black, name path=three] coordinates {(-\l,-0.1)(-\l,0.1)}
+            node[anchor=70, pos=0.5] {\footnotesize{$-l$}};
+            \addplot[black, name path=three] coordinates {(\l,-0.1)(\l,0.1)}
+            node[anchor=90, pos=0.5] {\footnotesize{$l$}};
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_0$}};
+        
+            %характеристики
+            \addplot[gray] coordinates {(-\l,0)(\l,\v)};            
+            \addplot[gray] coordinates {(\l,\v)(9.75,\v)};            
+
+            \addplot[gray] coordinates {(-\l,0)(\l,-\v)};            
+            \addplot[gray] coordinates {(\l,-\v)(9.75,-\v)};            
+
+            
+            % струна
+            \addplot[red, thick, samples=50, domain=-\l:\l] {0};            
+                        
+
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+
+    \begin{tikzpicture}
+
+        \tikzmath{\l = 0.15; \v = 2.25; \w = 3/20; \y0 = -22.5; \dt = 3/\w/4;}
+
+        \begin{axis} %% t4
+            [width = \textwidth,
+            %axis lines = center,
+            axis y line = none, axis x line = center,
+            ylabel = $t$, xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0, ymax = 4,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_4$}};
+
+            %характеристики
+            \addplot[gray] coordinates {(-8*\l,0)(-6*\l,\v)};            
+            \addplot[gray] coordinates {(-6*\l,\v)(9.75,\v)};            
+
+            \addplot[gray] coordinates {(6*\l,0)(8*\l,-\v)};            
+            \addplot[gray] coordinates {(8*\l,-\v)(9.75,-\v)};            
+
+            
+            % струна
+            \addplot[red, thick] coordinates {(-8*\l,0)(-6*\l,\v)};            
+            \addplot[red, thick] coordinates {(-6*\l,\v)(6*\l,\v)};           
+            \addplot[red, thick] coordinates {(6*\l,\v)(8*\l,0)}; 
+
+        \end{axis}
+
+        \begin{axis} %% t3
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + \dt, ymax = 4 + \dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[] {\textcolor{black}{$t_3$}};
+            
+            %характеристики
+            \addplot[gray] coordinates {(-6*\l,0)(-4*\l,\v)};            
+            \addplot[gray] coordinates {(-4*\l,\v)(9.75,\v)};            
+
+            \addplot[gray] coordinates {(4*\l,0)(6*\l,-\v)};            
+            \addplot[gray] coordinates {(6*\l,-\v)(9.75,-\v)};            
+
+            
+            % струна
+            \addplot[red, thick] coordinates {(-6*\l,0)(-4*\l,\v)};            
+            \addplot[red, thick] coordinates {(-4*\l,\v)(4*\l,\v)};           
+            \addplot[red, thick] coordinates {(4*\l,\v)(6*\l,0)};             
+                        
+        \end{axis}
+
+        \begin{axis} %% t2
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 2*\dt, ymax = 4 + 2*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_2$}};
+            
+            %характеристики
+            \addplot[gray] coordinates {(-4*\l,0)(-2*\l,\v)};            
+            \addplot[gray] coordinates {(-2*\l,\v)(9.75,\v)};            
+
+            \addplot[gray] coordinates {(2*\l,0)(4*\l,-\v)};            
+            \addplot[gray] coordinates {(4*\l,-\v)(9.75,-\v)};            
+
+            
+            % струна
+            \addplot[red, thick] coordinates {(-4*\l,0)(-2*\l,\v)};            
+            \addplot[red, thick] coordinates {(-2*\l,\v)(2*\l,\v)};           
+            \addplot[red, thick] coordinates {(2*\l,\v)(4*\l,0)};              
+                                    
+        \end{axis}
+
+        \begin{axis} %% t1
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 3*\dt, ymax = 4 + 3*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_1$}};
+
+            %характеристики
+            \addplot[gray] coordinates {(-2*\l,0)(0,\v)};            
+            \addplot[gray] coordinates {(0,\v)(9.75,\v)};            
+
+            \addplot[gray] coordinates {(0,0)(2*\l,-\v)};            
+            \addplot[gray] coordinates {(2*\l,-\v)(9.75,-\v)};            
+
+            
+            % струна
+            \addplot[red, thick] coordinates {(-2*\l,0)(0,\v)};           
+            \addplot[red, thick] coordinates {(0,\v)(2*\l,0)};           
+                                    
+        \end{axis}
+
+        \begin{axis} %% t0
+            [width = \textwidth,
+            axis lines = center,
+            %axis y line = none, axis x line = center,
+            xlabel = $x$, ylabel = $t$,
+            xmin = -10, xmax = 10, ymin = \y0 + 4*\dt, ymax = 4 + 4*\dt,
+            axis line style = thin, ticks = none]   
+            
+            %відмітки на осі Ox 
+            %\addplot[black, name path=three] coordinates {(0,-0.1)(0,0.1)}
+            %node[anchor=130, pos=0.5] {\footnotesize{0}};
+            \addplot[black, name path=three] coordinates {(-\l,-0.1)(-\l,0.1)}
+            node[anchor=70, pos=0.5] {\footnotesize{$-l$}};
+            \addplot[black, name path=three] coordinates {(\l,-0.1)(\l,0.1)}
+            node[anchor=90, pos=0.5] {\footnotesize{$l$}};
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_0$}};
+        
+            %характеристики
+            \addplot[gray] coordinates {(-\l,0)(\l,\v)};            
+            \addplot[gray] coordinates {(\l,\v)(9.75,\v)};            
+
+            \addplot[gray] coordinates {(-\l,0)(\l,-\v)};            
+            \addplot[gray] coordinates {(\l,-\v)(9.75,-\v)};            
+
+            
+            % струна
+            \addplot[red, thick, samples=50, domain=-\l:\l] {0};            
+                        
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Випадок $l \to 0$}
+\end{figure}
+
+\clearpage
 
 %\end{document}

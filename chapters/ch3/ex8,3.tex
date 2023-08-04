@@ -14,5 +14,361 @@
 
 \textit{Зобразити графічно поле зміщень півнескінченної струни у характерні послідовні моменти часу. Початкове відхилення має форму прямокутного трикутника, більшим катетом служить положення рівноваги струни, а вершина гострого кута орієнтована в бік кінця струни. Початкова швидкість дорівнює нулю. Кінець струни а) вільний (відносно поперечних зміщень), б) закріплений нерухомо.}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
+
+\begin{figure}[h!]
+    \centering
+
+    \begin{tikzpicture}
+
+        \tikzmath{\l = 5; \h = 2.75; \v = 1/4; \y0 = -31.5; \dt = 5;}
+
+        \begin{axis} %% t6
+            [width = \textwidth,
+            %axis lines = center,
+            axis y line = none, axis x line = center,
+            ylabel = $t$, xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0, ymax = 4,
+            axis line style = thin, ticks = none]   
+            
+        \end{axis}
+
+        \begin{axis} %% t5
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + \dt, ymax = 4 + \dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_5 = \frac{5l}{4v}$}};
+            
+            % парне продовження
+            \addplot[blue!75!black, dashed] coordinates {(0.25*\l,0)(0.25*\l,\h)};
+            \addplot[blue!75!black, dashed] coordinates {(0.25*\l,\h)(1.25*\l,0)};            
+
+            % збурення струни
+            \addplot[yellow!50!black, dashed] coordinates {(-1.25*\l,0)(-0.25*\l,\h)};            
+            \addplot[yellow!50!black, dashed] coordinates {(-0.25*\l,\h)(-0.25*\l,0)};
+
+            %струна
+            \addplot[red, thick] coordinates {(0.25*\l,0)(0.25*\l,\h)};            
+            \addplot[red, thick] coordinates {(0.25*\l,\h)(1.25*\l,0)};
+
+        \end{axis}
+
+        \begin{axis} %% t4
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 2*\dt,ymax = 4 + 2*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_4 = \frac{l}{v}$}};
+            
+            % парне продовження
+            \addplot[blue!75!black, dashed] coordinates {(0,0)(0,\h)};
+            \addplot[blue!75!black, dashed] coordinates {(0,\h)(\l,0)};  
+
+            % збурення струни
+            \addplot[yellow!50!black, dashed] coordinates {(0,0)(0,\h)};            
+            \addplot[yellow!50!black, dashed] coordinates {(0,\h)(-\l,0)};
+
+            %струна
+            \addplot[red, thick] coordinates {(0,0)(0,\h)};            
+            \addplot[red, thick] coordinates {(0,\h)(\l,0)};
+
+        \end{axis}
+
+        \begin{axis} %% t3
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 3*\dt, ymax = 4 + 3*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[] {\textcolor{black}{$t_3 = \frac{3l}{4v}$}};
+            
+            % парне продовження
+            \addplot[blue!75!black, dashed] coordinates {(-0.25*\l,0)(-0.25*\l,\h)};
+            \addplot[blue!75!black, dashed] coordinates {(-0.25*\l,\h)(0.75*\l,0)};            
+
+            % збурення струни
+            \addplot[yellow!50!black, dashed] coordinates {(-0.75*\l,0)(0.25*\l,\h)};            
+            \addplot[yellow!50!black, dashed] coordinates {(0.25*\l,\h)(0.25*\l,0)};
+
+            %струна
+            \addplot[red, thick] coordinates {(0,3*\h/2)(0.25*\l,3*\h/2)};            
+            \addplot[red, thick] coordinates {(0.25*\l,3*\h/2)(0.25*\l,\h/2)};
+            \addplot[red, thick] coordinates {(0.25*\l,\h/2)(0.75*\l,0)};
+
+        \end{axis}
+
+        \begin{axis} %% t2
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 4*\dt, ymax = 4 + 4*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_2 = \frac{l}{2v}$}};
+            
+            % парне продовження
+            \addplot[blue!75!black, dashed] coordinates {(-0.5*\l,0)(-0.5*\l,\h)};
+            \addplot[blue!75!black, dashed] coordinates {(-0.5*\l,\h)(0.5*\l,0)};            
+
+            % збурення струни
+            \addplot[yellow!50!black, dashed] coordinates {(-0.5*\l,0)(0.5*\l,\h)};            
+            \addplot[yellow!50!black, dashed] coordinates {(0.5*\l,\h)(0.5*\l,0)};
+
+            %струна
+            \addplot[red, thick] coordinates {(0,\h)(0.5*\l,\h)};            
+            \addplot[red, thick] coordinates {(0.5*\l,\h)(0.5*\l,0)};
+            
+        \end{axis}
+
+        \begin{axis} %% t1
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 5*\dt, ymax = 4 + 5*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_1 = \frac{l}{4v}$}};
+
+            % парне продовження
+            \addplot[blue!75!black, dashed] coordinates {(-0.75*\l,0)(-0.75*\l,\h)};
+            \addplot[blue!75!black, dashed] coordinates {(-0.75*\l,\h)(0.25*\l,0)};            
+
+            % збурення струни
+            \addplot[yellow!50!black, dashed] coordinates {(-0.25*\l,0)(0.75*\l,\h)};            
+            \addplot[yellow!50!black, dashed] coordinates {(0.75*\l,\h)(0.75*\l,0)};
+
+            %струна
+            \addplot[red, thick] coordinates {(0,\h/2)(0.25*\l,\h/2)};            
+            \addplot[red, thick] coordinates {(0.25*\l,\h/2)(0.75*\l,\h)};            
+            \addplot[red, thick] coordinates {(0.75*\l,\h)(0.75*\l,0)};
+            
+        \end{axis}
+
+        \begin{axis} %% t0
+            [width = \textwidth,
+            axis lines = center,
+            %axis y line = none, axis x line = center,
+            xlabel = $x$, ylabel = $t$,
+            xmin = -10, xmax = 10, ymin = \y0 + 6*\dt, ymax = 4 + 6*\dt,
+            axis line style = thin, ticks = none]   
+            
+            %відмітки на осі Ox 
+            \addplot[black, samples=10, domain=-10:10, name path=three] coordinates {(0,-0.1)(0,0.1)}
+            node[anchor=130, pos=0.5] {\footnotesize{0}};
+            \addplot[black, samples=10, domain=-10:10, name path=three] coordinates {(-\l,-0.1)(-\l,0.1)}
+            node[anchor=70, pos=0.5] {\footnotesize{$-l$}};
+            \addplot[black, samples=10, domain=-10:10, name path=three] coordinates {(\l,-0.1)(\l,0.1)}
+            node[anchor=90, pos=0.5] {\footnotesize{$l$}};
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_0 = 0$}};
+        
+            %характеристики
+            \addplot[gray, samples=50, domain=0:1.7*\l] {x/\v};            
+            \addplot[gray, samples=50, domain=-0.7*\l:\l] {(\l - x)/\v};            
+
+            \addplot[gray, samples=50, domain=-\l:1.7*\l] {(\l + x)/\v};            
+            \addplot[gray, samples=50, domain=-2.7*\l:0] {-x/\v}; 
+
+            % парне продовження
+            \addplot[blue!75!black, dashed] coordinates {(-\l,0)(-\l,\h)};
+            \addplot[blue!75!black, dashed] coordinates {(-\l,\h)(0,0)};  
+
+            % збурення струни
+            \addplot[yellow!50!black, dashed] coordinates {(0,0)(\l,\h)};            
+            \addplot[yellow!50!black, dashed] coordinates {(\l,\h)(\l,0)};
+
+            %струна
+            \addplot[red, thick] coordinates {(0,0)(\l,\h)};            
+            \addplot[red, thick] coordinates {(\l,\h)(\l,0)};
+
+        \end{axis}
+    \end{tikzpicture}
+
+    \caption{Парне продовження}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+
+    \begin{tikzpicture}
+
+        \tikzmath{\l = 5; \h = 2.25; \v = 1/4; \y0 = -33; \dt = 5;}
+
+        \begin{axis} %% t6
+            [width = \textwidth,
+            %axis lines = center,
+            axis y line = none, axis x line = center,
+            ylabel = $t$, xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0, ymax = 2,
+            axis line style = thin, ticks = none]   
+            
+        \end{axis}
+
+        \begin{axis} %% t5
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + \dt, ymax = 2 + \dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_5 = \frac{5l}{4v}$}};
+            
+            % непарне продовження
+            \addplot[blue!75!black, dashed] coordinates {(0.25*\l,0)(0.25*\l,-\h)};
+            \addplot[blue!75!black, dashed] coordinates {(0.25*\l,-\h)(1.25*\l,0)};            
+
+            % збурення струни
+            \addplot[yellow!50!black, dashed] coordinates {(-1.25*\l,0)(-0.25*\l,\h)};            
+            \addplot[yellow!50!black, dashed] coordinates {(-0.25*\l,\h)(-0.25*\l,0)};
+
+            %струна
+            \addplot[red, thick] coordinates {(0.25*\l,0)(0.25*\l,\h)};            
+            \addplot[red, thick] coordinates {(0.25*\l,\h)(1.25*\l,0)};
+
+        \end{axis}
+
+        \begin{axis} %% t4
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 2*\dt,ymax = 2 + 2*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_4 = \frac{l}{v}$}};
+            
+            % непарне продовження
+            \addplot[blue!75!black, dashed] coordinates {(0,0)(0,-\h)};
+            \addplot[blue!75!black, dashed] coordinates {(0,-\h)(\l,0)};  
+
+            % збурення струни
+            \addplot[yellow!50!black, dashed] coordinates {(0,0)(0,\h)};            
+            \addplot[yellow!50!black, dashed] coordinates {(0,\h)(-\l,0)};
+
+            %струна
+            \addplot[red, thick] coordinates {(0,0)(0,\h)};            
+            \addplot[red, thick] coordinates {(0,\h)(\l,0)};
+
+        \end{axis}
+
+        \begin{axis} %% t3
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 3*\dt, ymax = 2 + 3*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[] {\textcolor{black}{$t_3 = \frac{3l}{4v}$}};
+            
+            % непарне продовження
+            \addplot[blue!75!black, dashed] coordinates {(-0.25*\l,0)(-0.25*\l,-\h)};
+            \addplot[blue!75!black, dashed] coordinates {(-0.25*\l,-\h)(0.75*\l,0)};            
+
+            % збурення струни
+            \addplot[yellow!50!black, dashed] coordinates {(-0.75*\l,0)(0.25*\l,\h)};            
+            \addplot[yellow!50!black, dashed] coordinates {(0.25*\l,\h)(0.25*\l,0)};
+
+            %струна
+            \addplot[red, thick] coordinates {(0,0)(0.25*\l,\h/2)};            
+            \addplot[red, thick] coordinates {(0.25*\l,\h/2)(0.75*\l,0)};
+
+        \end{axis}
+
+        \begin{axis} %% t2
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 4*\dt, ymax = 2 + 4*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_2 = \frac{l}{2v}$}};
+            
+            % непарне продовження
+            \addplot[blue!75!black, dashed] coordinates {(-0.5*\l,0)(-0.5*\l,-\h)};
+            \addplot[blue!75!black, dashed] coordinates {(-0.5*\l,-\h)(0.5*\l,0)};            
+
+            % збурення струни
+            \addplot[yellow!50!black, dashed] coordinates {(-0.5*\l,0)(0.5*\l,\h)};            
+            \addplot[yellow!50!black, dashed] coordinates {(0.5*\l,\h)(0.5*\l,0)};
+
+            %струна
+            \addplot[red, thick] coordinates {(0,0)(0.5*\l,\h)};            
+            \addplot[red, thick] coordinates {(0.5*\l,\h)(0.5*\l,0)};
+            
+        \end{axis}
+
+        \begin{axis} %% t1
+            [width = \textwidth,
+            axis y line = none, axis x line = center,
+            xlabel = $x$,
+            xmin = -10, xmax = 10, ymin = \y0 + 5*\dt, ymax = 2 + 5*\dt,
+            axis line style = thin, ticks = none]   
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_1 = \frac{l}{4v}$}};
+
+            % непарне продовження
+            \addplot[blue!75!black, dashed] coordinates {(-0.75*\l,0)(-0.75*\l,-\h)};
+            \addplot[blue!75!black, dashed] coordinates {(-0.75*\l,-\h)(0.25*\l,0)};            
+
+            % збурення струни
+            \addplot[yellow!50!black, dashed] coordinates {(-0.25*\l,0)(0.75*\l,\h)};            
+            \addplot[yellow!50!black, dashed] coordinates {(0.75*\l,\h)(0.75*\l,0)};
+
+            %струна
+            \addplot[red, thick] coordinates {(0,0)(0.25*\l,\h/2)};            
+            \addplot[red, thick] coordinates {(0.25*\l,\h/2)(0.75*\l,\h)};            
+            \addplot[red, thick] coordinates {(0.75*\l,\h)(0.75*\l,0)};
+            
+        \end{axis}
+
+        \begin{axis} %% t0
+            [width = \textwidth,
+            axis lines = center,
+            %axis y line = none, axis x line = center,
+            xlabel = $x$, ylabel = $t$,
+            xmin = -10, xmax = 10, ymin = \y0 + 6*\dt, ymax = 2 + 6*\dt,
+            axis line style = thin, ticks = none]   
+            
+            %відмітки на осі Ox 
+            \addplot[black, samples=10, domain=-10:10, name path=three] coordinates {(0,-0.1)(0,0.1)}
+            node[anchor=130, pos=0.5] {\footnotesize{0}};
+            \addplot[black, samples=10, domain=-10:10, name path=three] coordinates {(-\l,-0.1)(-\l,0.1)}
+            node[anchor=70, pos=0.5] {\footnotesize{$-l$}};
+            \addplot[black, samples=10, domain=-10:10, name path=three] coordinates {(\l,-0.1)(\l,0.1)}
+            node[anchor=90, pos=0.5] {\footnotesize{$l$}};
+            
+            \filldraw[color = white] (-9,\dt/2) circle (0.1cm) node[]{\textcolor{black}{$t_0 = 0$}};
+        
+            %характеристики
+            \addplot[gray, samples=50, domain=0:1.7*\l] {x/\v};            
+            \addplot[gray, samples=50, domain=-0.7*\l:\l] {(\l - x)/\v};            
+
+            \addplot[gray, samples=50, domain=-\l:1.7*\l] {(\l + x)/\v};            
+            \addplot[gray, samples=50, domain=-2.7*\l:0] {-x/\v}; 
+
+            % непарне продовження
+            \addplot[blue!75!black, dashed] coordinates {(-\l,0)(-\l,-\h)};
+            \addplot[blue!75!black, dashed] coordinates {(-\l,-\h)(0,0)};  
+
+            % збурення струни
+            \addplot[yellow!50!black, dashed] coordinates {(0,0)(\l,\h)};            
+            \addplot[yellow!50!black, dashed] coordinates {(\l,\h)(\l,0)};
+
+            %струна
+            \addplot[red, thick] coordinates {(0,0)(\l,\h)};            
+            \addplot[red, thick] coordinates {(\l,\h)(\l,0)};
+
+        \end{axis}
+    \end{tikzpicture}
+
+    \caption{Непарне продовження}
+\end{figure}
 
 %\end{document}

@@ -1,12 +1,12 @@
-\documentclass[a4paper, 14pt]{extreport}
+%\documentclass[a4paper, 14pt]{extreport}
+%
+%\usepackage{../../main/StyleMMF}
+%
+%\setcounter{chapter}{11}
 
-\usepackage{../../main/StyleMMF}
+%\begin{document}
 
-\setcounter{chapter}{11}
-
-\begin{document}
-
-\chapter{Функції Гріна звичайних диференціальних задач}
+%\chapter{Функції Гріна звичайних диференціальних задач}
 
 \section[Задача №12.5]{12.5}
 
@@ -15,7 +15,95 @@
 б) Знайти функцію Гріна $G(x,x')$ крайової задачі для одновимірного рівняння Гельмгольца $u'' - \mu^2u = -f(x), \, x \in \mathbb{R}, \, |u| < \pm\infty $ при $x \to \pm\infty$ – шляхом граничного переходу $x, x' \to \infty$ при сталому $x-x'$ у $G(x,x')$, одержаній у пункті а) цієї задачі.\\
 Дайте фізичну інтерпретацію знайдених функцій Гріна у термінах стаціонарної дифузії частинок зі скінченним часом життя. Якою є залежність від кожного з аргументів функції Гріна та симетрія відносно їх перестановки? Чому в одних випадках функція Гріна залежить від кожного з аргументів окремо, а в інших – тільки від їх різниці?}
 
+\begin{center}
+    \large{\textbf{Розв'язок}}
+\end{center}
 
+Постановка задачі:
+\begin{equation} \label{cond12,5}
+    \left\{ \begin{aligned}
+        \;&u'' + \mu^2u = -f(x),\, t \geq 0,\\
+          &u(0) = 0,\\
+          & |u| < \infty \text{ при } x \to +\infty.
+    \end{aligned} \right.
+\end{equation}
 
+Розв'язок однорідного рівняння:
+\begin{equation}
+    u_0(x) = C_1 e^{-\mu x} + C_2 e^{\mu x}
+\end{equation}
+Знайдемо вигляд розв'язків, що задовольняють також і межовим умовам. Перший розв'язок знаходимо прямою підстановкою:
+\begin{equation*}
+    u(0) = C_1 + C_2 = 0 \quad\Rightarrow\quad C_1 = - C_2 = 1 \quad\Rightarrow\quad u_1(x) = e^{-\mu x} - e^{\mu x}
+\end{equation*}
+Для другого розв'язку треба покласти $C_2$ рівним нулю, щоб позбавитись розбіжного доданку.
+\begin{equation*}
+    |u(+\infty)| < \infty \quad\Rightarrow\quad u_2(x) = e^{-\mu x}
+\end{equation*}
+Отже, маємо два розв'язки з яких зшиванням побудуємо функцію Гріна
+\begin{equation}
+    u_1(x) = e^{-\mu x} - e^{\mu x}, \quad u_2(x) = e^{-\mu x}
+\end{equation}
 
-\end{document}
+Визначимо функцію Гріна за формулою
+\begin{equation} \label{green-draft}
+    G(x,x') = 
+    \left\{ \begin{aligned}
+        \;& \varphi(x') \big( e^{-\mu x} - e^{\mu x} \big), \; 0 \leq x \leq x' \\
+          & \psi(x') e^{-\mu x}, \; x' \leq x \leq \infty,
+    \end{aligned} \right.
+\end{equation}
+де $\varphi(x)$ та $\psi(x)$ -- гарні функції, та задовольняє умовам
+\begin{equation} \label{green-cond}
+    \left\{ \begin{aligned}
+        \;& G(x,x')\bigg|_{x = x'+0} = G(x,x')\bigg|_{x = x'-0},\\
+          & \frac{\partial \;}{\partial x}G(x,x')\bigg|_{x = x'+0} - \frac{\partial \;}{\partial x} G(x,x')\bigg|_{x = x'-0} = 1.
+    \end{aligned} \right.
+\end{equation}
+
+Підставимо (\ref{green-draft}) в (\ref{green-cond}) та розв'яжемо отриману ситему рівнянь відносно невідомих функцій.
+\begin{equation} 
+    \left\{ \begin{aligned}
+        \;& \psi(x') e^{-\mu x'} - \varphi(x') (e^{-\mu x'} - e^{\mu x'}) = 0,\\
+          & -\mu \psi(x') e^{-\mu x'} + \mu \varphi(x') (e^{-\mu x'} + e^{\mu x'}) = 1.
+    \end{aligned} \right.
+\end{equation}
+Поділимо на $\mu$ друге рівняння та додамо до першого
+\begin{equation*} 
+    \left\{ \begin{aligned}
+        \;& \varphi(x') (e^{-\mu x'} + e^{\mu x'} - e^{-\mu x'} + e^{\mu x'}) = \frac{1}{\mu},\\
+          & \psi(x') e^{-\mu x'} = \varphi(x') (e^{-\mu x'} - e^{\mu x'});
+    \end{aligned} \right.
+    \quad\Rightarrow\;
+    \left\{ \begin{aligned}
+        \;& 2\varphi(x') e^{\mu x'} = \frac{1}{\mu},\\
+          & \psi(x')  = \varphi(x') (1 - e^{2\mu x'});
+    \end{aligned} \right.
+    \;\Rightarrow
+\end{equation*}
+\begin{equation*} 
+    \Rightarrow\quad
+    \left\{ \begin{aligned}
+        \;& \varphi(x') = \frac{1}{2\mu}e^{-\mu x'},\\
+          & \psi(x')  = \frac{1}{2\mu}e^{-\mu x'} (1 - e^{2\mu x'}) = \frac{1}{2\mu} (e^{-\mu x'} - e^{\mu x'}).
+    \end{aligned} \right.
+\end{equation*}
+Отже, функція Гріна (\ref{green-draft}) має вигляд
+\begin{equation} 
+    G(x,x') = 
+    \left\{ \begin{aligned}
+        \;& \frac{1}{2\mu}e^{-\mu x'} \big( e^{-\mu x} - e^{\mu x} \big), \; 0 \leq x \leq x' \\
+          & \frac{1}{2\mu} \big(e^{-\mu x'} - e^{\mu x'}\big) e^{-\mu x}, \; x' \leq x \leq \infty,
+    \end{aligned} \right.
+\end{equation}
+або якщо розкрити дужки та врахувати невід'ємність різниці $(x - x')$ в аргументі другої експоненти модулем
+\begin{equation} 
+    G(x,x') = \frac{1}{2\mu} \big( e^{-\mu (x + x')} - e^{-\mu |x - x'|} \big)
+\end{equation}
+
+Розв'язок для задачі на нескінченному інтервалі (випадок б) ) знайдемо граничним переходом $x, x' \to \infty$ при сталій різниці $x - x'$
+\begin{equation}
+    \lim_{\substack{|x-x'| = \mathrm{c}\\ x,x'\to\infty}} G(x,x') = \lim_{\substack{|x-x'| = \mathrm{c}\\ x,x'\to\infty}} \frac{1}{2\mu} \big( e^{-\mu (x + x')} - e^{-\mu |x - x'|} \big) = -\frac{1}{2\mu} e^{-\mu |x - x'|}
+\end{equation}  
+
+%\end{document}
